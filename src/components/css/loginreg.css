@@ -1,6 +1,7 @@
 body{
   overflow: hidden;
   overflow-y: hidden;
+  background-color: var(--dark);
 }
 
 .bodyWrap{
