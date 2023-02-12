@@ -5,6 +5,7 @@ import './css/reset.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightToBracket, faPizzaSlice, faUser, faMobile } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 import Loading from './loading';
 
@@ -25,48 +26,48 @@ const Hero = () => {
             <p>Desenvolvido por Ricardo Amorim.</p>
           </div>
           <nav className='navbar'>            
-            <div className='logo'>
+            <motion.div className='logo' initial={{ x: -25 , opacity: 0 }} whileInView={{ x: 0, opacity: 1}} viewport={{ once: true }} transition={{delay: 0.5}}>
                 <img src='../assets/svg/minimal-esfihasdash-logo.svg' alt='ashd'></img>
-            </div>
+            </motion.div>
             <div className='links'>
                 <ul>
-                  <a className='link' href='#hero'>Home</a>
-                  <a className='link' href='#funcoes'>Funções</a>
-                  <a className='link' href='#tech'>Desenvolvimento</a>
+                  <motion.a className='link' href='#hero' initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>Home</motion.a>
+                  <motion.a className='link' href='#funcoes' initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>Funções</motion.a>
+                  <motion.a className='link' href='#tech' initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }}>Desenvolvimento</motion.a>
                 </ul>
             </div>
-            <div className='buttons'>
+            <motion.div className='buttons' initial={{ x: 25 , opacity: 0 }} whileInView={{ x: 0, opacity: 1}} viewport={{ once: true }} transition={{delay: 0.5}}>
                 <Link to="/login" className='loginbtn'>
                 Login</Link>             
-            </div>
+            </motion.div>
           </nav>
           <section className='hero' id='hero'>
             <div className='content'>
-                <img className='logo' src='../assets/svg/esfihasdash-logo.svg'></img>
-                <p className='phrase'>Seus pedidos, um só lugar.</p>
-                <button className='entrar'>
+                <motion.img className='logo' src='../assets/svg/esfihasdash-logo.svg' initial={{ y: 25 , opacity: 0 }} whileInView={{ y: 0, opacity: 1}} viewport={{ once: true }} transition={{delay: 0.3}}></motion.img>
+                <motion.p className='phrase' initial={{ y: 25 , opacity: 0 }} whileInView={{ y: 0, opacity: 1}} viewport={{ once: true }} transition={{delay: 0.55}}>Seus pedidos, um só lugar.</motion.p>
+                <motion.button className='entrar' initial={{  opacity: 0 }} whileInView={{  opacity: 1}} viewport={{ once: true }} transition={{delay: 0.7}}>
                   Entrar 
                   <FontAwesomeIcon icon={faRightToBracket}/>
-                </button>
+                </motion.button>
                 <div className='shadow'></div>
             </div>
           </section>
           <section className='funcoes' id='funcoes'>
             <div className='macbook_wrap'>
-                <img className='macbook' src='../assets/img/MacBook.png'></img>
+                <motion.img className='macbook' src='../assets/img/MacBook.png' initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}></motion.img>
                 <img className='divider' src="../assets/img/divider.png" alt="" />
             </div>
             <div className='content'>
-                <h1 className='title'><mark>Funções</mark></h1>
+                <motion.h1 className='title' initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}><mark>Funções</mark></motion.h1>
                 <div className='main_wrap'>
-                  <div className='iphone_wrap'>
+                  <motion.div className='iphone_wrap' initial={{ x: -100 }} whileInView={{ x: 0 }} viewport={{ once: true }}>
                       <div className='box'>
                         <img src='../assets/img/iphone.png'></img>
                       </div>
-                  </div>
+                  </motion.div>
                   <div className='func_wrap'>
                       <div className='box'>
-                        <div className='func'>
+                        <motion.div className='func' initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
                             <div className='thumb'>
                               <FontAwesomeIcon icon={faPizzaSlice}/>
                             </div>
@@ -74,8 +75,8 @@ const Hero = () => {
                               <h3>Controle seus produtos</h3>
                               <p>Adicione, remova e edite produtos<br></br>em uma interface totalmente intuitiva.</p>
                             </div>
-                        </div>
-                        <div className='func'>
+                        </motion.div>
+                        <motion.div className='func' initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
                             <div className='thumb'>
                               <FontAwesomeIcon icon={faUser}/>
                             </div>
@@ -83,8 +84,8 @@ const Hero = () => {
                               <h3>Gerencie seus clientes</h3>
                               <p>A quantidade de pessoas é ilimitada,<br></br>tudo depende do usuário.</p>
                             </div>
-                        </div>
-                        <div className='func'>
+                        </motion.div>
+                        <motion.div className='func' initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
                             <div className='thumb'>
                               <FontAwesomeIcon icon={faMobile}/>
                             </div>
@@ -92,7 +93,7 @@ const Hero = () => {
                               <h3>Completamente responsivo</h3>
                               <p>Utilize o sistema em qualquer dispositivo,<br></br>sem nenhuma incompatibilidade.</p>
                             </div>
-                        </div>
+                        </motion.div>
                       </div>
                   </div>
                 </div>
@@ -101,8 +102,8 @@ const Hero = () => {
           </section>
           <section className='tech' id='tech'>
               <div className='tech_wrap'>
-                <h1 className='title'><mark>Tecnologias</mark></h1>
-                <div className='techs'>
+                <motion.h1 className='title' initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}><mark>Tecnologias</mark></motion.h1>
+                <motion.div className='techs' initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
                   <div className='thumb'>
                     <img src='../assets/img/react.png'></img>
                   </div>
@@ -110,8 +111,8 @@ const Hero = () => {
                     <h3>React</h3>
                     <p>Framework Javascript focado<br></br>no desenvolvimento de SPAs.</p>
                   </div>
-                </div>
-                <div className='techs'>
+                </motion.div>
+                <motion.div className='techs' initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
                   <div className='thumb'>
                     <img className='firebase' src='../assets/img/firebase.png'></img>
                   </div>
@@ -119,8 +120,8 @@ const Hero = () => {
                     <h3>Firebase</h3>
                     <p>Sistema de banco de dados "NoSql<br></br>utilizado nas rotas de login.</p>
                   </div>
-                </div>
-                <div className='techs'>
+                </motion.div>
+                <motion.div className='techs' initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
                   <div className='thumb'>
                     <img src='../assets/img/mysql.png'></img>
                   </div>
@@ -128,15 +129,15 @@ const Hero = () => {
                     <h3>MySql</h3>
                     <p>Banco de dados que gerencia<br></br>todas as informações do sistema.</p>
                   </div>
-                </div>
+                </motion.div>
               </div>
-              <img className='imac' src='./assets/img/imac.png'></img>
+              <motion.img className='imac' src='./assets/img/imac.png' initial={{ x: -100 }} whileInView={{ x: 0 }} viewport={{ once: true }}></motion.img>
           </section>
           <footer className='footer'>
             <div className='content'>
               <div className='desc'>
-                <p>Registre-se gratuitamente</p>
-                <Link className='signup' to="/login">Entrar</Link>
+                <motion.p initial={{ y: 25 , opacity: 0 }} whileInView={{ y: 0, opacity: 1}} viewport={{ once: true }} transition={{delay: 0.5}}>Registre-se gratuitamente</motion.p>
+                <motion.a initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{delay: 0.9}}><Link className='signup' to="/login">Entrar</Link></motion.a>                
               </div>
             </div>
             <div className='rodape'>
