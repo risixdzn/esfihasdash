@@ -1,6 +1,6 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import './App.css';
-import Home from './components/home';
+import Hero from './components/hero';
 import Login from './components/login'
 import Registrar from './components/register'
 import Dashboard from './components/dashboard';
@@ -15,7 +15,7 @@ function App() {
       <AuthContextProvider>    
         <ErrorContextProvider>
           <Routes>        
-            <Route path="/" element={<Home/>}/>    
+            <Route path="/" element={<Hero/>}/>    
             <Route path="/login" element={<Login/>}/>              
             <Route path="/register" element={<Registrar/>}/>      
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard/></ProtectedRoute>}></Route>      
