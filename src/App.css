@@ -12,6 +12,7 @@
   --primary-light: #f08a59;
   --dark: #0c0c0c;
   --darkbg: #0e0e0e;
+  --highlight: #181818;
   --lighter: #262626;
   --gray: #C0C0C0;
 }
@@ -44,3 +45,7 @@ body{
 	background-color: var(--primary);
 }
 
+::selection {
+  color: #fff;
+  background: var(--primary);
+}

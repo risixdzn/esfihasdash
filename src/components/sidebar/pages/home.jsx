@@ -3,9 +3,9 @@ import React from 'react'
 const Home = () => {
   return (
     <div>
-        <h1>Home</h1>
+        <h1 style={{fontSize: 50, fontWeight: 600, color: "white"}}>Home</h1>
     </div>
   )
 }
 
-export default home
+export default Home

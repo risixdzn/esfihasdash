@@ -6,6 +6,12 @@ import Registrar from './components/register'
 import Dashboard from './components/dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 
+import Sidebar from './components/sidebar/sidebar';
+import Home from './components/sidebar/pages/home';
+import Pessoas from './components/sidebar/pages/pessoas';
+import Pedidos from './components/sidebar/pages/pedidos';
+import Produtos from './components/sidebar/pages/produtos';
+
 import { AuthContextProvider } from './context/AuthContext';
 import { ErrorContextProvider } from './context/FirebaseErrorContext';
 
@@ -19,7 +25,19 @@ function App() {
             <Route path="/login" element={<Login/>}/>              
             <Route path="/register" element={<Registrar/>}/>      
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard/></ProtectedRoute>}></Route>      
-          </Routes>    
+
+            <Route path='*' element={<ProtectedRoute>
+              <Sidebar>
+                <Routes>
+                  <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>}/>
+                  <Route path="/pessoas" element={<ProtectedRoute><Pessoas /></ProtectedRoute>}/>
+                  <Route path="/pedidos" element={<ProtectedRoute><Pedidos /></ProtectedRoute>}/>
+                  <Route path="/produtos" element={<ProtectedRoute><Produtos /></ProtectedRoute>}/>          
+                </Routes>
+              </Sidebar> 
+            </ProtectedRoute>                        
+            }></Route>  
+          </Routes>  
         </ErrorContextProvider>                                      
       </AuthContextProvider>   
     </Router>       

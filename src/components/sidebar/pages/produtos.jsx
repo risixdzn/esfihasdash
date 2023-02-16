@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Podutos = () => {
+const Produtos = () => {
   return (
     <div>
-        <h1>Produtos</h1>
+        <h1 style={{fontSize: 50, fontWeight: 600, color: "white"}}>Produtos</h1>
     </div>
   )
 }
