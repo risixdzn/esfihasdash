@@ -26,7 +26,7 @@ export const AuthContextProvider = ({ children }) => {
       const updateDisplayname = await updateProfile(auth.currentUser, { displayName });//atualizar email e password dps que ja esta criado
       
       console.log(user); 
-      navigate('/dashboard')
+      navigate('/home')
 
     } catch (error){
       switch(error.code){
@@ -41,7 +41,7 @@ export const AuthContextProvider = ({ children }) => {
     try{
       const user = await signInWithEmailAndPassword(auth, loginEmail, loginPassword) //colocar email e password no objeto usuario    
       console.log(user); 
-      navigate('/dashboard') 
+      navigate('/home') 
     }catch (error){  
       switch(error.code){
         case 'auth/invalid-email': toast.warn("Email invalido.", {toastId: "inv-email"})
