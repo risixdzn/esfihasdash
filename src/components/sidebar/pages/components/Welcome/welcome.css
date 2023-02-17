@@ -54,7 +54,7 @@
     line-height: 30px;
 }
 
-span{
+.welcomespan{
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
