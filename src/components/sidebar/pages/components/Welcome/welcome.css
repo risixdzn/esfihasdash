@@ -107,7 +107,7 @@ span{
     .left_content{
         width: 100%;
         justify-content: flex-start;
-        padding: 0 25px;
+        padding: 0 ;
     }
 
     .right_content{
