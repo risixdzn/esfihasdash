@@ -18,7 +18,7 @@ export const Welcome = () => {
   return (
     <div className='maincontainer'>
       <div className="left_content">
-        <span>
+        <span className='welcomespan'>
           <h1 className='welcome_message'>Bem vindo, {user.displayName}.</h1>
         </span>        
         <h2 className="pedidos_current">Você fez ? pedidos.</h2>
