@@ -1,0 +1,137 @@
+.maincontainer{
+    width: 100%;
+    height: 250px;
+    background-color: var(--dark);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+    gap: 20px;    
+}
+
+.left_content{
+    width: 70%;
+    height: 100%;
+    /*background-color: var(--highlight);*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    
+    padding: 0 40px;
+    gap: 10px;
+}
+
+.right_content{
+    width: 30%;
+    height: 100%;
+    /*background-color: var(--highlight);*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.divisoria_vertical{
+    width: 5px;
+    height: 100%;
+    background-color: var(--primary);
+    border-radius: 5px;
+}
+
+
+.divisoria_horizontal{
+    width: 90%;
+    height: 5px;
+    background-color: var(--primary);
+    border-radius: 5px;
+    display: none;
+}
+
+.welcome_message{
+    font-size: 35px;
+    font-weight: 600;
+    color: var(--primary);
+    line-height: 30px;
+}
+
+span{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.pedidos_current{
+    color: #fff;
+    font-size: 20px;
+}
+
+.novo_pedido{
+    background-color: var(--primary);
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    transition: .1s ease-in-out;
+}
+
+.novo_pedido:hover{
+    background-color: var(--primary);    
+    box-shadow: 0 0 0.5em var(--primary);
+}
+
+.novo_pedido:active{
+    scale: 0.95;
+    filter: brightness(0.8);
+    box-shadow: 0 0 0 ;
+}
+
+.relogio h1{
+    color: #fff;
+}
+
+@media only screen and (max-width: 1000px) 
+{
+    .maincontainer{
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        padding: 25px 15px;
+    }
+
+    .divisoria_horizontal{
+        display: block;
+    }
+    .left_content{
+        width: 100%;
+        justify-content: flex-start;
+        padding: 0 25px;
+    }
+
+    .right_content{
+        width: 100%;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+
+    span{
+        white-space: pre-wrap;
+    }
+
+    .welcome_message{
+        font-size: 24px;
+    }
+
+    .pedidos_current{
+        font-size: 16px;
+    }
+    
+    .novo_pedido{
+        width: 150px;
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 16px;
+    }
+}

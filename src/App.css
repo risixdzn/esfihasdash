@@ -49,3 +49,7 @@ body{
   color: #fff;
   background: var(--primary);
 }
+
+.dashcontent{
+  width: 100vw;
+}

@@ -44,6 +44,10 @@ const Sidebar = ({children}) => {
         }
     };
 
+  const padding = {
+    padding: "15px",    
+  }
+
   return (
     <div className="container">
       <div className="sidebar">
@@ -84,7 +88,8 @@ const Sidebar = ({children}) => {
         </div>                    
       </div>       
       
-      <main className='content' style={{padding: 50}}>{children}</main>      
+      <main className='dashcontent' style={padding}>{children}</main>     
+       
     </div>           
   )
 }
