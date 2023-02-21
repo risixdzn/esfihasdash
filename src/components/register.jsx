@@ -28,26 +28,8 @@ function Registrar() {
     } catch (error) {
       console.log(error.message);
     }        
-  };  
-
-  useEffect(() => {
-    const keyDownHandler = event => {     
-
-      if (event.key === 'Enter') {
-        event.preventDefault();
-
-        // 👇️ call submit function here
-        handleRegister();
-      }
-    };
-
-    document.addEventListener('keydown', keyDownHandler);
-
-    return () => {
-      document.removeEventListener('keydown', keyDownHandler);
-    };
-  }, []);
-
+  };
+  
   return (
     <div className="App">
       <div className="bodyWrap">

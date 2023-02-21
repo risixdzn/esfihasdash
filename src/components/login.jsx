@@ -32,7 +32,7 @@ function Login() {
   const firebaseErrors = ErrPTBR();
 
   const handleLogin = async (e) => {    
-    //e.preventDefault();    
+    e.preventDefault();    
     try {
       await login(loginEmail, loginPassword)             
     } catch (error) {      
@@ -48,24 +48,6 @@ function Login() {
       theme:"dark",
     });
   }
-
-  useEffect(() => {
-    const keyDownHandler = event => {     
-
-      if (event.key === 'Enter') {
-        event.preventDefault();
-
-        // 👇️ call submit function here
-        handleLogin();
-      }
-    };
-
-    document.addEventListener('keydown', keyDownHandler);
-
-    return () => {
-      document.removeEventListener('keydown', keyDownHandler);
-    };
-  }, []);
 
   return (
     <div className="App">
