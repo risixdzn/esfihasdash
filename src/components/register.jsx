@@ -4,7 +4,7 @@ import './css/loginreg.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAt , faLock, faUser} from '@fortawesome/free-solid-svg-icons'
 import { Link, useNavigate } from 'react-router-dom'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword, onAuthStateChanged, updateProfile, signOut } from 'firebase/auth';
 import { auth } from '../firebase-config'
 
@@ -29,6 +29,24 @@ function Registrar() {
       console.log(error.message);
     }        
   };  
+
+  useEffect(() => {
+    const keyDownHandler = event => {     
+
+      if (event.key === 'Enter') {
+        event.preventDefault();
+
+        // 👇️ call submit function here
+        handleRegister();
+      }
+    };
+
+    document.addEventListener('keydown', keyDownHandler);
+
+    return () => {
+      document.removeEventListener('keydown', keyDownHandler);
+    };
+  }, []);
 
   return (
     <div className="App">
