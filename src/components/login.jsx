@@ -66,21 +66,24 @@ function Login() {
             <div className="wrapper">
               <img src='../assets/svg/esfihasdash-logo.svg' alt='logo'></img>  
 
-              <h1 className="title">Login</h1>              
-              
-              <p className="label"><FontAwesomeIcon icon={faAt}/> Email</p>
-              <input type="email" id="email"placeholder="example@example.com" 
-                onChange={(event) =>{
-                setLoginEmail(event.target.value)}}>                  
-              </input>
+              <h1 className="title">Login</h1>   
 
-              <p className="label"><FontAwesomeIcon icon={faLock}/> Senha</p>
-              <input type="password" id="password"placeholder="*********"
-                onChange={(event) =>{
-                setLoginPassword(event.target.value)}}>
-              </input>
+              <form onSubmit={handleLogin}>
+                <p className="label"><FontAwesomeIcon icon={faAt}/> Email</p>
+                <input type="email" id="email"placeholder="example@example.com" 
+                  onChange={(event) =>{
+                  setLoginEmail(event.target.value)}}>                  
+                </input>
+
+                <p className="label"><FontAwesomeIcon icon={faLock}/> Senha</p>
+                <input type="password" id="password"placeholder="•••••••••"
+                  onChange={(event) =>{
+                  setLoginPassword(event.target.value)}}>
+                </input>
+                
+                <button className="entrarBtn" type='submit'>Entrar</button>
+              </form>
               
-              <button className="entrarBtn" onClick={handleLogin}>Entrar</button>
 
               <p className="accQuestion">Ainda não possui uma conta?</p>
               <Link to="/register">
