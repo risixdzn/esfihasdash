@@ -79,6 +79,14 @@ b{
   flex-direction: column;
 }
 
+.loginSec form{
+  width: auto;
+  text-align: center;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
 .loginSec img{
   display: none;
 }

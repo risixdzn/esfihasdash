@@ -58,7 +58,7 @@ function Registrar() {
               </input>
 
               <p className="label"><FontAwesomeIcon icon={faLock}/> Senha</p>
-              <input type="password" id="password"placeholder="*********"
+              <input type="password" id="password"placeholder="••••••••"
                 onChange={(event) =>{
                 setRegisterPassword(event.target.value)}}>
               </input>
