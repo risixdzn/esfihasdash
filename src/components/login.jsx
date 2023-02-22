@@ -76,7 +76,7 @@ function Login() {
                 </input>
 
                 <p className="label"><FontAwesomeIcon icon={faLock}/> Senha</p>
-                <input type="password" id="password"placeholder="•••••••••"
+                <input type="password" id="password"placeholder="••••••••"
                   onChange={(event) =>{
                   setLoginPassword(event.target.value)}}>
                 </input>
