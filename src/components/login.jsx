@@ -1,7 +1,7 @@
 
 import '../App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAt , faLock, faUser} from '@fortawesome/free-solid-svg-icons'
+import { faAt , faLock, faUser, faEnvelope} from '@fortawesome/free-solid-svg-icons'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState, useContext, useEffect, createContext} from "react";
 import { signInWithEmailAndPassword, onAuthStateChanged, updateProfile, signOut, getAuth } from 'firebase/auth';
@@ -51,56 +51,55 @@ function Login() {
 
   return (
     <div className="App">
-      <div className="bodyWrap">
-        <div className="content">
-          <div className="heroSec">
-            <motion.img src='../assets/svg/esfihasdash-logo.svg' alt='logo'
-              animate={{opacity:1, scale:1}}
-              initial={{opacity:0, scale:1}}
-              transition={{duration:0.5}}
-            ></motion.img>            
-            <h1 className="heroText">O que acontece <b>aqui</b>,<br></br><b>fica</b> aqui.</h1>
-            <p className="heroDesc">Conecte-se ao sistema para continuar.</p>
-          </div> 
-          <div className="loginSec">
-            <div className="wrapper">
-              <img src='../assets/svg/esfihasdash-logo.svg' alt='logo'></img>  
-
-              <h1 className="title">Login</h1>   
-
-              <form onSubmit={handleLogin}>
-                <p className="label"><FontAwesomeIcon icon={faAt}/> Email</p>
-                <input type="email" id="email"placeholder="example@example.com" 
-                  onChange={(event) =>{
-                  setLoginEmail(event.target.value)}}>                  
-                </input>
-
-                <p className="label"><FontAwesomeIcon icon={faLock}/> Senha</p>
-                <input type="password" id="password"placeholder="••••••••"
-                  onChange={(event) =>{
-                  setLoginPassword(event.target.value)}}>
-                </input>
-                
-                <button className="entrarBtn" type='submit'>Entrar</button>
-              </form>
-              
-
-              <p className="accQuestion">Ainda não possui uma conta?</p>
-              <Link to="/register">
-                <a className="accAction" >Cadastrar-se</a>
-              </Link>
-
-              <h4 style={{color:"white"}}>{user?.displayName}</h4>
-              
-              <button onClick={logout}>Logout</button>       
-
-              <button onClick={notify}>Notificar</button>
-
-              <ToastContainer theme='dark' limit='2'/> 
-            </div>
-          </div>
-        </div>
+      <div className='eyecatch'>
+        <p>Desenvolvido por Ricardo Amorim.</p>
       </div>
+      <nav className='navbar'>            
+        <motion.div className='logo' initial={{ x: -25 , opacity: 0 }} whileInView={{ x: 0, opacity: 1}} viewport={{ once: true }} transition={{delay: 0.5}}>
+        <img src='../assets/svg/minimal-esfihasdash-logo.svg' alt='ashd'></img>
+        </motion.div>
+      <div className='links'>
+          <ul>
+            <motion.a className='link' href='#hero' initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>Home</motion.a>
+            <motion.a className='link' href='#funcoes' initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.4 }}>Funções</motion.a>
+            <motion.a className='link' href='#tech' initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.6 }}>Desenvolvimento</motion.a>
+          </ul>
+        </div>
+        <motion.div className='buttons' initial={{ x: 25 , opacity: 0 }} whileInView={{ x: 0, opacity: 1}} viewport={{ once: true }} transition={{delay: 0.5}}>
+            <Link to="/" className='loginbtn'>
+            Home</Link>             
+        </motion.div>
+      </nav>
+      <div className="bodyWrap">        
+        <motion.div className="leftcontent" initial={{ opacity: 0, x: -25 }} whileInView={{ opacity: 1, x:0 }} viewport={{ once: true }}>
+          <img src="../assets/svg/esfihasdash-logo.svg"/>
+          <h1>Faça seu login<br></br>na plataforma.</h1>
+        </motion.div>
+        <motion.div className="rightcontent" initial={{ opacity: 0, x: -25 }} whileInView={{ opacity: 1, x:0 }} viewport={{ once: true }}>
+          <form onSubmit={handleLogin}>
+            <div className='inputcontainer'>              
+              <input type="email" id="email" name="Name" placeholder='Email' autoFocus={false} 
+                onChange={(event) =>{
+                setLoginEmail(event.target.value)}}>       
+              </input>
+              <label className='control-label' htmlFor="email"><FontAwesomeIcon icon={faEnvelope}/></label>
+            </div>     
+
+            <div className='inputcontainer'>              
+              <input type="password" id="password" name="password" placeholder='Senha' autoFocus={false}
+                onChange={(event) =>{
+                setLoginPassword(event.target.value)}}>       
+              </input>
+              <label className='control-label' htmlFor="password"><FontAwesomeIcon icon={faLock}/></label>
+            </div>    
+
+            <button className="entrarBtn" type='submit'>Entrar</button>   
+
+            <p>Ainda não tem uma conta? <Link to='/register' className='linkbtn'>Registre-se</Link></p>
+          </form>
+        </motion.div>
+      </div>
+      <ToastContainer theme='dark' limit='2'/> 
     </div>
   );
 }
