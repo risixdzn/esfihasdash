@@ -79,7 +79,7 @@ function Registrar() {
                 <label className='control-label' htmlFor="password"><FontAwesomeIcon icon={faLock}/></label>
               </div>  
 
-            <button className="entrarBtn" type='submit' onClick={handleRegister}>Entrar</button>   
+            <button className="entrarBtn" type='submit' onClick={handleRegister}>Registrar</button>   
 
             <p>Ja tem uma conta? <Link to='/login' className='linkbtn'>Entrar</Link></p>
           </div>
