@@ -54,7 +54,7 @@ function Registrar() {
         </nav>
       <div className="bodyWrapRegister">      
           <motion.div className="rightcontentregister" initial={{ opacity: 0, x: -25 }} whileInView={{ opacity: 1, x:0 }} viewport={{ once: true }}>
-            <form>
+            <div className='form'>
               <div className='inputcontainer'>              
                 <input type="text" id="exibicaonome" required name="exibicaonome" placeholder='Nome de exibição' autoFocus={false} 
                   onChange={(event) =>{
@@ -81,8 +81,8 @@ function Registrar() {
 
             <button className="entrarBtn" type='submit' onClick={handleRegister}>Entrar</button>   
 
-            <p>Ainda não tem uma conta? <Link to='/register' className='linkbtn'>Registre-se</Link></p>
-          </form>
+            <p>Ja tem uma conta? <Link to='/login' className='linkbtn'>Entrar</Link></p>
+          </div>
         </motion.div>
         <motion.div className="leftcontentregister" initial={{ opacity: 0, x: -25 }} whileInView={{ opacity: 1, x:0 }} viewport={{ once: true }}>
           <img src="../assets/svg/esfihasdash-logo.svg"/>

@@ -28,7 +28,7 @@ export const AuthContextProvider = ({ children }) => {
       
       console.log(user); 
       navigate('/home');
-      console.log('registrado')  ;    
+      toast.warn("1")  ;    
     } catch (error){
       switch(error.code){
         case 'auth/invalid-email': toast.warn("Email invalido.", {toastId: "wrong-email"})

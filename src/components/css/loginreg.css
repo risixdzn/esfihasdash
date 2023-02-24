@@ -80,7 +80,7 @@ body{
   position: relative;
 }
 
-form{
+form,.form{
   background-color: #181818;
   display: flex;
   align-items: center;
@@ -92,7 +92,7 @@ form{
 }
 
 
-form label{
+form label,.form label{
   left: 20px;
   top: 18px;
   position: absolute;
@@ -100,7 +100,7 @@ form label{
   transition: .1s ease-in-out;
 }
 
-form input{
+form input,.form input{
   width: 325px;  
   padding: 15px 55px;
   border-radius: 5px;
@@ -111,11 +111,11 @@ form input{
   color: #fff;
 } 
 
-form input::placeholder{
+form input::placeholder,.form input::placeholder{
   color: var(--input-text);
 }
 
-form input:focus{
+form input:focus, .form input:focus{
   border: 2px solid var(--primary);
 }
 
@@ -146,7 +146,7 @@ input:focus + .control-label
   filter: brightness(.8);
 }
 
-form p{
+form p,.form p{
   color: var(--input-text);
 }
 
@@ -266,16 +266,18 @@ form p{
 @media only screen and (max-width: 767px) {
   .bodyWrap{
     height: 120vh;
-    gap: 0px;        
+    gap: 0px; 
+           
   }
 
   .bodyWrapRegister{
     flex-direction: column-reverse;
     margin-top: 105px;
+    align-items: space-around;
   }
 
-  .leftcontent{
-    margin-bottom: -250px;
+  .rightcontent{
+    margin-top: -550px;
   }
 
   .leftcontent img{
@@ -286,9 +288,6 @@ form p{
     font-size: 40px;
   }
 
-  .leftcontentregister{
-    margin-bottom: -150px;
-  }
 
   .leftcontentregister img{
     width: 150px;
@@ -296,10 +295,10 @@ form p{
 
   .leftcontentregister h1{
     font-size: 40px;
-  }
+  }  
 
   .rightcontentregister{
-    margin-top: 100px;
+    margin-top: -50px;
   }
 
   body{
@@ -307,13 +306,13 @@ form p{
     overflow-y: scroll;    
   }
 
-  form input{
+  form input,.form input{
     width: 250px;
     padding: 10px 40px;
     font-size: 14px;
   }
 
-  form label{
+  form label, .form label{
     left: 17px;
     top: 12px;
     font-size: 14px;
@@ -325,11 +324,11 @@ form p{
     font-size: 16px;
   }
 
-  form p{
+  form p, .form p{
     font-size: 12px;
   }
 
-  form{
+  form, .form{
     padding: 75px 25px;
   }
 
