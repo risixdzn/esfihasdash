@@ -88,7 +88,7 @@ const Sidebar = ({children}) => {
         </div>                    
       </div>       
       
-      <main className='dashcontent' style={padding}>{children}</main>     
+      <main className='dashcontent'>{children}</main>     
        
     </div>           
   )
