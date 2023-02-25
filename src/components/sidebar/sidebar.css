@@ -5,16 +5,17 @@ body{
     background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+    overflow: scroll;
 }
 
 .container{
-    width: 100vw;
+    width: 99vw;
     height: 100vh;
     display: flex;
 }
 
 .sidebar{
-    width: 600px;
+    width: 450px;
     height: 100vh;
     background-color: var(--dark);
     color: #fff;
@@ -22,6 +23,7 @@ body{
     flex-direction: column;    
     padding: 20px;
     justify-content: space-between;
+    position: fixed;
 }
 
 .user_card{
@@ -140,6 +142,11 @@ body{
     margin-bottom: 50px;
 }
 
+.dashcontent{
+    padding: 15px;
+    margin-left: 450px;
+}
+
 
 @media only screen and (max-width: 1000px) {
     .sidebar{
@@ -199,4 +206,10 @@ body{
         flex-direction: column;
         gap: 15px;
     }
+
+    .dashcontent{
+        padding: 15px;
+        margin-left: 65px;
+    }
+    
 }
