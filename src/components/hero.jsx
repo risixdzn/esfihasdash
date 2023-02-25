@@ -45,8 +45,7 @@ const Hero = () => {
             <div className='content'>
                 <motion.img className='logo' src='../assets/svg/esfihasdash-logo.svg' initial={{ y: 25 , opacity: 0 }} whileInView={{ y: 0, opacity: 1}} viewport={{ once: true }} transition={{delay: 0.3}}></motion.img>
                 <motion.p className='phrase' initial={{ y: 25 , opacity: 0 }} whileInView={{ y: 0, opacity: 1}} viewport={{ once: true }} transition={{delay: 0.55}}>Seus pedidos, um só lugar.</motion.p>
-                <motion.button className='entrar' initial={{  opacity: 0 }} whileInView={{  opacity: 1}} viewport={{ once: true }} transition={{delay: 0.7}}><Link to='/login'>Entrar <FontAwesomeIcon icon={faRightToBracket}/></Link></motion.button>
-                <div className='shadow'></div>
+                <motion.button className='entrar' initial={{  opacity: 0 }} whileInView={{  opacity: 1}} viewport={{ once: true }} transition={{delay: 0.7}}><Link to='/login'>Entrar <FontAwesomeIcon icon={faRightToBracket}/></Link></motion.button>                
             </div>
           </section>
           <section className='funcoes' id='funcoes'>
