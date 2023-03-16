@@ -27,7 +27,7 @@ const Hero = () => {
           </div>
           <nav className='navbar'>            
             <motion.div className='logo' initial={{ x: -25 , opacity: 0 }} whileInView={{ x: 0, opacity: 1}} viewport={{ once: true }} transition={{delay: 0.5}}>
-                <img src='../assets/svg/minimal-esfihasdash-logo.svg' alt='ashd'></img>
+                <a href='/'><img src='../assets/svg/minimal-esfihasdash-logo.svg' alt='ashd'></img></a>
             </motion.div>
             <div className='links'>
                 <ul>
@@ -58,7 +58,7 @@ const Hero = () => {
                 <div className='main_wrap'>
                   <motion.div className='iphone_wrap' initial={{ x: -100 }} whileInView={{ x: 0 }} viewport={{ once: true }}>
                       <div className='box'>
-                        <img src='../assets/img/iphone.png'></img>
+                        <img src='../assets/img/iphone.png' alt=''></img>
                       </div>
                   </motion.div>
                   <div className='func_wrap'>
@@ -101,7 +101,7 @@ const Hero = () => {
                 <motion.h1 className='title' initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}><mark>Tecnologias</mark></motion.h1>
                 <motion.div className='techs' initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
                   <div className='thumb'>
-                    <img src='../assets/img/react.png'></img>
+                    <img src='../assets/img/react.png' alt=''></img>
                   </div>
                   <div className='desc'>
                     <h3>React</h3>
@@ -110,20 +110,20 @@ const Hero = () => {
                 </motion.div>
                 <motion.div className='techs' initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
                   <div className='thumb'>
-                    <img className='firebase' src='../assets/img/firebase.png'></img>
+                    <img className='firebase' src='../assets/img/firebase.png' alt=''></img>
                   </div>
                   <div className='desc'>
                     <h3>Firebase</h3>
-                    <p>Sistema de banco de dados "NoSql<br></br>utilizado nas rotas de login.</p>
+                    <p>Sistema de banco de dados "NoSql"<br></br>utilizado em todo o sistema.</p>
                   </div>
                 </motion.div>
                 <motion.div className='techs' initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
                   <div className='thumb'>
-                    <img src='../assets/img/mysql.png'></img>
+                  <svg width="45" height="65" viewBox="0 0 76 65" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M37.5274 0L75.0548 65H0L37.5274 0Z" fill="#ffffff"/></svg>
                   </div>
                   <div className='desc'>
-                    <h3>MySql</h3>
-                    <p>Banco de dados que gerencia<br></br>todas as informações do sistema.</p>
+                    <h3>Vercel</h3>
+                    <p>Plataforma gratuita open source<br></br>onde o webapp é hospedado.</p>
                   </div>
                 </motion.div>
               </div>
