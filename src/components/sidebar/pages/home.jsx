@@ -1,11 +1,12 @@
 import React from 'react'
 import Welcome from './components/Welcome/welcome'
 
-const Home = () => {
+function Home () {    
+
   return (
     <div>
         <Welcome/>
-        <h1 style={{fontSize: 50, fontWeight: 600, color: "white"}}>Home</h1>
+        <h1 style={{fontSize: 50, fontWeight: 600, color: "white"}}>Home</h1>                     
     </div>
   )
 }
