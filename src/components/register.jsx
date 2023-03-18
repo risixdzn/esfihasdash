@@ -18,7 +18,7 @@ function Registrar() {
   const[registerEmail, setRegisterEmail] = useState("")
   const[registerPassword, setRegisterPassword] = useState("")
   const[displayName, setRegisterDisplayName] = useState("")
-  const[buttonLoad, setButtonLoad] = useState(false);
+  const[isLoading, setIsLoading] = useState(false);
   
   const { register } = UserAuth(); 
   const { criarDb } = UserAuth();  
@@ -26,13 +26,13 @@ function Registrar() {
   const navigate = useNavigate(); 
 
   const handleRegister = async (e) => {    
-    setButtonLoad(true);
+    setIsLoading(true);
     try {      
       await register(registerEmail, registerPassword, displayName);     
       const user = UserAuth().currentUser;              
     } catch (error) {
       console.log(error.message);
-      setButtonLoad(false);
+      setIsLoading(false);
     }        
   };
 
@@ -63,7 +63,7 @@ function Registrar() {
           <motion.div className="rightcontentregister" initial={{ opacity: 0, x: -25 }} whileInView={{ opacity: 1, x:0 }} viewport={{ once: true }}>
             <div className='form'>
               <div className='inputcontainer'>              
-                <input type="text" id="exibicaonome" required name="exibicaonome" placeholder='Nome de exibição' autoFocus={false} 
+                <input disabled={isLoading? true : false} type="text" id="exibicaonome" required name="exibicaonome" placeholder='Nome de exibição' autoFocus={false} 
                   onChange={(event) =>{
                   setRegisterDisplayName(event.target.value)}}>       
                 </input>
@@ -71,7 +71,7 @@ function Registrar() {
               </div>     
 
               <div className='inputcontainer'>              
-                <input type="email" id="email" name="email" required placeholder='Email' autoFocus={false}
+                <input disabled={isLoading? true : false} type="email" id="email" name="email" required placeholder='Email' autoFocus={false}
                   onChange={(event) =>{
                   setRegisterEmail(event.target.value)}}>       
                 </input>
@@ -79,14 +79,14 @@ function Registrar() {
               </div>   
 
               <div className='inputcontainer'>              
-                <input type="password" id="password" name="password" placeholder='Senha' required autoFocus={false} 
+                <input disabled={isLoading? true : false} type="password" id="password" name="password" placeholder='Senha' required autoFocus={false} 
                   onChange={(event) =>{
                   setRegisterPassword(event.target.value)}}>       
                 </input>
                 <label className='control-label' htmlFor="password"><FontAwesomeIcon icon={faLock}/></label>
               </div>  
 
-            <button className="entrarBtn" type='submit' onClick={handleRegister}>{buttonLoad ? <img src='../assets/gif/rippleloader.svg' style={{height:"75%"}}></img> : "Registre-se"}</button>   
+            <button className="entrarBtn" type='submit' onClick={handleRegister}>{isLoading ? <img src='../assets/gif/rippleloader.svg' style={{height:"75%"}}></img> : "Registre-se"}</button>   
 
             <p>Ja tem uma conta? <Link to='/login' className='linkbtn'>Entrar</Link></p>
           </div>

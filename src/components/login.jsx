@@ -23,6 +23,7 @@ function Login() {
   const { login } = UserAuth();  
 
   const[user, setUser] = useState({});
+  const[isLoading, setIsLoading] = useState(false);
 
   //check if user is connected
   const auth = getAuth();  
@@ -33,10 +34,15 @@ function Login() {
 
   const handleLogin = async (e) => {    
     e.preventDefault();    
+    setIsLoading(true);
     try {
       await login(loginEmail, loginPassword)             
-    } catch (error) {      
-    }    
+    } catch (error) {   
+      console.log(error);
+      setIsLoading(false);
+    } finally{
+      setIsLoading(false);
+    }
   };  
    
   const logout = async () =>{
@@ -78,7 +84,7 @@ function Login() {
         <motion.div className="rightcontent" initial={{ opacity: 0, x: -25 }} whileInView={{ opacity: 1, x:0 }} viewport={{ once: true }}>
           <form onSubmit={handleLogin}>
             <div className='inputcontainer'>              
-              <input type="email" id="email" name="Name" placeholder='Email' autoFocus={false} 
+              <input disabled={isLoading? true : false} type="email" id="email" name="Name" placeholder='Email' autoFocus={false} 
                 onChange={(event) =>{
                 setLoginEmail(event.target.value)}}>       
               </input>
@@ -86,14 +92,14 @@ function Login() {
             </div>     
 
             <div className='inputcontainer'>              
-              <input type="password" id="password" name="password" placeholder='Senha' autoFocus={false}
+              <input disabled={isLoading? true : false} type="password" id="password" name="password" placeholder='Senha' autoFocus={false}
                 onChange={(event) =>{
                 setLoginPassword(event.target.value)}}>       
               </input>
               <label className='control-label' htmlFor="password"><FontAwesomeIcon icon={faLock}/></label>
             </div>    
 
-            <button className="entrarBtn" type='submit'>Entrar</button>   
+            <button className="entrarBtn" type='submit'>{isLoading ? <img src='../assets/gif/rippleloader.svg' style={{height:"75%"}}></img> : "Entrar"}</button>   
 
             <p>Ainda não tem uma conta? <Link to='/register' className='linkbtn'>Registre-se</Link></p>
           </form>

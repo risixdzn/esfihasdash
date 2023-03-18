@@ -1,7 +1,7 @@
 import React from 'react'
 import { doc, setDoc, deleteDoc } from "firebase/firestore";
-import { db } from '../../firebase-config';
-import { UserAuth } from '../../context/AuthContext';
+import { db } from '../firebase-config';
+import { UserAuth } from '../context/AuthContext';
 import { createContext, useContext } from 'react';
 
 const UserDbContext = createContext();
