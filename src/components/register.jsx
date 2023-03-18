@@ -18,18 +18,25 @@ function Registrar() {
   const[registerEmail, setRegisterEmail] = useState("")
   const[registerPassword, setRegisterPassword] = useState("")
   const[displayName, setRegisterDisplayName] = useState("")
-
+  const[buttonLoad, setButtonLoad] = useState(false);
+  
   const { register } = UserAuth(); 
+  const { criarDb } = UserAuth();  
 
-  const navigate = useNavigate();
- 
+  const navigate = useNavigate(); 
+
   const handleRegister = async (e) => {    
-    try {
-      await register(registerEmail, registerPassword, displayName)            
+    setButtonLoad(true);
+    try {      
+      await register(registerEmail, registerPassword, displayName);     
+      const user = UserAuth().currentUser;              
     } catch (error) {
       console.log(error.message);
+      setButtonLoad(false);
     }        
   };
+
+  
   
   return (
     <div className="App">
@@ -79,7 +86,7 @@ function Registrar() {
                 <label className='control-label' htmlFor="password"><FontAwesomeIcon icon={faLock}/></label>
               </div>  
 
-            <button className="entrarBtn" type='submit' onClick={handleRegister}>Registrar</button>   
+            <button className="entrarBtn" type='submit' onClick={handleRegister}>{buttonLoad ? <img src='../assets/gif/rippleloader.svg' style={{height:"75%"}}></img> : "Registre-se"}</button>   
 
             <p>Ja tem uma conta? <Link to='/login' className='linkbtn'>Entrar</Link></p>
           </div>

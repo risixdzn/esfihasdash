@@ -28,7 +28,7 @@ export const Welcome = () => {
       <div className="divisoria_vertical"></div>
       <div className="divisoria_horizontal"></div>
       <div className="right_content">
-        <Clock/>
+        <Clock isLoading={true}/>
         <DataHoje/>
       </div>
     </div>
