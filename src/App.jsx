@@ -8,7 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import NotFound from './components/404';
 
 import Sidebar from './components/sidebar/sidebar';
-import Home from './components/sidebar/pages/home';
+import Home from './components/sidebar/pages/home/home';
 import Pessoas from './components/sidebar/pages/pessoas';
 import Pedidos from './components/sidebar/pages/pedidos';
 import Produtos from './components/sidebar/pages/produtos';
