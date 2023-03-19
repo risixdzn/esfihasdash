@@ -43,8 +43,8 @@ export const AuthContextProvider = ({ children }) => {
     //alert("produtoscriado"); 
     const criaPedidos = await setDoc(doc(db, "users", user.uid, "pedidos", "placeholder"),{
         info: null,
-    });
-    //alert("pedidoscriado");         
+    });    
+    //alert("pedidoscriado");      
   }            
 
   const register = async (registerEmail, registerPassword, displayName) =>{

@@ -1,0 +1,67 @@
+.user_card{
+    width: 100%;
+    height: 200px;
+    background-color: var(--highlight);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;    
+    padding: 30px;
+    gap: 30px;
+    text-overflow: ellipsis;
+    overflow: hidden; 
+}
+
+.user_info{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis !important;
+}
+
+.user_name{
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.divisoria_vertical{
+    width: 5px;
+    height: 100%;
+    background-color: var(--primary);
+    border-radius: 5px;
+}
+
+.divisoria_horiz{
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary);
+    border-radius: 5px;
+}
+
+.user_card h2{
+    color: var(--gray);
+}
+
+
+@media only screen and (max-width: 1000px){
+    .user_card{
+        padding: 0;
+        width: 50px;        
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #00000000;
+    }
+    .user_card img{
+        width: 45px;
+    }
+    
+    .divisoria_vertical,
+    .user_info{
+        display: none;
+    }
+}

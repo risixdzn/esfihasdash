@@ -11,10 +11,17 @@ import { motion } from 'framer-motion';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
-
 import { UserAuth } from '../context/AuthContext';
 
 import { ErrPTBR } from '../context/FirebaseErrorContext';
+
+/**
+ * 
+ * TODO:
+ * - Add placeholder remover function
+ * - Fetch data from db and show on user stats on sidebar
+ * - Fix css bugs on sidebar and add a close feature
+*/
 
 function Login() { 
 
@@ -53,7 +60,7 @@ function Login() {
     toast("teste notificação",{
       theme:"dark",
     });
-  }
+  }  
 
   return (
     <div className="App">
