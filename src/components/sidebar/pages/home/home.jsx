@@ -1,5 +1,5 @@
 import React from 'react'
-import Welcome from './components/Welcome/welcome'
+import Welcome from '../components/Welcome/welcome'
 
 function Home () {    
   return (
