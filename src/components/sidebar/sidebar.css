@@ -3,15 +3,15 @@ body{
     display:  flex;    
     background-image: url(../../../public/assets/img/bgdash.png);
     background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
     overflow: scroll;
 }
 
 .container{
-    width: 99vw;
+    width: 100vw;
     height: 100vh;
-    display: flex;
+    display: flex;    
 }
 
 .sidebar{
@@ -265,7 +265,7 @@ body{
         position: relative;
         padding: 15px 15px;
         margin-left: 70px;
-        width: calc(100% - 70px);
+        width: calc(100%);
     }
 
     .closed ~ .dashcontent{
