@@ -5,20 +5,12 @@ import { collection, getCountFromServer, get, count } from 'firebase/firestore';
 import { db } from '../../../firebase-config';
 import { useEffect, useState } from 'react';
 
+import PedidosCount from '../../../db/FetchPedidos';
+import PessoasCount from '../../../db/FetchPessoas';
+import ProdutosCount from '../../../db/FetchProdutos';
+
 function UserCard() {    
     const {user} = UserAuth();   
-
-    let [ pedidos,  setPedidos ] = useState(0);
-
-    setTimeout(() => {
-        async function fetchPedidos(){
-            const pedidosRef = collection(db, "users", user.uid, "pedidos");        
-            const snapshot = await getCountFromServer(pedidosRef);             
-            setPedidos((snapshot.data().count)-1);   
-        }      
-        fetchPedidos();  ;
-    }, 1);
-    
     
     return (
         <div className='user_card'>
@@ -29,9 +21,9 @@ function UserCard() {
             <div className='user_info'>              
                 <h1 className='user_name'>{user && user.displayName}</h1>
                 <div className='divisoria_horiz'></div>
-                <h2 className='user_pedidos'>{pedidos} pedido(s)</h2>
-                <h2 className='user_pessoas'>? pessoas</h2>
-                <h2 className='user_produtos'>? produtos</h2>                
+                <h2 className='user_pedidos'><PedidosCount user={user}/> pedido(s)</h2>                
+                <h2 className='user_pessoas'><PessoasCount user={user}/> pessoas(s)</h2>
+                <h2 className='user_produtos'><ProdutosCount user={user}/> produtos(s)</h2>                
             </div>            
         </div> 
     )

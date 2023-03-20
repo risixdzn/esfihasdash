@@ -153,17 +153,21 @@ body{
 
 .closed > .top_section{
     display: none ;
+    opacity: 0;
 }
 .closed > .top_section .usercard{
     display: none ;
+    opacity: 0;
 }
 
 .closed > .middle_section a{
     display: none;
+    opacity: 0;
 }
 
 .closed > .bottom_section button{
     display: none;
+    opacity: 0;
 }
 
 
@@ -190,6 +194,7 @@ body{
     width: calc(100% - 450px);
     transition: .2s ease-in-out;
     user-select: none;
+    overflow-y: scroll !important;
 }
 
 .closed ~ .dashcontent{

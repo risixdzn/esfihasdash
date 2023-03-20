@@ -8,21 +8,23 @@ import { db } from '../../../../../firebase-config';
 import Clock from './clock';
 import { DataHoje } from './date';
 
-export const Welcome = () => {
-  const { user, logout } = UserAuth();  
+import PedidosCount from '../../../../../db/FetchPedidos';
+import PessoasCount from '../../../../../db/FetchPessoas';
+import ProdutosCount from '../../../../../db/FetchProdutos';
 
-  const { time, setTime } = useState('');
-  
-  let [ pedidos,  setPedidos ] = useState(0);
+export const Welcome = (props) => {
+  const { user } = UserAuth();  
 
-    setTimeout(() => {
-        async function fetchPedidos(){
-            const pedidosRef = collection(db, "users", user.uid, "pedidos");        
-            const snapshot = await getCountFromServer(pedidosRef);             
-            setPedidos((snapshot.data().count)-1);   
-        }      
-        fetchPedidos();  ;
-    }, 1);
+  const type = props.type;
+  let countComponent;  
+
+  if (type === "pedidos") {
+    countComponent = <PedidosCount user={user} />;
+  } else if (type === "pessoas") {
+    countComponent = <PessoasCount user={user} />;
+  } else if (type === "produtos") {
+    countComponent = <ProdutosCount user={user} />;
+  }
 
   return (
     <div className='maincontainer'>
@@ -30,8 +32,8 @@ export const Welcome = () => {
         <span className='welcomespan'>
           <h1 className='welcome_message'>Bem vindo, {user.displayName}.</h1>
         </span>        
-        <h2 className="pedidos_current">Você fez {pedidos} pedido(s).</h2>
-        <button className='novo_pedido'>Novo pedido</button>
+        <h2 className="pedidos_current">Você {props.action} {countComponent} {props.data}</h2>
+        <button className='novo_pedido'>{props.create}</button>
         
       </div>
       <div className="divisoria_vertical"></div>
