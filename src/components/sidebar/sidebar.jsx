@@ -63,6 +63,7 @@ const Sidebar = ({children}) => {
     <div className="container">   
       <FontAwesomeIcon className='togglebtn' icon={faBars} onClick={toggle} style={isOpen ? {color:"#fff", zIndex:100} : {display:"none"}}/>
       <FontAwesomeIcon className='togglebtn' icon={faArrowRight} onClick={toggle} style={isOpen ? {display:"none"}:{color:"#fff", zIndex:100}  }/>
+      <div className='tooltip' style={isOpen ? {display:"none"} : {display:"block"} }>Navegar</div>
       <div className={isOpen ? "sidebar" : "sidebar closed"}>        
         <div className="top_section">
           <UserCard className='usercard'/>      
