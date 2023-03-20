@@ -24,7 +24,7 @@ body{
     padding: 20px;
     justify-content: space-between;
     position: fixed;
-    transition: .2s ease-in-out;
+    transition: .1s ease-in-out;
     user-select: none;
 }
 
@@ -148,7 +148,7 @@ body{
 .sidebar.closed{
     width: 0 !important;
     padding: 0;
-    transition: .2s ease-in-out;
+    transition: .1s ease-in-out;
 }
 
 .closed > .top_section{
@@ -170,8 +170,6 @@ body{
     opacity: 0;
 }
 
-
-
 .togglebtn{
     background-color: var(--primary);
     padding: 10px;
@@ -192,7 +190,7 @@ body{
     padding: 15px 50px;
     margin-left: 450px;
     width: calc(100% - 450px);
-    transition: .2s ease-in-out;
+    transition: .1s ease-in-out;
     user-select: none;
     overflow-y: scroll !important;
 }
@@ -200,6 +198,31 @@ body{
 .closed ~ .dashcontent{
     margin-left: 0;
     width: 100%;
+}
+
+.tooltip{
+    position: fixed;
+    color: #fff;
+    user-select: none;
+    background-color: var(--primary);    
+    padding: 5px 20px;
+    font-weight: 600;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-left: 80px;
+    z-index: 2;
+}
+
+.tooltip::before{
+    content: '';
+    position: absolute;
+    display: inline-block;
+    width: 15px;
+    height: 15px;    
+    background-color: var(--primary);
+    transform: rotate(45deg);
+    margin-top: 5px;
+    margin-left: -27px;
 }
 
 @media only screen and (max-width: 1000px) {
