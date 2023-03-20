@@ -4,7 +4,7 @@ import Welcome from '../components/Welcome/welcome'
 function Home () {    
   return (
     <div>
-        <Welcome/>
+        <Welcome action="fez" data="pedido(s)." create='Novo pedido' type='pedidos'/>
         <h1 style={{fontSize: 50, fontWeight: 600, color: "white"}}>Home</h1>        
     </div>
   )
