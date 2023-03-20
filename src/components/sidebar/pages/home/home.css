@@ -1,0 +1,14 @@
+.bigdiv{
+    width: 100%;
+    height: 100vh;
+    background-color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bigdiv h1{
+    font-size: 25px;
+    font-weight: 400;
+    color: #747474;
+}
