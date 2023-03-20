@@ -24,6 +24,8 @@ body{
     padding: 20px;
     justify-content: space-between;
     position: fixed;
+    transition: .2s ease-in-out;
+    user-select: none;
 }
 
 /* .user_card{
@@ -103,8 +105,7 @@ body{
     transition: .2s ease-in-out;
     color: var(--primary); 
     font-weight: 600;
-    transition: .1s ease-in-out;
-      
+    transition: .1s ease-in-out;      
 }
 
 
@@ -143,11 +144,58 @@ body{
     margin-bottom: 50px;
 }
 
-.dashcontent{
-    padding: 15px 50px;
-    margin-left: 450px;
+
+.sidebar.closed{
+    width: 0 !important;
+    padding: 0;
+    transition: .2s ease-in-out;
 }
 
+.closed > .top_section{
+    display: none ;
+}
+.closed > .top_section .usercard{
+    display: none ;
+}
+
+.closed > .middle_section a{
+    display: none;
+}
+
+.closed > .bottom_section button{
+    display: none;
+}
+
+
+
+.togglebtn{
+    background-color: var(--primary);
+    padding: 10px;
+    border-radius: 50%;
+    margin-top: 15px;    
+    margin-left: 18px;
+    position: fixed;   
+    transition: .2s ease-in-out; 
+}
+
+.togglebtn:hover{
+    box-shadow: 0 0 0.5em var(--primary);
+}
+
+
+.dashcontent{
+    position: relative;
+    padding: 15px 50px;
+    margin-left: 450px;
+    width: calc(100% - 450px);
+    transition: .2s ease-in-out;
+    user-select: none;
+}
+
+.closed ~ .dashcontent{
+    margin-left: 0;
+    width: 100%;
+}
 
 @media only screen and (max-width: 1000px) {
     .sidebar{
@@ -209,8 +257,14 @@ body{
     }
 
     .dashcontent{
-        padding: 15px;
-        margin-left: 65px;
+        position: relative;
+        padding: 15px 15px;
+        margin-left: 70px;
+        width: calc(100% - 70px);
+    }
+
+    .closed ~ .dashcontent{
+        padding-top: 65px;
     }
     
 }

@@ -1,13 +1,16 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome, faUserGroup, faShoppingBag, faList, faRightFromBracket } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faUserGroup, faShoppingBag, faList, faRightFromBracket, faBars, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom'
 import './sidebar.css'
 import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
 
 import { UserAuth } from '../../context/AuthContext'
 
 import UserCard from './components/userCard'
+import { useEffect } from 'react'
 
 const Sidebar = ({children}) => {
   const menuItem = [
@@ -49,12 +52,20 @@ const Sidebar = ({children}) => {
   const padding = {
     padding: "15px",    
   }
+ 
+  const [isOpen, setIsOpen] = useState(true);
+
+  function toggle() {
+    setIsOpen(!isOpen);    
+  }
 
   return (
-    <div className="container">
-      <div className="sidebar">
+    <div className="container">   
+      <FontAwesomeIcon className='togglebtn' icon={faBars} onClick={toggle} style={isOpen ? {color:"#fff", zIndex:100} : {display:"none"}}/>
+      <FontAwesomeIcon className='togglebtn' icon={faArrowRight} onClick={toggle} style={isOpen ? {display:"none"}:{color:"#fff", zIndex:100}  }/>
+      <div className={isOpen ? "sidebar" : "sidebar closed"}>        
         <div className="top_section">
-          <UserCard/>      
+          <UserCard className='usercard'/>      
         </div>
         <div className='middle_section'>
           {
