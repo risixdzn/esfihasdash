@@ -7,10 +7,13 @@
     align-items: center;
     justify-content: center;
     flex-direction: row;    
+    flex-wrap: wrap;
     padding: 30px;
     gap: 30px;
     text-overflow: ellipsis;
     overflow: hidden; 
+    word-break: break-all;
+    user-select: none;
 }
 
 .user_info{
@@ -25,6 +28,7 @@
 .user_name{
     font-size: 23px;
     font-weight: 600;
+    word-break: break-all;
 }
 
 .divisoria_vertical{
