@@ -2,6 +2,7 @@ import React from 'react'
 import './welcome.css'
 import { UserAuth } from '../../../../../context/AuthContext';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import { collection, getCountFromServer } from 'firebase/firestore';
 import { db } from '../../../../../firebase-config';
@@ -17,11 +18,13 @@ export const Welcome = (props) => {
 
   const type = props.type;
   let countComponent;  
+  let linkComponent = "";
 
   if (type === "pedidos") {
-    countComponent = <PedidosCount user={user} />;
+    countComponent = <PedidosCount user={user} />;    
   } else if (type === "pessoas") {
     countComponent = <PessoasCount user={user} />;
+    linkComponent = "/pessoas/new";
   } else if (type === "produtos") {
     countComponent = <ProdutosCount user={user} />;
   }
@@ -32,8 +35,8 @@ export const Welcome = (props) => {
         <span className='welcomespan'>
           <h1 className='welcome_message'>Bem vindo, {user.displayName}.</h1>
         </span>        
-        <h2 className="pedidos_current">Você {props.action} {countComponent} {props.data}</h2>
-        <button className='novo_pedido'>{props.create}</button>
+        <h2 className="pedidos_current">Você {props.action} {countComponent} {props.data}</h2>        
+        <Link to={linkComponent} className='novo_pedido'>{props.create}</Link>
         
       </div>
       <div className="divisoria_vertical"></div>

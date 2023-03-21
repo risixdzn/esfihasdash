@@ -20,7 +20,7 @@ const Sidebar = ({children}) => {
       icon: <FontAwesomeIcon icon={faHome} />,
     },
     {
-      path: "/pessoas",
+      path: "/pessoas/list",
       name: "Pessoas",
       icon: <FontAwesomeIcon icon={faUserGroup} />,
     },

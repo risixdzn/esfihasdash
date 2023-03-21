@@ -9,12 +9,13 @@ import NotFound from './components/404';
 
 import Sidebar from './components/sidebar/sidebar';
 import Home from './components/sidebar/pages/home/home';
-import Pessoas from './components/sidebar/pages/pessoas';
+import PessoasList from './components/sidebar/pages/pessoas/pessoasList';
 import Pedidos from './components/sidebar/pages/pedidos';
 import Produtos from './components/sidebar/pages/produtos';
 
 import { AuthContextProvider } from './context/AuthContext';
 import { ErrorContextProvider } from './context/FirebaseErrorContext';
+import NovaPessoa from './components/sidebar/pages/pessoas/NovaPessoa';
 
 function App() {
   return (  
@@ -31,7 +32,10 @@ function App() {
               <Sidebar>
                 <Routes>
                   <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>}/>
-                  <Route path="/pessoas" element={<ProtectedRoute><Pessoas /></ProtectedRoute>}/>
+                  <Route path="/pessoas">
+                    <Route path="new" element={<ProtectedRoute><NovaPessoa/></ProtectedRoute>}/>
+                    <Route path="list" element={<ProtectedRoute><PessoasList/></ProtectedRoute>}/>
+                  </Route>
                   <Route path="/pedidos" element={<ProtectedRoute><Pedidos /></ProtectedRoute>}/>
                   <Route path="/produtos" element={<ProtectedRoute><Produtos /></ProtectedRoute>}/>                            
                 </Routes>
