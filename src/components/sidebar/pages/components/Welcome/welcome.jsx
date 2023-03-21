@@ -13,6 +13,10 @@ import PedidosCount from '../../../../../db/FetchPedidos';
 import PessoasCount from '../../../../../db/FetchPessoas';
 import ProdutosCount from '../../../../../db/FetchProdutos';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+
+
 export const Welcome = (props) => {
   const { user } = UserAuth();  
 
@@ -45,6 +49,7 @@ export const Welcome = (props) => {
         <Clock isLoading={true}/>
         <DataHoje/>
       </div>
+      <ToastContainer theme='dark' limit='2'/> 
     </div>
   )
 }

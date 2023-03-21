@@ -5,13 +5,14 @@ import { collection, getCountFromServer, get, count } from 'firebase/firestore';
 import { db } from '../../../firebase-config';
 import { useEffect, useState } from 'react';
 
-import PedidosCount from '../../../db/FetchPedidos';
+import PedidosCount from '../../../db/FetchPedidos'
 import PessoasCount from '../../../db/FetchPessoas';
 import ProdutosCount from '../../../db/FetchProdutos';
 
-function UserCard() {    
-    const {user} = UserAuth();   
+function UserCard() {
     
+    const {user} = UserAuth();          
+
     return (
         <div className='user_card'>
             <div>

@@ -12,6 +12,9 @@ import { UserAuth } from '../../context/AuthContext'
 import UserCard from './components/userCard'
 import { useEffect } from 'react'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+
 const Sidebar = ({children}) => {
   const menuItem = [
     {
@@ -66,7 +69,7 @@ const Sidebar = ({children}) => {
       <div className='tooltip' style={isOpen ? {display:"none"} : {display:"block"} }>Navegar</div>
       <div className={isOpen ? "sidebar" : "sidebar closed"}>        
         <div className="top_section">
-          <UserCard className='usercard'/>      
+          <UserCard className='usercard'/>                         
         </div>
         <div className='middle_section'>
           {
@@ -91,7 +94,7 @@ const Sidebar = ({children}) => {
       </div>       
       
       <main className='dashcontent'>{children}</main>     
-       
+      <ToastContainer theme='dark' limit='2'/> 
     </div>           
   )
 }
