@@ -127,11 +127,11 @@ body{
     }
 
     .welcome_message{
-        font-size: 24px;
+        font-size: 20px;
     }
 
     .pedidos_current{
-        font-size: 16px;
+        font-size: 15px;
     }
     
     .novo_pedido{
