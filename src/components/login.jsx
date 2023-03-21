@@ -1,5 +1,6 @@
 
 import '../App.css';
+import './css/loginreg.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAt , faLock, faUser, faEnvelope} from '@fortawesome/free-solid-svg-icons'
 import { Link, useNavigate } from 'react-router-dom'

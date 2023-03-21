@@ -10,7 +10,7 @@
     justify-content: center;
 }
 
-form .title{
+.novapessoa .title{
     font-size: 30px;
     font-weight: 600;
     color: #fff;
@@ -25,8 +25,7 @@ form .title{
     position: relative;
 }
 
-form,
-.form {
+.novapessoa {
     background-color: var(--dark);
     display: flex;
     align-items: center;
@@ -37,8 +36,7 @@ form,
     border-radius: 10px;
 }
 
-form label,
-.form label {
+.novapessoa label {
     left: 20px;
     top: 18px;
     position: absolute;
@@ -46,8 +44,7 @@ form label,
     transition: 0.1s ease-in-out;
 }
 
-form input,
-.form input {
+.novapessoa input{
     width: 325px;
     padding: 15px 55px;
     border-radius: 5px;
@@ -58,13 +55,11 @@ form input,
     color: #fff;
 }
 
-form input::placeholder,
-.form input::placeholder {
+.novapessoa  input::placeholder{
     color: var(--input-text);
 }
 
-form input:focus,
-.form input:focus {
+.novapessoa  input:focus{
     border: 2px solid var(--primary);
 }
 
@@ -72,8 +67,7 @@ input:focus + .control-label {
     color: var(--primary);
 }
 
-form input:disabled,
-.form input:disabled {
+.novapessoa  input:disabled{
     border: 2px solid #0f0f0f;
     background-color: #0f0f0f;
     color: var(--input-text);
@@ -102,8 +96,7 @@ form input:disabled,
     filter: brightness(0.8);
 }
 
-form p,
-.form p {
+.novapessoa  p{
     color: var(--lighter);
 }
 
@@ -118,15 +111,13 @@ form p,
 }
 
 @media only screen and (max-width: 767px) {
-    form input,
-    .form input {
+    .novapessoa  input{
         width: 100%;
         padding: 10px 40px;
         font-size: 14px;
     }
 
-    form label,
-    .form label {
+    .novapessoa  label {
         left: 17px;
         top: 12px;
         font-size: 14px;
@@ -139,17 +130,15 @@ form p,
         max-width: 260px;
     }
 
-    form p,
-    .form p {
+    .novapessoa  p{
         font-size: 12px;
     }
 
-    form,
-    .form {
+    .novapessoa {
         padding: 75px 25px;
     }
 
-    form .title{
+    .novapessoa  .title{
         font-size: 20px;
     }
 }
