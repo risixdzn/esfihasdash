@@ -1,0 +1,155 @@
+:root {
+    --input-text: #737373;
+}
+
+.wrapper{
+    width: 100%;
+    height: 97vh;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form .title{
+    font-size: 30px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.inputcontainer {
+    position: relative;
+}
+
+.inputcontainer {
+    position: relative;
+}
+
+form,
+.form {
+    background-color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 115px 75px;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 10px;
+}
+
+form label,
+.form label {
+    left: 20px;
+    top: 18px;
+    position: absolute;
+    color: var(--input-text);
+    transition: 0.1s ease-in-out;
+}
+
+form input,
+.form input {
+    width: 325px;
+    padding: 15px 55px;
+    border-radius: 5px;
+    background-color: var(--highlight);
+    color: var(--input-text);
+    border: 2px solid var(--dark);
+    transition: 0.1s ease-in-out;
+    color: #fff;
+}
+
+form input::placeholder,
+.form input::placeholder {
+    color: var(--input-text);
+}
+
+form input:focus,
+.form input:focus {
+    border: 2px solid var(--primary);
+}
+
+input:focus + .control-label {
+    color: var(--primary);
+}
+
+form input:disabled,
+.form input:disabled {
+    border: 2px solid #0f0f0f;
+    background-color: #0f0f0f;
+    color: var(--input-text);
+    cursor: not-allowed;
+}
+
+.entrarBtn {
+    width: 325px;
+    height: 60px;
+    border-radius: 5px;
+    background-color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    transition: 0.1s ease-in-out;
+}
+
+.entrarBtn:hover {
+    box-shadow: 0 0 0.5em var(--primary);
+}
+
+.entrarBtn:active {
+    filter: brightness(0.8);
+}
+
+form p,
+.form p {
+    color: var(--lighter);
+}
+
+.linkbtn {
+    color: var(--primary);
+    font-weight: 600;
+    transition: 0.1s ease-in-out;
+}
+
+.linkbtn:hover {
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 767px) {
+    form input,
+    .form input {
+        width: 100%;
+        padding: 10px 40px;
+        font-size: 14px;
+    }
+
+    form label,
+    .form label {
+        left: 17px;
+        top: 12px;
+        font-size: 14px;
+    }
+
+    .entrarBtn {
+        width: 100%;
+        height: 45px;
+        font-size: 16px;
+        max-width: 260px;
+    }
+
+    form p,
+    .form p {
+        font-size: 12px;
+    }
+
+    form,
+    .form {
+        padding: 75px 25px;
+    }
+
+    form .title{
+        font-size: 20px;
+    }
+}
