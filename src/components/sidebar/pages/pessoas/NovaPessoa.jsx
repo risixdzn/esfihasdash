@@ -9,7 +9,7 @@ function NovaPessoa() {
 
   return (
     <div className='wrapper'>      
-      <form>
+      <form className='novapessoa'>
         <h1 className='title'>Nova pessoa</h1>
         <div className='inputcontainer'>              
           <input disabled={isLoading? true : false} type="name" id="name" name="Name" placeholder='Nome *' autoFocus={false}></input>
