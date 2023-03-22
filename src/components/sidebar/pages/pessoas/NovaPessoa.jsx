@@ -42,7 +42,7 @@ function NovaPessoa() {
       <form className='novapessoa' onSubmit={criarPessoa}>
         <h1 className='title'>Nova pessoa</h1>
         <div className='inputcontainer'>              
-          <input required={true} disabled={isLoading? true : false} type="name" id="name" name="Name" placeholder='Nome *' autoFocus={false}
+          <input required={true} disabled={isLoading? true : false} type="text" id="name" name="Name" placeholder='Nome *' autoFocus={false}
             onChange={(event) =>{
             setPessoaName(event.target.value)}}>    
           </input>
@@ -50,7 +50,7 @@ function NovaPessoa() {
         </div>     
 
         <div className='inputcontainer'>              
-          <input required={false} disabled={isLoading? true : false} type="Foto" id="Foto" name="Foto" placeholder='URL da foto (opcional)' autoFocus={false}
+          <input required={false} disabled={isLoading? true : false} type="url" id="Foto" name="Foto" placeholder='URL da foto (opcional)' autoFocus={false}
             onChange={(event) =>{
             setPessoaPic(event.target.value)}}>    
           </input>
