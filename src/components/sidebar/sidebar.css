@@ -193,7 +193,7 @@ body{
     width: calc(100% - 450px);
     transition: .1s ease-in-out;
     user-select: none;
-    overflow-y: scroll !important;    
+    overflow-y: scroll ;    
 }
 
 .closed ~ .dashcontent{

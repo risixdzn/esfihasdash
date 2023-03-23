@@ -10,10 +10,12 @@ import { motion } from 'framer-motion'
 import { UserAuth } from '../../context/AuthContext'
 
 import UserCard from './components/userCard'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
+
+import { useModal } from './pages/pessoas/modals/ModalProvider'
 
 const Sidebar = ({children}) => {
   const menuItem = [
@@ -62,8 +64,16 @@ const Sidebar = ({children}) => {
     setIsOpen(!isOpen);    
   }
 
-  const [showModal, setShowModal] = useState(false); 
+  const { showModal, setShowModal } = useModal();
+  const dashContentRef = useRef(null);
 
+  useEffect(() => {
+    if (showModal) {
+      dashContentRef.current.scrollTop = 0;
+    }
+  }, [showModal]);
+
+  
   return (
     <div className="container">   
       <FontAwesomeIcon className='togglebtn' icon={faBars} onClick={toggle} style={isOpen ? {color:"#fff", zIndex:100} : {display:"none"}}/>
@@ -95,7 +105,9 @@ const Sidebar = ({children}) => {
         </div>                    
       </div>       
       
-      <main className='dashcontent' id='dashcontent' showModal={showModal} setShowModal={setShowModal}>{children}</main>     
+      <main className={showModal ? "dashcontent hiddenoverflow" : "dashcontent"} id='dashcontent' ref={dashContentRef}>
+        {children}
+      </main>     
       <ToastContainer theme='dark' limit='2'/> 
     </div>           
   )

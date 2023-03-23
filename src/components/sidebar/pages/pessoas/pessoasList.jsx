@@ -6,10 +6,12 @@ import 'react-toastify/dist/ReactToastify.css'
 import DisplayPessoas from '../../../../db/DisplayPessoas/DisplayPessoas';
 import ModalDeletePessoas from './modals/modalDeletePessoa';
 
-import { useState } from 'react';
+import { useState, createContext, useContext } from 'react';
+
+import { useModal } from './modals/ModalProvider';
 
 const PessoasList = () => {
-  const [showModal, setShowModal] = useState(false);
+  const { showModal, setShowModal } = useModal(false);
   const [deletingPessoa, setDeletingPessoa] = useState();
 
   return (

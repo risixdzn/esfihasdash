@@ -14,7 +14,7 @@ function DisplayPessoas({setShowModal, setDeletingPessoa, deletingPessoa}) {
 
     const handleDelete = (key) => {
         setDeletingPessoa(key);  
-        console.log(key);
+        console.log(key);        
         setShowModal(true);        
     };
 
