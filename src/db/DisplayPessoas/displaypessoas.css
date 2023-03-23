@@ -5,8 +5,7 @@
     min-height: 50vh;
     background-color: var(--dark);
     border-radius: 15px;
-    padding-inline: 40px;
-    padding-top: 25px;
+    padding: 25px 40px 25px 40px;
 }
 
 .pessoasgrid{
@@ -73,6 +72,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 8px;
 }
 
 .pessoa .info .name{
@@ -81,11 +81,20 @@
     font-weight: 600;
 }
 
+.pessoa .info .delbtn{
+    color: #eb2f2f;
+    font-size: 20px;
+    font-weight: 800;    
+    transition: .2s ease-in-out;
+}
+
+.pessoa .info .delbtn:hover{
+    box-shadow: 0 0 0.5em #eb2f2f;
+}
 
 @media only screen and (max-width: 1000px) {
     .pessoascontainer{
-        padding-inline: 15px;
-        padding-top: 15px;
+        padding: 15px;
     }
     .pessoascontainer .title{
         font-size: 30px;

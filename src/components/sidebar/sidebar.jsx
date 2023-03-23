@@ -62,6 +62,8 @@ const Sidebar = ({children}) => {
     setIsOpen(!isOpen);    
   }
 
+  const [showModal, setShowModal] = useState(false); 
+
   return (
     <div className="container">   
       <FontAwesomeIcon className='togglebtn' icon={faBars} onClick={toggle} style={isOpen ? {color:"#fff", zIndex:100} : {display:"none"}}/>
@@ -93,7 +95,7 @@ const Sidebar = ({children}) => {
         </div>                    
       </div>       
       
-      <main className='dashcontent'>{children}</main>     
+      <main className='dashcontent' id='dashcontent' showModal={showModal} setShowModal={setShowModal}>{children}</main>     
       <ToastContainer theme='dark' limit='2'/> 
     </div>           
   )
