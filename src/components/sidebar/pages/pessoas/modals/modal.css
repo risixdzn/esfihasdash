@@ -1,0 +1,106 @@
+.modalcpn{
+    position: absolute;
+    width: 100%;    
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.295);
+    position: absolute;
+    margin: -15px -50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    backdrop-filter: blur(3px);    
+}
+
+.modal{
+    width: 100%;
+    max-width: 500px;
+    border-radius: 20px;
+    height: auto;
+    background-color: var(--dark);
+    box-shadow: 0 0 57px -30px var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;    
+    padding: 60px 15px;
+}
+
+.modal .title{
+    font-size: 20px;
+    text-align: center;
+    font-weight: 500;
+    color: #fff;
+}
+
+.modal .title .pessoaname{
+    text-align: center;
+    font-size: 35px;
+    font-weight: 700;
+    color: var(--primary);    
+}
+
+.modal .divisoria{
+    width: 100px;
+    height: 5px;
+    border-radius: 5px;
+    background-color: var(--primary);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.modal .desc{
+    text-align: center;
+    max-width: 350px;
+    color: var(--gray);
+}
+.modal .question{
+    margin-top: 10px;
+    color: #fff;
+}
+
+.modal .actions{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 25px;
+}
+
+.modal .cancelbtn{
+    color: #a5a5a5
+}
+
+.modal .acceptbtn{
+    color: #fff;
+    padding: 7px 20px;
+    border-radius: 5px;
+    background: rgb(240,76,76);
+    background: linear-gradient(270deg, rgba(240,76,76,1) 0%, rgba(253,45,45,1) 100%);
+}
+
+
+.modal .cancelbtn:hover,
+.modal .acceptbtn:hover{
+    filter: brightness(0.8);
+    transition: .1s ease-in-out;
+}
+
+@media only screen and (max-width: 1000px) {
+    .modalcpn{
+        margin: -15px -15px;
+    }
+
+    .modal .title{
+        font-size: 16px;
+    }
+    .modal .title .pessoaname{
+        font-size: 28px;
+    }
+
+    .modal .desc{
+        font-size: 15px;
+        padding: 0 10px;
+    }
+}
