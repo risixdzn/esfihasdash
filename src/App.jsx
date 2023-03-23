@@ -15,6 +15,7 @@ import Produtos from './components/sidebar/pages/produtos';
 
 import { AuthContextProvider } from './context/AuthContext';
 import { ErrorContextProvider } from './context/FirebaseErrorContext';
+import { ModalProvider } from './components/sidebar/pages/pessoas/modals/ModalProvider';
 import NovaPessoa from './components/sidebar/pages/pessoas/NovaPessoa';
 
 function App() {
@@ -28,18 +29,20 @@ function App() {
             <Route path="/register" element={<Registrar/>}/>      
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard/></ProtectedRoute>}></Route>      
 
-            <Route path='*' element={<ProtectedRoute>              
-              <Sidebar>
-                <Routes>
-                  <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>}/>
-                  <Route path="/pessoas">
-                    <Route path="new" element={<ProtectedRoute><NovaPessoa/></ProtectedRoute>}/>
-                    <Route path="list" element={<ProtectedRoute><PessoasList/></ProtectedRoute>}/>
-                  </Route>
-                  <Route path="/pedidos" element={<ProtectedRoute><Pedidos /></ProtectedRoute>}/>
-                  <Route path="/produtos" element={<ProtectedRoute><Produtos /></ProtectedRoute>}/>                            
-                </Routes>
-              </Sidebar>               
+            <Route path='*' element={<ProtectedRoute>      
+              <ModalProvider>
+                <Sidebar>
+                  <Routes>
+                    <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>}/>
+                    <Route path="/pessoas">
+                      <Route path="new" element={<ProtectedRoute><NovaPessoa/></ProtectedRoute>}/>
+                      <Route path="list" element={<ProtectedRoute><PessoasList/></ProtectedRoute>}/>
+                    </Route>
+                    <Route path="/pedidos" element={<ProtectedRoute><Pedidos /></ProtectedRoute>}/>
+                    <Route path="/produtos" element={<ProtectedRoute><Produtos /></ProtectedRoute>}/>                            
+                  </Routes>
+                </Sidebar>  
+              </ModalProvider>                                
             </ProtectedRoute>                        
             }></Route>            
           </Routes>  

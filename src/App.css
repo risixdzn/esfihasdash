@@ -53,3 +53,7 @@ body{
 .dashcontent{
   width: 100vw;
 }
+
+.hiddenoverflow{
+  overflow-y: hidden !important;
+}
