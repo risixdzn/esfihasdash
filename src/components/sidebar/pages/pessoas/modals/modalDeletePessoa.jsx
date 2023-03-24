@@ -16,7 +16,7 @@ function ModalDeletePessoas({ show, setShowModal, deletingPessoa }) {
     const { user } = UserAuth();    
 
     async function deleteSelectedPessoa(){
-        alert(deletingPessoa);
+        //alert(deletingPessoa);
         await deleteDoc(doc(db, "users", user.uid, "pessoas", deletingPessoa));           
         handleCloseModal();            
         window.location.reload();
