@@ -3,7 +3,8 @@ import { db } from "../../firebase-config";
 import { UserAuth } from "../../context/AuthContext";
 import { getDocs, collection } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 import './displaypessoas.css'
 
@@ -44,7 +45,7 @@ function DisplayPessoas({setShowModal, setDeletingPessoa, deletingPessoa}) {
     if (loading){
         return (
             <div className="pessoascontainer" style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
-                <img src="../assets/gif/rippleloader.svg" alt="loading" />
+                <img className="loader" src="../assets/gif/rippleloader.svg" alt="loading" />
             </div>
         )
     }
@@ -52,7 +53,7 @@ function DisplayPessoas({setShowModal, setDeletingPessoa, deletingPessoa}) {
 
     return(        
         <div className="pessoascontainer">
-            <h1 className="title">Pessoas</h1>
+            <h1 className="title">Pessoas <Link className="adduser" to='/pessoas/new'><FontAwesomeIcon className="addusericon" icon={faUserPlus}/></Link></h1>
             <div className="pessoasgrid">
                 {showPessoas.length !== 0 ? showPessoas.map((pessoa)=>{
                     return (

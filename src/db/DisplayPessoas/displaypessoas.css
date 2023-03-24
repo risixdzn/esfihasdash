@@ -22,11 +22,25 @@
 .pessoascontainer .title{
     font-size: 45px;
     font-weight: 600;
-    color: #fff;    
+    color: #fff;  
+    margin-bottom: 25px;  
 }
 
 .pessoascontainer .loader{
     width: 100px;
+}
+
+.pessoascontainer .adduser{
+    font-size: 35px !important;
+    color: var(--primary);
+}
+
+.pessoascontainer .addusericon{
+    transition: .2s ease-in-out;
+}
+
+.pessoascontainer .addusericon:hover{
+    filter: drop-shadow(0px 0px 10px var(--primary));
 }
 
 .pessoa{
@@ -98,5 +112,10 @@
     }
     .pessoascontainer .title{
         font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    .pessoascontainer .adduser{
+        font-size: 25px !important;
     }
 }
