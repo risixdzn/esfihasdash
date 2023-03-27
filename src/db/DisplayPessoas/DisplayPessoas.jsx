@@ -3,24 +3,34 @@ import { db } from "../../firebase-config";
 import { UserAuth } from "../../context/AuthContext";
 import { getDocs, collection } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan, faUserPlus, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 import './displaypessoas.css'
 
-function DisplayPessoas({setShowModal, setDeletingPessoa, deletingPessoa}) {
+function DisplayPessoas({setShowModal, setSelectedPessoa,  setSelectedModal, setSelectedPFP}) {
     const [loading, setIsloading] = useState(true);
     const [showPessoas, setShowPessoas] = useState([]);
     const { user } = UserAuth();
 
     const handleDelete = (key) => {
-        setDeletingPessoa(key);  
+        setSelectedModal("delete");
+        setSelectedPessoa(key);  
         console.log(key);        
         setShowModal(true);        
     };
 
-    const hasLoaded = useRef(false); // cria uma referência a um booleano que será atualizado após o carregamento da página   
+    const handleEdit = (key, foto) => {
+        setSelectedModal("edit");
+        setSelectedPessoa(key);  
+        setSelectedPFP(foto);
+        console.log(key);
+        console.log(foto);        
+        setShowModal(true);        
+    };
 
+    const hasLoaded = useRef(false); // cria uma referência a um booleano que será atualizado após o carregamento da página   
+    
     useLayoutEffect(() => {
         if (hasLoaded.current === false) {
             hasLoaded.current = true;
@@ -41,49 +51,14 @@ function DisplayPessoas({setShowModal, setDeletingPessoa, deletingPessoa}) {
             //console.log(showPessoas);
         }
     }, [user.uid]);
-
-    const pedido = [
-        {
-            nome: "Ricardo",
-            itens: {
-                calabresa: 2,
-                carne: 3,
-                queijo: 1,
-            }
-        },
-        {
-            nome: "Joao",
-            itens: {
-                brigadeiro: 1,
-                carne: 2,
-                queijo: 3,
-                calabresa: 6,
-            }
-        }
-    ]
     
-    const somas = {};
-    
-    pedido.forEach((pessoa) => {
-      Object.entries(pessoa.itens).forEach(([sabor, quantidade]) => {
-        if (!somas[sabor]) {
-          somas[sabor] = quantidade;
-        } else {
-          somas[sabor] += quantidade;
-        }
-      });
-    });
-    
-    console.log(somas);
-
     if (loading){
         return (
             <div className="pessoascontainer" style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
                 <img className="loader" src="../assets/gif/rippleloader.svg" alt="loading" />
             </div>
         )
-    }
- 
+    } 
 
     return(        
         <div className="pessoascontainer">
@@ -91,15 +66,16 @@ function DisplayPessoas({setShowModal, setDeletingPessoa, deletingPessoa}) {
             <div className="pessoasgrid">
                 {showPessoas.length !== 0 ? showPessoas.map((pessoa)=>{
                     return (
-                        <div className="pessoa" key={pessoa.key} id={pessoa.key}>
+                        <div className="pessoa" key={pessoa.nome} id={pessoa.nome}>
                             <div className="picwrapper">
                                 <div className="pic">
                                     <img src={pessoa.foto !== "" ? pessoa.foto : "../assets/img/user.png" } alt="pic"></img>
                                 </div>
                             </div>
                             <div className="info">
-                                <h1 className="name" id={pessoa.key} key={pessoa.key}>{pessoa.key}</h1>
-                                <button><FontAwesomeIcon icon={faTrashCan} className="delbtn" key={pessoa.key} onClick={() => handleDelete(pessoa.key)}/></button>
+                                <h1 className="name" id={pessoa.nome} key={pessoa.nome}>{pessoa.nome}</h1>
+                                <button><FontAwesomeIcon icon={faTrashCan} className="delbtn" key={pessoa.nome} onClick={() => handleDelete(pessoa.nome)}/></button>
+                                <button><FontAwesomeIcon icon={faPenToSquare} className="editbtn" key={pessoa.nome}  onClick={() => handleEdit(pessoa.nome, pessoa.foto)}/></button>
                             </div>                            
                         </div>
                     ) 

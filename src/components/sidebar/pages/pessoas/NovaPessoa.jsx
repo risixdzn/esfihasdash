@@ -30,7 +30,8 @@ function NovaPessoa() {
     
     const criaPessoa = await setDoc(doc(db, "users", user.uid, "pessoas", pessoaName),{
       pedidos: 0,
-      foto: pessoaPic,      
+      foto: pessoaPic,   
+      nome: pessoaName,   
     });  
     navigate("/pessoas/list");                
     // await new Promise(resolve => setTimeout(resolve, 1000)); // aguarda 1 segundo para a página recarregar completamente       
