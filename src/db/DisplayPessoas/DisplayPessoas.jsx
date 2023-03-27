@@ -41,7 +41,41 @@ function DisplayPessoas({setShowModal, setDeletingPessoa, deletingPessoa}) {
             //console.log(showPessoas);
         }
     }, [user.uid]);
-   
+
+    const pedido = [
+        {
+            nome: "Ricardo",
+            itens: {
+                calabresa: 2,
+                carne: 3,
+                queijo: 1,
+            }
+        },
+        {
+            nome: "Joao",
+            itens: {
+                brigadeiro: 1,
+                carne: 2,
+                queijo: 3,
+                calabresa: 6,
+            }
+        }
+    ]
+    
+    const somas = {};
+    
+    pedido.forEach((pessoa) => {
+      Object.entries(pessoa.itens).forEach(([sabor, quantidade]) => {
+        if (!somas[sabor]) {
+          somas[sabor] = quantidade;
+        } else {
+          somas[sabor] += quantidade;
+        }
+      });
+    });
+    
+    console.log(somas);
+
     if (loading){
         return (
             <div className="pessoascontainer" style={{display:"flex",alignItems:"center",justifyContent:"center"}}>

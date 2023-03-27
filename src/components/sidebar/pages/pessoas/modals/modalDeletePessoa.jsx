@@ -35,7 +35,7 @@ function ModalDeletePessoas({ show, setShowModal, deletingPessoa }) {
                 </div>
             </div>
         </div>
-  )
+    )
 }
 
 export default ModalDeletePessoas
