@@ -35,6 +35,7 @@ export const AuthContextProvider = ({ children }) => {
     const criaPessoas = await setDoc(doc(db, "users", user.uid, "pessoas", user.displayName),{
         pedidos: 0,
         foto: "",
+        nome: user.displayName,
     });
     //alert("pessoascriado"); 
     const criaProdutos = await setDoc(doc(db, "users", user.uid, "produtos", "placeholder"),{
