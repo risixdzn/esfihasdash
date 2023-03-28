@@ -29,29 +29,24 @@ function DisplayPessoas({setShowModal, setSelectedPessoa,  setSelectedModal, set
         setShowModal(true);        
     };
 
-    const hasLoaded = useRef(false); // cria uma referência a um booleano que será atualizado após o carregamento da página   
-    
-    useLayoutEffect(() => {
-        if (hasLoaded.current === false) {
+    const hasLoaded = useRef(false);
+
+    useEffect(() => {
+        const getPessoasFromFirebase = async () => {
+            setIsloading(true);
+            const pessoasCollection = collection(db, "users", user.uid, "pessoas");
+            const pessoasSnapshot = await getDocs(pessoasCollection);
+            const pessoasList = pessoasSnapshot.docs.map(doc => ({ ...doc.data(), key: doc.id }));   
+            setShowPessoas(prevState => [...prevState, ...pessoasList]);        
+            setIsloading(false);                
+        };
+
+        if (!hasLoaded.current) {
             hasLoaded.current = true;
-        } else {
-            const getPessoasFromFirebase = async () => {
-                setIsloading(true);
-                const pessoasCollection = collection(db, "users", user.uid, "pessoas");
-                const pessoasSnapshot = await getDocs(pessoasCollection);
-                //console.log(pessoasSnapshot.docs);  
-                const pessoasList = pessoasSnapshot.docs.map(doc => ({ ...doc.data(), key: doc.id }));   
-                //console.log(pessoasList);
-                setShowPessoas(prevState => [...prevState, ...pessoasList]);        
-                //console.log(showPessoas);
-                setIsloading(false);                
-            };
             getPessoasFromFirebase();
-            setIsloading(false);
-            //console.log(showPessoas);
         }
     }, [user.uid]);
-    
+        
     if (loading){
         return (
             <div className="pessoascontainer" style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
