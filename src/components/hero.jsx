@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import Loading from './loading';
+import { UserAuth } from '../context/AuthContext';
 
 const Hero = () => {
   const [loading, setLoading] = useState(true);
@@ -17,6 +18,8 @@ const Hero = () => {
       setLoading(false)
     }, 1000);
   });
+
+  const {user} = UserAuth();
 
   return (   
     <div>         
@@ -37,8 +40,7 @@ const Hero = () => {
                 </ul>
             </div>
             <motion.div className='buttons' initial={{ x: 25 , opacity: 0 }} whileInView={{ x: 0, opacity: 1}} viewport={{ once: true }} transition={{delay: 0.5}}>
-                <Link to="/login" className='loginbtn'>
-                Login</Link>             
+              {user ? <Link to='/home' className='hellouser'>Olá, <span>{user.displayName} <FontAwesomeIcon icon={faUser}/></span> </Link> : <Link to="/login" className='loginbtn'>Login</Link>}
             </motion.div>
           </nav>
           <section className='hero' id='hero'>

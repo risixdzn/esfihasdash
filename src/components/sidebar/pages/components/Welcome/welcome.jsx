@@ -49,7 +49,6 @@ export const Welcome = (props) => {
         <Clock isLoading={true}/>
         <DataHoje/>
       </div>
-      <ToastContainer theme='dark' limit='2'/> 
     </div>
   )
 }

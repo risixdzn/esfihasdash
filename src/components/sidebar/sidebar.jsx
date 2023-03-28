@@ -107,8 +107,7 @@ const Sidebar = ({children}) => {
       
       <main className={showModal ? "dashcontent hiddenoverflow" : "dashcontent"} id='dashcontent' ref={dashContentRef}>
         {children}
-      </main>     
-      <ToastContainer theme='colored' limit='2'/> 
+      </main>           
     </div>           
   )
 }

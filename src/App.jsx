@@ -44,7 +44,7 @@ function App() {
                 </Sidebar>  
               </ModalProvider>                                
             </ProtectedRoute>                        
-            }></Route>            
+            }></Route>
           </Routes>  
         </ErrorContextProvider>                                      
       </AuthContextProvider>   
