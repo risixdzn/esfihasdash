@@ -36,6 +36,7 @@ function NovaPessoa() {
     navigate("/pessoas/list");                
     // await new Promise(resolve => setTimeout(resolve, 1000)); // aguarda 1 segundo para a página recarregar completamente       
     setIsLoading(false);     
+    window.location.reload();
   }
 
   return (

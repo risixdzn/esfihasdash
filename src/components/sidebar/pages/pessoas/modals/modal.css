@@ -10,6 +10,7 @@
     justify-content: center;
     padding: 15px;
     backdrop-filter: blur(3px);    
+    z-index: 1;
 }
 
 .modal{
@@ -24,6 +25,7 @@
     justify-content: center;
     flex-direction: column;    
     padding: 60px 15px;
+    z-index: 99;
 }
 
 .modal .title{
