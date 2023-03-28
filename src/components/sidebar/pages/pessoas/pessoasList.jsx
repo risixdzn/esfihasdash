@@ -37,7 +37,7 @@ const PessoasList = () => {
                 setSelectedModal={setSelectedModal}
                 setSelectedPFP={setSelectedPFP}
             />
-            <ToastContainer theme="dark" limit="2" />
+            <ToastContainer theme="colored" limit="2" />
         </div>
     );
 };
