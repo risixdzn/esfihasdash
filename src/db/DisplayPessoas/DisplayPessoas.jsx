@@ -39,6 +39,7 @@ function DisplayPessoas({setShowModal, setSelectedPessoa,  setSelectedModal, set
             const pessoasSnapshot = await getDocs(pessoasCollection);
             const pessoasList = pessoasSnapshot.docs.map(doc => ({ ...doc.data(), key: doc.id }));   
             setShowPessoas(prevState => [...prevState, ...pessoasList]);        
+            setShowPessoas(pessoasList); // Limpar o estado antes de adicionar as pessoas novamente
             setIsloading(false);                
         };
 
