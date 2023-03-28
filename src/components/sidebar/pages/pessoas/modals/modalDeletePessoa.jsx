@@ -10,7 +10,7 @@ import { UserAuth } from '../../../../../context/AuthContext';
 function ModalDeletePessoas({ show, setShowModal, selectedPessoa, selectedModal, selectedPFP }) {
     
     const [ isLoading, setIsLoading ] = useState(false);
-    const [displayErr, setDisplayErr] = useState(false)
+    const [ displayErr, setDisplayErr ] = useState(false)
 
     const handleCloseModal = () =>{
         setShowModal(false);
@@ -23,12 +23,11 @@ function ModalDeletePessoas({ show, setShowModal, selectedPessoa, selectedModal,
         //alert(deletingPessoa);
         await deleteDoc(doc(db, "users", user.uid, "pessoas", selectedPessoa));           
         handleCloseModal();            
-        window.location.reload();
+        window.location.reload(true);
     }    
 
     const [ newPessoaName , setNewPessoaName ] = useState("");
-    const [ newPessoaPFP , setNewPessoaPFP ] = useState("");
-    
+    const [ newPessoaPFP , setNewPessoaPFP ] = useState("");    
     
     async function editSelectedPessoa(e){
         e.preventDefault();
@@ -42,11 +41,10 @@ function ModalDeletePessoas({ show, setShowModal, selectedPessoa, selectedModal,
                 nome: (newPessoaName !== "" ? newPessoaName : selectedPessoa),
             });     
             handleCloseModal();            
-            window.location.reload();  
+            window.location.reload(true);  
         } else{
             setDisplayErr(true)
-        }
-          
+        }          
     }
     
     //switch para retornar o modal selecionado

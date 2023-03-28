@@ -1,4 +1,4 @@
-.pessoascontainer{
+.pessoascontainer {
     margin-top: 45px;
     width: 100%;
     height: auto;
@@ -8,42 +8,43 @@
     padding: 25px 40px 25px 40px;
 }
 
-.pessoasgrid{
+.pessoasgrid {
     width: 100%;
-    height: 100%;    
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-grow: 1;
     flex-wrap: wrap;
-    gap: 15px
+    gap: 15px;
+    margin-top: 20px;
 }
 
-.pessoascontainer .title{
+.pessoascontainer .title {
     font-size: 45px;
     font-weight: 600;
-    color: #fff;  
-    margin-bottom: 25px;  
+    color: #fff;
+    margin-bottom: 10px;
 }
 
-.pessoascontainer .loader{
+.pessoascontainer .loader {
     width: 100px;
 }
 
-.pessoascontainer .adduser{
+.pessoascontainer .adduser {
     font-size: 35px !important;
     color: var(--primary);
 }
 
-.pessoascontainer .addusericon{
-    transition: .2s ease-in-out;
+.pessoascontainer .addusericon {
+    transition: 0.2s ease-in-out;
 }
 
-.pessoascontainer .addusericon:hover{
+.pessoascontainer .addusericon:hover {
     filter: drop-shadow(0px 0px 10px var(--primary));
 }
 
-.pessoa{
+.pessoa {
     height: 300px;
     width: 100%;
     max-width: 275px;
@@ -51,11 +52,11 @@
     border-radius: 10px;
     display: flex;
     align-items: center;
-    justify-content: center;   
-    flex-direction: column; 
+    justify-content: center;
+    flex-direction: column;
 }
 
-.pessoa .picwrapper{
+.pessoa .picwrapper {
     height: 70%;
     width: 100%;
     background-color: var(--lighter);
@@ -65,7 +66,7 @@
     border-radius: 15px;
 }
 
-.picwrapper .pic{
+.picwrapper .pic {
     width: 125px;
     height: 125px;
     background-color: var(--dark);
@@ -73,14 +74,14 @@
     object-fit: cover;
 }
 
-.picwrapper .pic img{
+.picwrapper .pic img {
     border-radius: 50%;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.pessoa .info{
+.pessoa .info {
     width: 100%;
     height: 30%;
     display: flex;
@@ -89,47 +90,138 @@
     gap: 8px;
 }
 
-.pessoa .info .name{
+.pessoa .info .name {
     font-size: 18px;
-    color: #fff;    
+    color: #fff;
     font-weight: 600;
 }
 
-.pessoa .info .delbtn{
+.pessoa .info .delbtn {
     color: #eb2f2f;
     font-size: 20px;
-    font-weight: 800;    
-    transition: .2s ease-in-out;
+    font-weight: 800;
+    transition: 0.2s ease-in-out;
 }
 
-.pessoa .info .delbtn:hover{
+.pessoa .info .delbtn:hover {
     scale: 1.1;
 }
 
-
-.pessoa .info .editbtn{
+.pessoa .info .editbtn {
     color: var(--gray);
     font-size: 20px;
-    font-weight: 800;    
-    transition: .2s ease-in-out;
+    font-weight: 800;
+    transition: 0.2s ease-in-out;
 }
 
-.pessoa .info .editbtn:hover{
+.pessoa .info .editbtn:hover {
     scale: 1.1;
 }
 
+/* inputpesquisa */
 
+.searchinput{
+    position: relative;
+    z-index: 0;
+}
+
+.searchinput label,
+.searchinput label {
+    position: absolute;    
+    left: 20px;
+    top: 18px;
+    color: var(--input-text);
+    transition: 0.1s ease-in-out;
+}
+
+.searchinput input,
+.searchinput input {
+    width: 100%;
+    padding: 15px 55px;
+    border-radius: 5px;
+    background-color: var(--highlight);
+    color: var(--input-text);
+    border: 2px solid var(--highlight);
+    transition: 0.1s ease-in-out;
+    color: #fff;
+    z-index: 1;
+}
+
+.searchinput input::placeholder,
+.searchinput input::placeholder {
+    color: var(--input-text);
+}
+
+.searchinput input:focus,
+.searchinput input:focus {
+    border: 2px solid var(--primary);
+}
+
+input:focus + .control-label {
+    color: var(--primary);
+}
+
+.searchinput input:disabled,
+.searchinput input:disabled {
+    border: 2px solid #0f0f0f;
+    background-color: #0f0f0f;
+    color: var(--input-text);
+    cursor: not-allowed;
+}
+
+.imgplaceholder {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    background-color: var(--dark);
+    background-position: center;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.imgplaceholder img {
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.termnotfound{
+    color: var(--gray);
+    font-size: 20px;
+    text-align: center;
+    max-width: 400px;
+    overflow: hidden;
+}
+
+.trysearching{
+    font-size: 16px;
+    color: #797979;
+    text-align: center;
+}
 
 @media only screen and (max-width: 1000px) {
-    .pessoascontainer{
+    .pessoascontainer {
         padding: 15px;
     }
-    .pessoascontainer .title{
+    .pessoascontainer .title {
         font-size: 30px;
         margin-bottom: 15px;
     }
 
-    .pessoascontainer .adduser{
+    .pessoascontainer .adduser {
         font-size: 25px !important;
     }
+
+    .searchinput input,.searchinput input{
+        padding: 10px 40px;
+        font-size: 14px;
+      }
+    
+      .searchinput label, .searchinput label{
+        left: 17px;
+        top: 12px;
+        font-size: 14px;
+      }
 }
