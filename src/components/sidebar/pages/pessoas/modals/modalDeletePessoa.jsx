@@ -10,9 +10,11 @@ import { UserAuth } from '../../../../../context/AuthContext';
 function ModalDeletePessoas({ show, setShowModal, selectedPessoa, selectedModal, selectedPFP }) {
     
     const [ isLoading, setIsLoading ] = useState(false);
+    const [displayErr, setDisplayErr] = useState(false)
 
     const handleCloseModal = () =>{
         setShowModal(false);
+        setDisplayErr(false);
     }
     
     const { user } = UserAuth();    
@@ -26,18 +28,25 @@ function ModalDeletePessoas({ show, setShowModal, selectedPessoa, selectedModal,
 
     const [ newPessoaName , setNewPessoaName ] = useState("");
     const [ newPessoaPFP , setNewPessoaPFP ] = useState("");
-
+    
+    
     async function editSelectedPessoa(e){
         e.preventDefault();
         setIsLoading(true);   
-        await deleteDoc(doc(db, "users", user.uid, "pessoas", selectedPessoa));      
-        const criaPessoa = await setDoc(doc(db, "users", user.uid, "pessoas", newPessoaName),{
-            pedidos: 0,
-            foto: newPessoaPFP,
-            nome: newPessoaName,     
-        });     
-        handleCloseModal();            
-        window.location.reload();     
+        if (newPessoaName !== ""){
+            setDisplayErr(false);
+            await deleteDoc(doc(db, "users", user.uid, "pessoas", selectedPessoa));      
+            const criaPessoa = await setDoc(doc(db, "users", user.uid, "pessoas", newPessoaName),{
+                pedidos: 0,
+                foto: (newPessoaPFP !== "" ? newPessoaPFP : selectedPFP),
+                nome: (newPessoaName !== "" ? newPessoaName : selectedPessoa),
+            });     
+            handleCloseModal();            
+            window.location.reload();  
+        } else{
+            setDisplayErr(true)
+        }
+          
     }
     
     //switch para retornar o modal selecionado
@@ -69,7 +78,7 @@ function ModalDeletePessoas({ show, setShowModal, selectedPessoa, selectedModal,
                         </div>
                         <div className='editform'>
                             <div className='inputcontainer' style={{marginTop:"30px"}}>              
-                                <input type="text" id="text" name="text" placeholder='Nome' autoFocus={false} 
+                                <input type="text" id="text" name="text" placeholder='Nome*' autoFocus={false} 
                                     onChange={(event) =>{
                                     setNewPessoaName(event.target.value)
                                 }}>       
@@ -83,7 +92,8 @@ function ModalDeletePessoas({ show, setShowModal, selectedPessoa, selectedModal,
                                 }}>       
                                 </input>
                                 <label className='control-label' htmlFor="url"><FontAwesomeIcon icon={faImage}/></label>
-                            </div>   
+                            </div>  
+                            <span className='displayerr' style={displayErr ? {display:"block"}: {display:"none"}}>O campo "nome" é obrigatório.</span> 
                         </div>  
                                              
                         <div className='actions' style={{marginTop:"45px"}}>
