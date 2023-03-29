@@ -96,7 +96,6 @@ function Registrar() {
           <h1>Registre-se<br></br>na plataforma.</h1>
         </motion.div>
       </div>
-      <ToastContainer theme='dark' limit='2'/> 
     </div>
   );
 }

@@ -15,7 +15,7 @@ const PessoasList = () => {
     const { selectedModal, setSelectedModal } = useModal("");
     const [ selectedPessoa, setSelectedPessoa] = useState();
     const [ selectedPFP, setSelectedPFP ] = useState();
-
+    
     return (
         <div style={showModal ? { Y: "hidden" } : { Y: "scroll" }}>
             <ModalDeletePessoas
@@ -37,7 +37,7 @@ const PessoasList = () => {
                 setSelectedModal={setSelectedModal}
                 setSelectedPFP={setSelectedPFP}
             />
-            <ToastContainer theme="colored" limit="2" />
+            <ToastContainer theme="colored" />
         </div>
     );
 };

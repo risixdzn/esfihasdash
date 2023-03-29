@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import './NovaPessoa.css'
 import { faUser, faImage } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -35,9 +35,18 @@ function NovaPessoa() {
     });  
     navigate("/pessoas/list");                
     // await new Promise(resolve => setTimeout(resolve, 1000)); // aguarda 1 segundo para a página recarregar completamente       
-    setIsLoading(false);     
+    setIsLoading(false);    
+    localStorage.setItem("createdPessoa", pessoaName); // Armazena o nome da pessoa deletada no Local Storage 
     window.location.reload();
   }
+
+  useEffect(()=>{
+    const createdPessoa = localStorage.getItem("createdPessoa");//puxa o item do localstorage
+    if (createdPessoa) {
+        toast.success("Pessoa " + createdPessoa + " criada.");
+        localStorage.removeItem("createdPessoa"); // Remove a informação da notificação do Local Storage
+    }
+  },[user.uid])    
 
   return (
     <div className='wrapper'>      

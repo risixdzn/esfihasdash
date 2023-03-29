@@ -112,8 +112,8 @@ function Login() {
             <p>Ainda não tem uma conta? <Link to='/register' className='linkbtn'>Registre-se</Link></p>
           </form>
         </motion.div>
-      </div>
-      <ToastContainer theme='dark' limit='2'/> 
+      </div>      
+      <ToastContainer theme="colored" limit="2"/>
     </div>
   );
 }

@@ -424,6 +424,19 @@ mark{
     color:#808080;    
 }
 
+.hellouser{
+    color: #fff;
+}
+
+.hellouser span{
+    color: var(--primary);
+    font-weight: 600;    
+}
+
+.hellouser:hover > span{
+    text-decoration: underline;
+}
+
 @media only screen and (max-width: 767px) {
     /* phones */
     .links {
