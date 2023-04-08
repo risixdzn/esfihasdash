@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Welcome from "../components/Welcome/welcome";
 
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DisplayPessoas from "../../../../db/DisplayPessoas/DisplayPessoas";
 import ModalDeletePessoas from "./modals/modalDeletePessoa";
 
-import { useState, createContext, useContext } from "react";
+import { useState } from "react";
 
 import { useModal } from "./modals/ModalProvider";
 
