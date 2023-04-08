@@ -1,11 +1,8 @@
 import React from 'react'
 import './welcome.css'
 import { UserAuth } from '../../../../../context/AuthContext';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { collection, getCountFromServer } from 'firebase/firestore';
-import { db } from '../../../../../firebase-config';
 import Clock from './clock';
 import { DataHoje } from './date';
 
@@ -13,7 +10,6 @@ import PedidosCount from '../../../../../db/FetchPedidos';
 import PessoasCount from '../../../../../db/FetchPessoas';
 import ProdutosCount from '../../../../../db/FetchProdutos';
 
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
 

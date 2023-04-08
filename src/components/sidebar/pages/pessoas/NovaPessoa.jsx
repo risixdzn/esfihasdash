@@ -1,4 +1,5 @@
-import React, { useContext, useState, useEffect } from 'react'
+/*eslint-disable*/
+import React, {  useState, useEffect } from 'react'
 import './NovaPessoa.css'
 import { faUser, faImage } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
