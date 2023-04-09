@@ -1,22 +1,20 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import './App.css';
-import Hero from './components/hero';
-import Login from './components/login'
-import Registrar from './components/register'
-import Dashboard from './components/dashboard';
-import ProtectedRoute from './components/ProtectedRoute';
-import NotFound from './components/404';
 
-import Sidebar from './components/sidebar/sidebar';
-import Home from './components/sidebar/pages/home/home';
-import PessoasList from './components/sidebar/pages/pessoas/pessoasList';
-import Pedidos from './components/sidebar/pages/pedidos';
-import Produtos from './components/sidebar/pages/produtos';
+import Hero from './components/Hero/hero';
+import Login from './components/LoginReg/login'
+import Registrar from './components/LoginReg/register'
+import ProtectedRoute from './context/ProtectedRoute';
+import Sidebar from './components/Dashboard/sidebar';
+import Home from './components/Dashboard/pages/home/home';
+import PessoasList from './components/Dashboard/pages/pessoas/pessoasList';
+import Pedidos from './components/Dashboard/pages/pedidos';
+import Produtos from './components/Dashboard/pages/produtos';
 
 import { AuthContextProvider } from './context/AuthContext';
 import { ErrorContextProvider } from './context/FirebaseErrorContext';
-import { ModalProvider } from './components/sidebar/pages/pessoas/modals/ModalProvider';
-import NovaPessoa from './components/sidebar/pages/pessoas/NovaPessoa';
+import { ModalProvider } from './components/Dashboard/pages/pessoas/modals/ModalProvider';
+import NovaPessoa from './components/Dashboard/pages/pessoas/NovaPessoa';
 
 function App() {
   return (  
@@ -27,8 +25,6 @@ function App() {
             <Route path="/" element={<Hero/>}/>    
             <Route path="/login" element={<Login/>}/>              
             <Route path="/register" element={<Registrar/>}/>      
-            <Route path="/dashboard" element={<ProtectedRoute><Dashboard/></ProtectedRoute>}></Route>      
-
             <Route path='*' element={<ProtectedRoute>      
               <ModalProvider>
                 <Sidebar>

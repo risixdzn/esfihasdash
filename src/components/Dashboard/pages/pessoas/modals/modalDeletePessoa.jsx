@@ -146,7 +146,7 @@ function ModalDeletePessoas({ show, setShowModal, selectedPessoa, selectedModal,
                         </div>
                         <div className='editform'>
                             <div className='inputcontainer' style={{marginTop:"30px"}}>              
-                                <input value={selectedPessoa} type="text" id="text" name="text" placeholder='Nome*' autoFocus={false} 
+                                <input type="text" id="text" name="text" placeholder='Nome*' autoFocus={false} 
                                     onChange={(event) =>{
                                     setNewPessoaName(event.target.value)
                                 }}>       
@@ -154,7 +154,7 @@ function ModalDeletePessoas({ show, setShowModal, selectedPessoa, selectedModal,
                                 <label className='control-label' htmlFor="text"><FontAwesomeIcon icon={faUser}/></label>
                             </div>   
                             <div className='inputcontainer'>              
-                                <input value={selectedPFP} type="url" id="url" name="url" placeholder='URL da foto' autoFocus={false} 
+                                <input type="url" id="url" name="url" placeholder='URL da foto' autoFocus={false} 
                                     onChange={(event) =>{
                                     setNewPessoaPFP(event.target.value);
                                 }}>       

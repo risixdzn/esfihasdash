@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import '../App.css';
-import './css/home.css';
-import './css/reset.css';
+import '../../App.css';
+import './home.css';
+import '../../reset.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRightToBracket, faPizzaSlice, faUser, faMobile } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-import Loading from './loading';
-import { UserAuth } from '../context/AuthContext';
+import Loading from '../Loading/loading';
+import { UserAuth } from '../../context/AuthContext';
 
 const Hero = () => {
   const [loading, setLoading] = useState(true);
