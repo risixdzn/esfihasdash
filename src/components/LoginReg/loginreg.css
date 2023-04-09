@@ -1,0 +1,351 @@
+:root{
+  --input-text: #737373;
+}
+
+body{
+  overflow: hidden;
+  overflow-y: hidden;
+  background-color: var(--dark);
+  background-image: none;
+}
+
+
+.bodyWrap{
+  width: 100vw;
+  height: 100vh;  
+  display: flex;
+  flex-direction: row;
+  background-color: var(--dark);
+  align-items: center;
+  justify-content: center; 
+  gap: 100px;  
+  flex-wrap: wrap;
+}
+.bodyWrapRegister{
+  width: 100vw;
+  height: 100vh;  
+  display: flex;
+  flex-direction: row;
+  background-color: var(--dark);
+  align-items: center;
+  justify-content: center; 
+  gap: 100px;  
+  flex-wrap: wrap;
+}
+
+.leftcontent{
+  display: flex;  
+  justify-content: center;
+  flex-direction: column;
+}
+
+.leftcontentregister{
+  display: flex;  
+  justify-content: center;
+  flex-direction: column;
+}
+
+.leftcontent img{
+  width: 200px;
+}
+
+.leftcontentregister img{
+  width: 200px;
+}
+
+.leftcontent h1{
+  font-weight: 600;
+  color: #fff;
+  font-size: 55px;
+}
+
+.leftcontentregister h1{
+  font-weight: 600;
+  color: #fff;
+  font-size: 55px;
+}
+
+
+.rightcontentregister{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputcontainer{
+  position: relative;
+}
+
+.inputcontainer{
+  position: relative;
+}
+
+form,.form{
+  background-color: #181818;
+  display: flex;
+  align-items: center;
+  justify-content: center;   
+  padding: 115px 75px; 
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 10px;
+}
+
+
+form label,.form label{
+  left: 20px;
+  top: 18px;
+  position: absolute;
+  color: var(--input-text);
+  transition: .1s ease-in-out;
+}
+
+form input,.form input{
+  width: 325px;  
+  padding: 15px 55px;
+  border-radius: 5px;
+  background-color: var(--dark);
+  color: var(--input-text);
+  border: 2px solid var(--dark);
+  transition: .1s ease-in-out;
+  color: #fff;
+} 
+
+form input::placeholder,.form input::placeholder{
+  color: var(--input-text);
+}
+
+form input:focus, .form input:focus{
+  border: 2px solid var(--primary);
+}
+
+input:focus + .control-label
+{    
+  color: var(--primary);
+}
+
+form input:disabled,.form input:disabled{
+  border: 2px solid #0f0f0f;
+  background-color: #0f0f0f;
+  color: var(--input-text);
+  cursor: not-allowed;  
+}
+
+.entrarBtn{
+  width: 325px;
+  height: 60px;
+  border-radius: 5px;
+  background-color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  transition: .1s ease-in-out;
+}
+
+.entrarBtn:hover{
+  box-shadow: 0 0 0.5em var(--primary);
+}
+
+.entrarBtn:active{
+  filter: brightness(.8);
+}
+
+form p,.form p{
+  color: var(--input-text);
+}
+
+.linkbtn{
+  color: var(--primary);
+  font-weight: 600;
+  transition: .1s ease-in-out;
+}
+
+.linkbtn:hover{
+  text-decoration: underline;
+}
+
+.reverse{
+  flex-direction: column-reverse !important;
+}
+
+.bottom{
+  margin-bottom: -125px !important;
+}
+
+.eyecatchregister{
+  width: 100vw;
+  height: 35px;
+  background-color: var(--primary);
+  position: fixed;
+  z-index: 101;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eyecatchregister p{
+  font-weight: 500;
+  color: #fff;
+}
+
+.navbarregister {
+  width: 100vw;
+  height: 70px;
+  background-color: var(--dark);
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+  position: fixed;
+  justify-content: space-between;
+  z-index: 100;
+  margin-top: 35px;
+}
+
+.logo img {
+  width: 100px;
+  height: auto;
+  transform: translateY(4px);
+}
+
+.links ul {
+  list-style-type: none;
+  display: flex;
+  gap: 40px;
+}
+
+.links .link {
+  float: left;
+  position: relative;
+  padding: 10px;
+  color: rgb(212, 212, 212);
+  background-size: 200% 100%;
+  background-position: -100%;
+  --webkit-background-clip: text;
+  --webkit-text-fill-color: transparent;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.links .link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background-color: var(--primary);
+  bottom: 0;
+  left: 0;
+  transform-origin: right;
+  transform: scaleX(0);
+  transition: transform 0.3s ease-in-out;
+  color: var(--primary);
+}
+
+.links .link:hover::after {
+  transform-origin: left;
+  transform: scaleX(1);
+}
+
+.navbarregister .loginbtn {
+  color: #fff;
+  background: linear-gradient(90deg, #ff7834 0%, #ec6622 100%);
+  border-radius: 15px;
+  padding: 8px 25px;
+  font-weight: 600;
+  transition: .2s ease-in-out;
+}
+
+.navbar .loginbtn:hover {
+  box-shadow: 0 0 1rem var(--primary);
+}
+
+.navbar .loginbtn:active {
+  filter: brightness(0.75);
+}
+
+.link:hover {
+  color: var(--primary);
+}
+
+.orangeshadow{
+  box-shadow: 0px 4px 5px 0px var(--primary);
+}
+
+@media only screen and (max-width: 767px) {
+  .bodyWrap{
+    height: 120vh;
+    gap: 0px; 
+           
+  }
+
+  .bodyWrapRegister{
+    flex-direction: column-reverse;
+    margin-top: 105px;
+    align-items: space-around;
+  }
+
+  .rightcontent{
+    margin-top: -300px;
+  }
+  .leftcontent img{
+    width: 150px;
+  }
+
+  .leftcontent h1{
+    font-size: 40px;
+  }
+
+
+  .leftcontentregister img{
+    width: 150px;
+  }
+
+  .leftcontentregister h1{
+    font-size: 40px;
+  }  
+
+  .rightcontentregister{
+    margin-top: -50px;
+  }
+
+  body{
+    overflow-x: hidden;
+    overflow-y: scroll;    
+  }
+
+  form input,.form input{
+    width: 250px;
+    padding: 10px 40px;
+    font-size: 14px;
+  }
+
+  form label, .form label{
+    left: 17px;
+    top: 12px;
+    font-size: 14px;
+  }
+
+  .entrarBtn{
+    width: 250px;
+    height: 45px;
+    font-size: 16px;
+  }
+
+  form p, .form p{
+    font-size: 12px;
+  }
+
+  form, .form{
+    padding: 75px 25px;
+  }
+
+  .eyecatchregister{
+    margin-top: -105px;
+  }
+  .navbarregister{
+    margin-top: -70px;
+  }
+}

@@ -1,0 +1,572 @@
+* {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
+}
+
+mark{
+    display: inline-block;
+    line-height: 0em;
+    padding-bottom: 0.6em;      
+    background-color: var(--primary);
+    z-index: 2;
+    padding-inline: 20px;    
+}
+
+.eyecatch{
+    width: 100vw;
+    height: 35px;
+    background-color: var(--primary);
+    position: fixed;
+    z-index: 101;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.eyecatch p{
+    font-weight: 500;
+    color: #fff;
+}
+
+.navbar {
+    width: 100vw;
+    height: 70px;
+    background-color: var(--dark);
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    position: fixed;
+    justify-content: space-between;
+    z-index: 100;
+    margin-top: 35px;    
+}
+
+.logo img {
+    width: 100px;
+    height: auto;
+    transform: translateY(4px);
+}
+
+.links ul {
+    list-style-type: none;
+    display: flex;
+    gap: 40px;
+}
+
+.links .link {
+    float: left;
+    position: relative;
+    padding: 10px;
+    color: rgb(212, 212, 212);
+    background-size: 200% 100%;
+    background-position: -100%;
+    --webkit-background-clip: text;
+    --webkit-text-fill-color: transparent;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.links .link::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    border-radius: 4px;
+    background-color: var(--primary);
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+    color: var(--primary);
+}
+
+.links .link:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.navbar .loginbtn {
+    color: #fff;
+    background: linear-gradient(90deg, #ff7834 0%, #ec6622 100%);
+    border-radius: 15px;
+    padding: 8px 25px;
+    font-weight: 600;
+    transition: .2s ease-in-out;
+}
+
+.navbar .loginbtn:hover {
+    box-shadow: 0 0 1rem var(--primary);
+}
+
+.navbar .loginbtn:active {
+    filter: brightness(0.75);
+}
+
+.link:hover {
+    color: var(--primary);
+}
+
+/*hero*/
+
+.hero {
+    background-color: black;
+    width: 100vw;
+    height: 120vh;
+    background-image: url(../../../public/assets/img/bg\ landing.png);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+.hero .content {
+    margin-top: -20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    flex-direction: column;
+}
+
+.hero .logo {
+    width: 1000px;
+    padding-inline: 50px;
+    z-index: 1;
+    filter: drop-shadow(-1px 12px 37px #602C14);
+}
+
+.hero .phrase {
+    font-size: 30px;
+    z-index: 1;
+    filter: drop-shadow(-1px 12px 37px #602C14);
+}
+
+.hero .entrar {
+    font-size: 30px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ff7834 0%, #ec6622 100%);
+    border-radius: 15px;
+    padding: 20px 60px;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: 0.2s ease-in-out;
+    z-index: 1;
+    filter: drop-shadow(-1px 12px 37px #602C14);
+}
+
+.hero .entrar:hover {
+    box-shadow: 0 0 1rem var(--primary);
+}
+
+.hero .entrar:active {
+    filter: brightness(0.75);
+}
+
+.hero .shadow {
+    width: 300px;
+    height: 300px;
+    background-color: #532d1a;
+    position: absolute;
+    filter: blur(100px);
+    z-index: 0;
+    overflow: hidden;
+}
+
+/*funcoes*/
+
+.funcoes {
+    background-color: var(--darkbg);
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+.main_wrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;    
+}
+
+.macbook_wrap {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -450px;
+    padding: 50px;
+    flex-direction: column;
+    gap: 50px;
+    z-index: 2;
+}
+
+.sidepath {
+    position: absolute;
+    margin-left: -100%;
+    transform: translateX(48%);
+    z-index: 0;
+}
+
+.funcoes .content {    
+    width: 100vw;
+    height: auto;    
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    flex-direction: column;
+    margin-top: 30vh;
+}
+
+.funcoes .content .title{
+    color: #fff;
+    font-size: 45px;
+    font-weight: 600;
+    padding: 50px;
+}
+
+.funcoes .content .iphone_wrap {
+    width: 50vw;
+    height: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 50px;
+}
+
+.funcoes .content .func_wrap {
+    width: 50vw;
+    height: 100%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 50px;
+}
+
+.box {        
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 50px;
+    padding: 25px;
+}
+
+.func_wrap .func {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    
+}
+
+.func .thumb {
+    width: 125px;
+    height: 125px;
+    min-width: 125px;
+    min-height: 125px;
+    background:linear-gradient(180deg, #FF7834 0%, #ED6623 100%);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: #fff;
+}
+
+.func .desc h3{
+    color: #fff;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.func .desc p{
+    color: #c0c0c0;
+    font-size: 16px;
+}
+
+/*tecnologias*/
+
+.tech {
+    background-color: black;
+    width: 100vw;
+    height: 110vh;
+    background-image: url(../../../public/assets/img/bg\ landing\ baixo.png);
+    background-size: cover;
+    background-position: top;
+    display: flex;
+    align-items: center;  
+    justify-content: center;  
+    padding: 105px;
+    gap: 50px;
+}
+
+.tech_wrap{
+    margin-top: 200px;
+    display: flex;
+    gap: 25px;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+    padding: 25px;    
+}
+
+.tech .title{
+    font-size: 45px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.tech .techs{
+    width: 500px;
+    height: 125px;
+    background-color: var(--lighter);
+    border-radius: 15px;
+    display: flex;  
+    gap: 25px;  
+    align-items: center;
+}
+
+.techs .thumb{
+    width: 125px;
+    height: 125px;
+    background: linear-gradient(180deg, #FF7834 0%, #ED6623 100%);
+    border-radius: 11px 0px 0px 11px;   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.techs .thumb img{
+    width: 70px;
+}
+
+.techs .thumb .firebase{
+    height: 70px;
+    width: 50px;
+}
+
+.tech .imac{
+    transform: translateY(10%);
+}
+
+.techs .desc h3{
+    font-size: 25px;
+    font-weight: 500;
+    color: #fff;
+}
+
+.techs .desc p{
+    font-size: 16px;    
+    color: #c0c0c0;
+}
+
+/*footer*/
+
+.footer{
+    width: 100vw;
+    height: 200px;
+    background-color: var(--dark);   
+    box-shadow: 0px -5px 0px 0px var(--primary);
+}
+.footer .content{
+    width: 100vw;
+    height: 130px;
+    background-color: var(--dark);  
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+.footer .content .desc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 25px;
+    color: #fff;
+}
+
+.footer .content .desc .signup{
+    padding:  10px 30px;
+    border: 3PX SOLID WHITE;
+    border-radius: 25px;
+    transition: .2s ease-in-out;
+}
+
+.footer .content .desc .signup:hover{
+   border:3px solid var(--primary);
+   color: var(--primary);
+}
+
+
+.footer .rodape{
+    width: 100vw;
+    height: 70px;
+    background-color: #131313;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer .rodape p{
+    color:#808080;    
+}
+
+.hellouser{
+    color: #fff;
+}
+
+.hellouser span{
+    color: var(--primary);
+    font-weight: 600;    
+}
+
+.hellouser:hover > span{
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 767px) {
+    /* phones */
+    .links {
+        display: none;
+    }
+
+    .hero {
+        height: 90vh;
+    }
+
+    .hero .phrase {
+        font-size: 20px;
+    }
+
+    .hero .entrar {
+        font-size: 20px;
+        padding: 15px 40px;
+    }
+
+    .funcoes{
+        height: 80vh;
+    }
+
+    .macbook_wrap {
+        margin-top: -300px;
+    }
+
+    .funcoes .content {
+        flex-direction: column;
+        padding: 0;
+        margin-top: 0;
+    }
+
+    .funcoes .content .iphone_wrap {
+        display: none;
+    }
+
+    .funcoes .content .func_wrap {
+        width: 100%;
+        justify-content: center;
+        padding: 0;
+        
+    }
+
+    .func_wrap .func {
+        gap: 25px;        
+    }
+
+    .func .desc h3 {
+        color: #fff;
+        font-size: 19px;
+        font-weight: 500;
+    }
+
+    .func .desc p {
+        color: #c0c0c0;
+        font-size: 12px;
+    }
+
+    .tech .title{
+        font-size: 35px;        
+    }
+    
+    .tech .techs{
+        width: 400px;
+        height: 100px;        
+    }
+    
+    .techs .thumb{
+        width: 100px;
+        height: 100px;        
+    }
+    
+    .tech .imac{
+        transform: translateY(10%);
+    }
+    
+   
+    .techs .desc h3{
+        font-size: 21px;        
+    }
+    
+    .techs .desc p{
+        font-size: 14px;         
+    }
+
+    .firebase,
+    .techs .thumb img{
+        scale: 0.7;
+    }
+    
+}
+
+@media only screen and (max-width: 1150px) {
+    .func_wrap .func {
+        gap: 30px;
+        padding: 10px;
+    }
+
+    .func .desc h3 {
+        color: #fff;
+        font-size: 21px;
+        font-weight: 500;
+    }
+
+    .func .desc p {
+        color: #c0c0c0;
+        font-size: 14px;
+    }
+
+    .func .thumb {
+        width: 100px;
+        height: 100px;
+        min-width: 100px;
+        min-height: 100px;
+        background-color: #803c1a;
+        border-radius: 15px;
+    }
+    .funcoes .content .iphone_wrap {
+        display: none;
+    }
+
+    .funcoes .content .func_wrap {
+        width: 100%;
+        justify-content: center;
+        padding: 0;
+        
+    }
+
+    .imac{
+        display: none;
+    }
+}

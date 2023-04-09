@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import { createContext, useContext } from "react";
 import { toast } from "react-toastify";
 

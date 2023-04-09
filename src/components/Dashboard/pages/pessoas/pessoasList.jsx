@@ -3,7 +3,7 @@ import Welcome from "../components/Welcome/welcome";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import DisplayPessoas from "../../../../db/DisplayPessoas/DisplayPessoas";
+import DisplayPessoas from "./DisplayPessoas/DisplayPessoas";
 import ModalDeletePessoas from "./modals/modalDeletePessoa";
 
 import { useState } from "react";

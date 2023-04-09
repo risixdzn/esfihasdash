@@ -5,17 +5,15 @@ import { NavLink } from 'react-router-dom'
 import './sidebar.css'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
-import { motion } from 'framer-motion'
 
-import { UserAuth } from '../../context/AuthContext'
+import { UserAuth } from '../../../context/AuthContext'
 
 import UserCard from './components/userCard'
 import { useEffect, useRef } from 'react'
 
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
-import { useModal } from './pages/pessoas/modals/ModalProvider'
+import { useModal } from '../pages/pessoas/modals/ModalProvider'
 
 const Sidebar = ({children}) => {
   const menuItem = [
@@ -41,7 +39,7 @@ const Sidebar = ({children}) => {
     },
   ];
 
-  const { user, logout } = UserAuth();
+  const { logout } = UserAuth();
     const navigate = useNavigate();
 
     const handleLogout = async () => {
@@ -54,17 +52,13 @@ const Sidebar = ({children}) => {
         }
     };
 
-  const padding = {
-    padding: "15px",    
-  }
- 
   const [isOpen, setIsOpen] = useState(true);
 
   function toggle() {
     setIsOpen(!isOpen);    
   }
 
-  const { showModal, setShowModal } = useModal();
+  const { showModal } = useModal();
   const dashContentRef = useRef(null);
 
   useEffect(() => {

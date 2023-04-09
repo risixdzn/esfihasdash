@@ -1,3 +1,4 @@
+
 import { createContext, useContext, useEffect, useState } from 'react';
 import {
   createUserWithEmailAndPassword,
@@ -11,9 +12,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
-import { ErrPTBR } from './FirebaseErrorContext';
-
-import { doc, setDoc, deleteDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { db } from '../firebase-config';
 
 const UserContext = createContext();
@@ -26,23 +25,23 @@ export const AuthContextProvider = ({ children }) => {
   async function criarDb(user) {
     //alert(user.uid);    
     //alert(user.displayName);
-    const criaUsuario = await setDoc(doc(db, "users", user.uid), {
+    await setDoc(doc(db, "users", user.uid), {
         uid: user.uid,
         email: user.email,
         nome: user.displayName
     });
     //alert("usuariocriado");   
-    const criaPessoas = await setDoc(doc(db, "users", user.uid, "pessoas", user.displayName),{
+    await setDoc(doc(db, "users", user.uid, "pessoas", user.displayName),{
         pedidos: 0,
         foto: "",
         nome: user.displayName,
     });
     //alert("pessoascriado"); 
-    const criaProdutos = await setDoc(doc(db, "users", user.uid, "produtos", "placeholder"),{
+    await setDoc(doc(db, "users", user.uid, "produtos", "placeholder"),{
         info: null,
     });
     //alert("produtoscriado"); 
-    const criaPedidos = await setDoc(doc(db, "users", user.uid, "pedidos", "placeholder"),{
+    await setDoc(doc(db, "users", user.uid, "pedidos", "placeholder"),{
         info: null,
     });    
     //alert("pedidoscriado");      
@@ -51,7 +50,7 @@ export const AuthContextProvider = ({ children }) => {
   const register = async (registerEmail, registerPassword, displayName) =>{
     try{
       const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPassword) //colocar email e password no objeto usuario       
-      const updateDisplayname = await updateProfile(auth.currentUser, { displayName });//atualizar email e password dps que ja esta criado      
+      await updateProfile(auth.currentUser, { displayName });//atualizar email e password dps que ja esta criado      
       console.log(user); 
       navigate('/home');
       onAuthStateChanged(auth, (user) => {
@@ -63,13 +62,24 @@ export const AuthContextProvider = ({ children }) => {
       });      
       toast.warn("1")  ;     
     } catch (error){
-      switch(error.code){
-        case 'auth/invalid-email': toast.warn("Email invalido.", {toastId: "wrong-email"})
-        case 'auth/weak-password': toast.warn("A senha deve conter 6 ou mais caracteres", {toastId: "weak-pass"})
-        case 'auth/email-already-in-use': toast.warn("O email fornecido ja está em uso.", {toastId: "in-use"})
+      switch (error.code) {
+          case "auth/invalid-email":
+              toast.warn("Email invalido.", { toastId: "wrong-email" })
+              break;
+          case "auth/weak-password":
+              toast.warn("A senha deve conter 6 ou mais caracteres", {
+                  toastId: "weak-pass",
+              })
+              break;
+          case "auth/email-already-in-use":
+              toast.warn("O email fornecido ja está em uso.", {
+                  toastId: "in-use",
+              })
+              break;
+          default: break;
       }
     } 
-  }  
+  }   
 
   const login = async (loginEmail, loginPassword,) =>{
     try{
@@ -77,9 +87,14 @@ export const AuthContextProvider = ({ children }) => {
       console.log(user); 
       navigate('/home') 
     }catch (error){  
-      switch(error.code){
-        case 'auth/invalid-email': toast.warn("Email invalido.", {toastId: "inv-email"})
-        case 'auth/wrong-password': toast.warn("Senha incorreta.", {toastId: "inv-pass"})
+      switch (error.code) {
+          case "auth/invalid-email":
+              toast.warn("Email invalido.", { toastId: "inv-email" })
+          break;
+          case "auth/wrong-password":
+              toast.warn("Senha incorreta.", { toastId: "inv-pass" })
+          break;
+          default: break;
       }
     }      
   }

@@ -1,4 +1,5 @@
 /*eslint-disable*/
+
 import React, { useEffect, useState } from 'react'
 import "./modal.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,7 +9,7 @@ import { doc, deleteDoc, setDoc } from "firebase/firestore";
 import { db } from '../../../../../firebase-config';
 import { UserAuth } from '../../../../../context/AuthContext';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import { useNavigate } from 'react-router-dom';
 
@@ -16,7 +17,7 @@ function ModalDeletePessoas({ show, setShowModal, selectedPessoa, selectedModal,
     
     const [ isLoading, setIsLoading ] = useState(false);
     const [ displayErr, setDisplayErr ] = useState(false)
-
+   
     //fecharmodal
     const handleCloseModal = () =>{
         setShowModal(false);
@@ -146,7 +147,7 @@ function ModalDeletePessoas({ show, setShowModal, selectedPessoa, selectedModal,
                         </div>
                         <div className='editform'>
                             <div className='inputcontainer' style={{marginTop:"30px"}}>              
-                                <input value={selectedPessoa} type="text" id="text" name="text" placeholder='Nome*' autoFocus={false} 
+                                <input type="text" id="text" name="text" placeholder='Nome*' autoFocus={false} 
                                     onChange={(event) =>{
                                     setNewPessoaName(event.target.value)
                                 }}>       
@@ -154,7 +155,7 @@ function ModalDeletePessoas({ show, setShowModal, selectedPessoa, selectedModal,
                                 <label className='control-label' htmlFor="text"><FontAwesomeIcon icon={faUser}/></label>
                             </div>   
                             <div className='inputcontainer'>              
-                                <input value={selectedPFP} type="url" id="url" name="url" placeholder='URL da foto' autoFocus={false} 
+                                <input type="url" id="url" name="url" placeholder='URL da foto' autoFocus={false} 
                                     onChange={(event) =>{
                                     setNewPessoaPFP(event.target.value);
                                 }}>       
