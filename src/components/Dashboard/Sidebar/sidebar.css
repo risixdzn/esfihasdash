@@ -2,7 +2,7 @@
 body{
     background-color: var(--dark);
     display:  flex;    
-    background-image: url(../../../public/assets/img/bgdash.png);
+    background-image: url(../../../../public/assets/img/bgdash.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

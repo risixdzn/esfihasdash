@@ -1,19 +1,16 @@
-/*eslint-disable*/
 import React, {  useState, useEffect } from 'react'
 import './NovaPessoa.css'
 import { faUser, faImage } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link, useNavigate, usehistor } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { UserAuth } from '../../../../context/AuthContext';
 
 import { db } from '../../../../firebase-config';
 import { doc, setDoc } from 'firebase/firestore';
 
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
-import { updatePessoasCount } from '../../../../db/FetchPessoas';
-
 function NovaPessoa() {
 
   const { user } = UserAuth();
@@ -21,7 +18,6 @@ function NovaPessoa() {
   const [ isLoading, setIsLoading ] = useState(false);
   const [ pessoaName, setPessoaName] = useState("");
   const [ pessoaPic, setPessoaPic] = useState("");
-  const [ pessoas, setPessoas ] = useState(0);
 
   const navigate = useNavigate();
 
@@ -29,7 +25,8 @@ function NovaPessoa() {
     e.preventDefault();
     setIsLoading(true);
     
-    const criaPessoa = await setDoc(doc(db, "users", user.uid, "pessoas", pessoaName),{
+    //criapessoa
+    await setDoc(doc(db, "users", user.uid, "pessoas", pessoaName),{
       pedidos: 0,
       foto: pessoaPic,   
       nome: pessoaName,   
@@ -69,7 +66,7 @@ function NovaPessoa() {
           <label className='control-label' htmlFor="password"><FontAwesomeIcon icon={faImage}/></label>
          </div>    
 
-        <button className="entrarBtn" type='submit'>{isLoading ? <img src='../assets/gif/rippleloader.svg' style={{height:"75%"}}></img> : "Cadastrar"}</button>   
+        <button className="entrarBtn" type='submit'>{isLoading ? <img src='../assets/gif/rippleloader.svg' style={{height:"75%"}}alt=''></img> : "Cadastrar"}</button>   
 
         <p><Link to='/pessoas/list' className='linkbtn'>Voltar</Link></p>
       </form>      

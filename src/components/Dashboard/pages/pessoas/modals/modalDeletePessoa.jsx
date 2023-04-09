@@ -1,4 +1,5 @@
 /*eslint-disable*/
+
 import React, { useEffect, useState } from 'react'
 import "./modal.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,7 +9,7 @@ import { doc, deleteDoc, setDoc } from "firebase/firestore";
 import { db } from '../../../../../firebase-config';
 import { UserAuth } from '../../../../../context/AuthContext';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import { useNavigate } from 'react-router-dom';
 
@@ -16,7 +17,7 @@ function ModalDeletePessoas({ show, setShowModal, selectedPessoa, selectedModal,
     
     const [ isLoading, setIsLoading ] = useState(false);
     const [ displayErr, setDisplayErr ] = useState(false)
-
+   
     //fecharmodal
     const handleCloseModal = () =>{
         setShowModal(false);

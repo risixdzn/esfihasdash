@@ -1,13 +1,10 @@
 import React from 'react'
 import './userCard.css'
-import { UserAuth } from '../../../context/AuthContext';
-import { collection, getCountFromServer, get, count } from 'firebase/firestore';
-import { db } from '../../../firebase-config';
-import { useEffect, useState } from 'react';
+import { UserAuth } from '../../../../context/AuthContext';
 
-import PedidosCount from '../../../db/FetchPedidos'
-import PessoasCount from '../../../db/FetchPessoas';
-import ProdutosCount from '../../../db/FetchProdutos';
+import PedidosCount from '../../../../db/FetchPedidos'
+import PessoasCount from '../../../../db/FetchPessoas';
+import ProdutosCount from '../../../../db/FetchProdutos';
 
 function UserCard() {
     

@@ -5,11 +5,11 @@ import Hero from './components/Hero/hero';
 import Login from './components/LoginReg/login'
 import Registrar from './components/LoginReg/register'
 import ProtectedRoute from './context/ProtectedRoute';
-import Sidebar from './components/Dashboard/sidebar';
+import Sidebar from './components/Dashboard/Sidebar/sidebar';
 import Home from './components/Dashboard/pages/home/home';
 import PessoasList from './components/Dashboard/pages/pessoas/pessoasList';
-import Pedidos from './components/Dashboard/pages/pedidos';
-import Produtos from './components/Dashboard/pages/produtos';
+import Pedidos from './components/Dashboard/pages/pedidos/pedidos';
+import Produtos from './components/Dashboard/pages/produtos/produtos';
 
 import { AuthContextProvider } from './context/AuthContext';
 import { ErrorContextProvider } from './context/FirebaseErrorContext';

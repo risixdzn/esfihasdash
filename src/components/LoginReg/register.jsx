@@ -1,6 +1,7 @@
 
 import '../../App.css';
 import './loginreg.css'
+import '../../reset.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope , faUser, faLock} from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
