@@ -1,6 +1,6 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { db } from "../../firebase-config";
-import { UserAuth } from "../../context/AuthContext";
+import React, { useEffect, useState } from "react";
+import { db } from "../../../../../firebase-config";
+import { UserAuth } from "../../../../../context/AuthContext";
 import { getDocs, collection } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faUserPlus, faPenToSquare, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
@@ -29,8 +29,6 @@ function DisplayPessoas({setShowModal, setSelectedPessoa,  setSelectedModal, set
         console.log(foto);        
         setShowModal(true);        
     };
-
-    const hasLoaded = useRef(false);
 
     useEffect(() => {
         const getPessoasFromFirebase = async () => {
