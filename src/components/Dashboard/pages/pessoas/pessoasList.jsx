@@ -4,11 +4,11 @@ import Welcome from "../components/Welcome/welcome";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DisplayPessoas from "./DisplayPessoas/DisplayPessoas";
-import ModalDeletePessoas from "./modals/modalDeletePessoa";
+import ModalPessoas from "./modals/ModalPessoas.jsx";
 
 import { useState } from "react";
 
-import { useModal } from "./modals/ModalProvider";
+import { useModal } from "../../../../context/ModalContext";
 
 const PessoasList = () => {
     const { showModal, setShowModal } = useModal(false);
@@ -18,7 +18,7 @@ const PessoasList = () => {
     
     return (
         <div style={showModal ? { Y: "hidden" } : { Y: "scroll" }}>
-            <ModalDeletePessoas
+            <ModalPessoas
                 show={showModal}
                 setShowModal={setShowModal}
                 selectedPessoa={selectedPessoa}

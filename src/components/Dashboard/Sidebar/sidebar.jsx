@@ -13,7 +13,7 @@ import { useEffect, useRef } from 'react'
 
 import 'react-toastify/dist/ReactToastify.css'
 
-import { useModal } from '../pages/pessoas/modals/ModalProvider'
+import { useModal } from '../../../context/ModalContext'
 
 const Sidebar = ({children}) => {
   const menuItem = [
