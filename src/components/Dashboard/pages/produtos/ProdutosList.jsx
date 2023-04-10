@@ -1,7 +1,7 @@
 import React from 'react'
 import Welcome from '../components/Welcome/welcome'
 
-const Produtos = () => {
+const ProdutosList = () => {
   return (
     <div>
         <Welcome action="cadastrou" data="produto(s)." create='Novo produto' type='produtos'/>
@@ -10,4 +10,4 @@ const Produtos = () => {
   )
 }
 
-export default Produtos
+export default ProdutosList

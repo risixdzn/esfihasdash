@@ -28,7 +28,7 @@ const Sidebar = ({children}) => {
       icon: <FontAwesomeIcon icon={faUserGroup} />,
     },
     {
-      path: "/produtos",
+      path: "/produtos/list",
       name: "Produtos",
       icon: <FontAwesomeIcon icon={faShoppingBag} />,
     },
@@ -36,7 +36,7 @@ const Sidebar = ({children}) => {
       path: "/pedidos",
       name: "Pedidos",
       icon: <FontAwesomeIcon icon={faList} />,
-    },
+    },    
   ];
 
   const { logout } = UserAuth();

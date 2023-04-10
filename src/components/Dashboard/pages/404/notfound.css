@@ -1,0 +1,77 @@
+.notfoundcontainer{
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.notfoundcontainer .logo{
+    width: 120px;
+}
+
+.notfoundcontainer ._404{
+    width: 350px;
+    margin-top: 15PX;
+}
+
+.notfoundcontainer h2{
+    font-size: 20px;
+    margin-top: 15PX;
+    color: var(--gray);
+    text-align: center;
+}
+
+.notfoundcontainer p{
+    color: #7e7e7e;
+    text-align: center;
+}
+
+.notfoundcontainer .voltar{
+    background-color: var(--primary);
+    padding: 14px;
+    width: 150px;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    transition: .1s ease-in-out;
+    margin-top: 15px;
+}
+
+.notfoundcontainer .voltar:hover{
+    background-color: var(--primary);    
+    box-shadow: 0 0 0.5em var(--primary);
+}
+
+.notfoundcontainer .voltar:active{
+    scale: 0.95;
+    filter: brightness(0.8);
+    box-shadow: 0 0 0 ;
+}
+
+@media only screen and (max-width: 1000px) {
+    .notfoundcontainer .logo{
+        width: 90px;
+    }
+
+    .notfoundcontainer ._404{
+        width: 200px;
+    }
+
+    .notfoundcontainer h2{
+        font-size: 18px;
+    }
+
+    .notfoundcontainer .voltar{        
+        padding: 12px;
+        width: 120px;        
+        font-size: 17px;       
+        
+    }
+    
+}
