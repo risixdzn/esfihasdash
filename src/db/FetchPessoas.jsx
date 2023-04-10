@@ -5,24 +5,26 @@ import { db } from "../firebase-config";
 
 function PessoasCount({ user }) {
   const [pessoas, setPessoas] = useState(0);
-  
-  useEffect(() => {
+ 
+  useEffect(() => {    
     async function fetchPessoas() {
       const pessoasRef = collection(db, "users", user.uid, "pessoas");
       const snapshot = await getCountFromServer(pessoasRef);
       setPessoas(snapshot.data().count);
     }
-    fetchPessoas();
+    fetchPessoas();    
   }, [user.uid]);
 
 
-  async function updatePessoasCount(user) {
+  async function updatePessoasCount(user) {   
     const pessoasRef = collection(db, "users", user.uid, "pessoas", "count");
     const snapshot = await getCountFromServer(pessoasRef);
-    setPessoas(snapshot.data().count);    
+    setPessoas(snapshot.data().count);      
   } 
 
-  return <span>{pessoas}</span>;
+  return (
+    <span>{pessoas}</span>
+  );
 }
 
 async function updatePessoasCount(user, setPessoas) {

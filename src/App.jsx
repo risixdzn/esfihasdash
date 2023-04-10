@@ -9,12 +9,13 @@ import Sidebar from './components/Dashboard/Sidebar/sidebar';
 import Home from './components/Dashboard/pages/home/home';
 import PessoasList from './components/Dashboard/pages/pessoas/pessoasList';
 import Pedidos from './components/Dashboard/pages/pedidos/pedidos';
-import Produtos from './components/Dashboard/pages/produtos/produtos';
+import ProdutosList from './components/Dashboard/pages/produtos/ProdutosList';
 
 import { AuthContextProvider } from './context/AuthContext';
 import { ErrorContextProvider } from './context/FirebaseErrorContext';
 import { ModalProvider } from './context/ModalContext';
 import NovaPessoa from './components/Dashboard/pages/pessoas/NovaPessoa';
+import NotFound from './components/Dashboard/pages/404/NotFound';
 
 function App() {
   return (  
@@ -35,7 +36,10 @@ function App() {
                       <Route path="list" element={<ProtectedRoute><PessoasList/></ProtectedRoute>}/>
                     </Route>
                     <Route path="/pedidos" element={<ProtectedRoute><Pedidos /></ProtectedRoute>}/>
-                    <Route path="/produtos" element={<ProtectedRoute><Produtos /></ProtectedRoute>}/>                            
+                    <Route path="/produtos">
+                      <Route path="list" element={<ProtectedRoute><ProdutosList/></ProtectedRoute>}/>
+                    </Route>                          
+                    <Route path="*" element={<ProtectedRoute><NotFound/></ProtectedRoute>}/>
                   </Routes>
                 </Sidebar>  
               </ModalProvider>                                
