@@ -13,7 +13,7 @@ import Produtos from './components/Dashboard/pages/produtos/produtos';
 
 import { AuthContextProvider } from './context/AuthContext';
 import { ErrorContextProvider } from './context/FirebaseErrorContext';
-import { ModalProvider } from './components/Dashboard/pages/pessoas/modals/ModalProvider';
+import { ModalProvider } from './context/ModalContext';
 import NovaPessoa from './components/Dashboard/pages/pessoas/NovaPessoa';
 
 function App() {

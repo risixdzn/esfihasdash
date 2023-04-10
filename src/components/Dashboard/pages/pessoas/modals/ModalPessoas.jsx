@@ -13,7 +13,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import { useNavigate } from 'react-router-dom';
 
-function ModalDeletePessoas({ show, setShowModal, selectedPessoa, selectedModal, selectedPFP }) {
+function ModalPessoas({ show, setShowModal, selectedPessoa, selectedModal, selectedPFP }) {
     
     const [ isLoading, setIsLoading ] = useState(false);
     const [ displayErr, setDisplayErr ] = useState(false)
@@ -178,4 +178,4 @@ function ModalDeletePessoas({ show, setShowModal, selectedPessoa, selectedModal,
     }
 }
 
-export default ModalDeletePessoas
+export default ModalPessoas
