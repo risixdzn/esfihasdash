@@ -68,7 +68,8 @@ body{
 
 .pedidos_current{
     color: #fff;
-    font-size: 20px;
+    font-size: 20px;    
+    white-space: nowrap;
 }
 
 .novo_pedido{
@@ -120,10 +121,6 @@ body{
         width: 100%;
         justify-content: flex-end;
         align-items: flex-end;
-    }
-
-    span{
-        white-space: pre-wrap;
     }
 
     .welcome_message{

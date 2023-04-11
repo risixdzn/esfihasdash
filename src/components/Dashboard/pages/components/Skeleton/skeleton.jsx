@@ -1,8 +1,9 @@
 import React from 'react'
+import './skeleton.css'
 
-function Skeleton() {
+function Skeleton(props) {
   return (
-    <div>test</div>
+    <span className='skeletontext' style={{width:props.width, height:props.height}}></span>
   )
 }
 
