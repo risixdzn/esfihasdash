@@ -63,15 +63,30 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 15px;
+    border-radius: 15px;    
 }
+
+@keyframes shine-lines {
+    0% {
+      background-position: -100px;
+    }
+    40%, 100% {
+      background-position: 140px;
+    }
+  }
 
 .picwrapper .pic {
     width: 125px;
     height: 125px;
-    background-color: var(--dark);
-    border-radius: 50%;
+    background-color: var(--dark);    
     object-fit: cover;
+    background-color: #3b3b3b;        
+    border-radius: 50%;
+    animation: shine-lines 1s infinite linear;
+    background-image: linear-gradient(90deg, #333333 0px, #5c5c5c 40px, #333333 80px);
+    background-size: 600px;  
+    background-clip:content-box;
+    overflow: hidden;
 }
 
 .picwrapper .pic img {
