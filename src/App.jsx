@@ -16,6 +16,7 @@ import { ErrorContextProvider } from './context/FirebaseErrorContext';
 import { ModalProvider } from './context/ModalContext';
 import NovaPessoa from './components/Dashboard/pages/pessoas/NovaPessoa';
 import NotFound from './components/Dashboard/pages/404/NotFound';
+import NovoProduto from './components/Dashboard/pages/produtos/NovoProduto';
 
 function App() {
   return (  
@@ -36,8 +37,9 @@ function App() {
                       <Route path="list" element={<ProtectedRoute><PessoasList/></ProtectedRoute>}/>
                     </Route>
                     <Route path="/pedidos" element={<ProtectedRoute><Pedidos /></ProtectedRoute>}/>
-                    <Route path="/produtos">
+                    <Route path="/produtos">                     
                       <Route path="list" element={<ProtectedRoute><ProdutosList/></ProtectedRoute>}/>
+                      <Route path="new" element={<ProtectedRoute><NovoProduto/></ProtectedRoute>}/>
                     </Route>                          
                     <Route path="*" element={<ProtectedRoute><NotFound/></ProtectedRoute>}/>
                   </Routes>

@@ -14,7 +14,12 @@ function PedidosCount({ user }) {
     async function fetchPedidos() {
       const pedidosRef = collection(db, "users", user.uid, "pedidos");
       const snapshot = await getCountFromServer(pedidosRef);
-      setPedidos(snapshot.data().count - 1);
+      const countedSnapshot = snapshot.data().count;
+      if(countedSnapshot === 0){
+        setPedidos(countedSnapshot);
+      } else{
+        setPedidos(countedSnapshot - 1)
+      }  
       setLoading(false);
     }
     fetchPedidos();

@@ -13,7 +13,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 import { useNavigate } from 'react-router-dom';
 
-function ModalPessoas({ show, setShowModal, selectedPessoa, selectedModal, selectedPFP }) {
+function ModalProdutos({ show, setShowModal, selectedProduto, selectedModal, selectedPFP }) {
     
     const [ isLoading, setIsLoading ] = useState(false);
     const [ displayErr, setDisplayErr ] = useState(false)
@@ -27,77 +27,77 @@ function ModalPessoas({ show, setShowModal, selectedPessoa, selectedModal, selec
     const { user } = UserAuth();    
     const navigate = useNavigate();
 
-    // criarpessoa
-    const [ pessoaName, setPessoaName] = useState("");
-    const [ pessoaPic, setPessoaPic] = useState("");
+    // criarproduto
+    const [ produtoName, setProdutoName] = useState("");
+    const [ produtoPic, setProdutoPic] = useState("");
     
-    async function criarPessoa(e) {
+    async function criarProduto(e) {
         e.preventDefault();
         setIsLoading(true);
         
-        const criaPessoa = await setDoc(doc(db, "users", user.uid, "pessoas", pessoaName),{
+        const criaProduto = await setDoc(doc(db, "users", user.uid, "produtos", produtoName),{
           pedidos: 0,
-          foto: pessoaPic,   
-          nome: pessoaName,   
+          foto: produtoPic,   
+          nome: produtoName,   
         });  
-        navigate("/pessoas/list");                
+        navigate("/produtos/list");                
         // await new Promise(resolve => setTimeout(resolve, 1000)); // aguarda 1 segundo para a página recarregar completamente       
         setIsLoading(false);    
-        localStorage.setItem("createdPessoa", pessoaName); // Armazena o nome da pessoa deletada no Local Storage 
+        localStorage.setItem("createdProduto", produtoName); // Armazena o nome da produto deletada no Local Storage 
         window.location.reload();
       }
     
       useEffect(()=>{
-        const createdPessoa = localStorage.getItem("createdPessoa");//puxa o item do localstorage
-        if (createdPessoa) {
-            toast.success("Pessoa " + createdPessoa + " criada.");
-            localStorage.removeItem("createdPessoa"); // Remove a informação da notificação do Local Storage
+        const createdProduto = localStorage.getItem("createdProduto");//puxa o item do localstorage
+        if (createdProduto) {
+            toast.success("Produto " + createdProduto + " criado.");
+            localStorage.removeItem("createdProduto"); // Remove a informação da notificação do Local Storage
         }
       },[user.uid])
 
-    // deletarpessoa
-    async function deleteSelectedPessoa(){
-        //alert(deletingPessoa);
-        await deleteDoc(doc(db, "users", user.uid, "pessoas", selectedPessoa));           
+    // deletarproduto
+    async function deleteSelectedProduto(){
+        //alert(deletingProduto);
+        await deleteDoc(doc(db, "users", user.uid, "produtos", selectedProduto));           
         handleCloseModal();  
-        localStorage.setItem("deletedPessoa", selectedPessoa); // Armazena o nome da pessoa deletada no Local Storage
+        localStorage.setItem("deletedProduto", selectedProduto); // Armazena o nome da produto deletada no Local Storage
         window.location.reload(true);  
     }       
     useEffect(()=>{
-        const deletedPessoa = localStorage.getItem("deletedPessoa");//puxa o item do localstorage
-        if (deletedPessoa) {
-            toast.success("Pessoa " + deletedPessoa + " deletada.");
-            localStorage.removeItem("deletedPessoa"); // Remove a informação da notificação do Local Storage
+        const deletedProduto = localStorage.getItem("deletedProduto");//puxa o item do localstorage
+        if (deletedProduto) {
+            toast.success("Produto " + deletedProduto + " deletado.");
+            localStorage.removeItem("deletedProduto"); // Remove a informação da notificação do Local Storage
         }
     },[user.uid])    
 
-    //editar pessoa
-    const [ newPessoaName , setNewPessoaName ] = useState("");
-    const [ newPessoaPFP , setNewPessoaPFP ] = useState("");    
+    //editar produto
+    const [ newProdutoName , setNewProdutoName ] = useState("");
+    const [ newProdutoPFP , setNewProdutoPFP ] = useState("");    
         
-    async function editSelectedPessoa(e){
+    async function editSelectedProduto(e){
         e.preventDefault();
         setIsLoading(true);   
-        if (newPessoaName !== ""){
+        if (newProdutoName !== ""){
             setDisplayErr(false);
-            await deleteDoc(doc(db, "users", user.uid, "pessoas", selectedPessoa));      
-            const criaPessoa = await setDoc(doc(db, "users", user.uid, "pessoas", newPessoaName),{
+            await deleteDoc(doc(db, "users", user.uid, "produtos", selectedProduto));      
+            const criaProduto = await setDoc(doc(db, "users", user.uid, "produtos", newProdutoName),{
                 pedidos: 0,
-                foto: (newPessoaPFP !== "" ? newPessoaPFP : selectedPFP),
-                nome: (newPessoaName !== "" ? newPessoaName : selectedPessoa),
+                foto: (newProdutoPFP !== "" ? newProdutoPFP : selectedPFP),
+                nome: (newProdutoName !== "" ? newProdutoName : selectedProduto),
             });     
             handleCloseModal();            
-            localStorage.setItem("editedPessoa", selectedPessoa); // Armazena o nome da pessoa deletada no Local Storage
+            localStorage.setItem("editedProduto", selectedProduto); // Armazena o nome da produto deletada no Local Storage
             window.location.reload(true);  
         } else{
             setDisplayErr(true)
         }          
     }
     useEffect(()=>{
-        const editedPessoa = localStorage.getItem("editedPessoa");//puxa o item do localstorage
-        if (editedPessoa) {
-            toast.success("Pessoa " + editedPessoa + " editada.");
-            localStorage.removeItem("editedPessoa"); // Remove a informação da notificação do Local Storage
+        const editedProduto = localStorage.getItem("editedProduto");//puxa o item do localstorage
+        if (editedProduto) {
+            toast.success("Produto " + editedProduto + " editado.");
+            localStorage.removeItem("editedProduto"); // Remove a informação da notificação do Local Storage
         }
     },[user.uid])  
 
@@ -108,13 +108,13 @@ function ModalPessoas({ show, setShowModal, selectedPessoa, selectedModal, selec
             return (
                 <div className='modalcpn' style={ show ?{display:"flex"} : {display:"none"}}>
                     <div className="modal">
-                        <h1 className='title'>Você está deletando: <br></br><span className='pessoaname'>{selectedPessoa}</span></h1>
+                        <h1 className='title'>Você está deletando: <br></br><span className='pessoaname'>{selectedProduto}</span></h1>
                         <div className="divisoria"></div>
-                        <p className='desc'>Deletar uma pessoa é uma ação irreversível e exclui todos os dados relacionados a mesma.</p>
+                        <p className='desc'>Deletar uma produto é uma ação irreversível e exclui todos os dados relacionados a mesma.</p>
                         <h2 className='question'>Deseja continuar?</h2>
                         <div className='actions'>
                             <button className='cancelbtn' onClick={handleCloseModal}>Cancelar</button>
-                            <button className='acceptbtn' onClick={deleteSelectedPessoa}>Excluir <FontAwesomeIcon icon={faTrash}/></button>
+                            <button className='acceptbtn' onClick={deleteSelectedProduto}>Excluir <FontAwesomeIcon icon={faTrash}/></button>
                         </div>
                     </div>
                 </div>
@@ -125,7 +125,7 @@ function ModalPessoas({ show, setShowModal, selectedPessoa, selectedModal, selec
             return (
                 <div className='modalcpn' style={ show ?{display:"flex"} : {display:"none"}}>
                     <div className="modal">
-                        <h1 className='title'>Você está editando: <br></br><span className='pessoaname'>{selectedPessoa}</span></h1>
+                        <h1 className='title'>Você está editando: <br></br><span className='pessoaname'>{selectedProduto}</span></h1>
                         <div className="divisoria"></div>                         
                         <div className='imgplaceholder'>
                             <img src={selectedPFP !== "" ? selectedPFP : "../assets/img/user.png"} alt=''></img>
@@ -134,7 +134,7 @@ function ModalPessoas({ show, setShowModal, selectedPessoa, selectedModal, selec
                             <div className='inputcontainer' style={{marginTop:"30px"}}>              
                                 <input type="text" id="text" name="text" placeholder='Nome*' autoFocus={false} 
                                     onChange={(event) =>{
-                                    setNewPessoaName(event.target.value)
+                                    setNewProdutoName(event.target.value)
                                 }}>       
                                 </input>
                                 <label className='control-label' htmlFor="text"><FontAwesomeIcon icon={faUser}/></label>
@@ -142,7 +142,7 @@ function ModalPessoas({ show, setShowModal, selectedPessoa, selectedModal, selec
                             <div className='inputcontainer'>              
                                 <input type="url" id="url" name="url" placeholder='URL da foto' autoFocus={false} 
                                     onChange={(event) =>{
-                                    setNewPessoaPFP(event.target.value);
+                                    setNewProdutoPFP(event.target.value);
                                 }}>       
                                 </input>
                                 <label className='control-label' htmlFor="url"><FontAwesomeIcon icon={faImage}/></label>
@@ -152,7 +152,7 @@ function ModalPessoas({ show, setShowModal, selectedPessoa, selectedModal, selec
                                              
                         <div className='actions' style={{marginTop:"45px"}}>
                             <button className='cancelbtn' onClick={handleCloseModal}>Voltar</button>
-                            <button className='acceptbtn orange' onClick={editSelectedPessoa}>Salvar <FontAwesomeIcon icon={faFloppyDisk}/></button>
+                            <button className='acceptbtn orange' onClick={editSelectedProduto}>Salvar <FontAwesomeIcon icon={faFloppyDisk}/></button>
                         </div>
                     </div>
                 </div>
@@ -163,4 +163,4 @@ function ModalPessoas({ show, setShowModal, selectedPessoa, selectedModal, selec
     }
 }
 
-export default ModalPessoas
+export default ModalProdutos

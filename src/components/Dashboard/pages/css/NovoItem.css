@@ -10,7 +10,7 @@
     justify-content: center;
 }
 
-.novapessoa .title{
+.novoitem .title{
     font-size: 30px;
     font-weight: 600;
     color: #fff;
@@ -25,7 +25,7 @@
     position: relative;
 }
 
-.novapessoa {
+.novoitem {
     background-color: var(--dark);
     display: flex;
     align-items: center;
@@ -36,7 +36,7 @@
     border-radius: 10px;
 }
 
-.novapessoa label {
+.novoitem label {
     left: 20px;
     top: 18px;
     position: absolute;
@@ -44,7 +44,7 @@
     transition: 0.1s ease-in-out;
 }
 
-.novapessoa input{
+.novoitem input{
     width: 325px;
     padding: 15px 55px;
     border-radius: 5px;
@@ -55,11 +55,11 @@
     color: #fff;
 }
 
-.novapessoa  input::placeholder{
+.novoitem  input::placeholder{
     color: var(--input-text);
 }
 
-.novapessoa  input:focus{
+.novoitem  input:focus{
     border: 2px solid var(--primary);
 }
 
@@ -67,7 +67,7 @@ input:focus + .control-label {
     color: var(--primary);
 }
 
-.novapessoa  input:disabled{
+.novoitem  input:disabled{
     border: 2px solid #0f0f0f;
     background-color: #0f0f0f;
     color: var(--input-text);
@@ -96,7 +96,7 @@ input:focus + .control-label {
     filter: brightness(0.8);
 }
 
-.novapessoa  p{
+.novoitem p{
     color: var(--lighter);
 }
 
@@ -111,13 +111,13 @@ input:focus + .control-label {
 }
 
 @media only screen and (max-width: 767px) {
-    .novapessoa  input{
+    .novoitem  input{
         width: 100%;
         padding: 10px 40px;
         font-size: 14px;
     }
 
-    .novapessoa  label {
+    .novoitem  label {
         left: 17px;
         top: 12px;
         font-size: 14px;
@@ -130,15 +130,15 @@ input:focus + .control-label {
         max-width: 260px;
     }
 
-    .novapessoa  p{
+    .novoitem  p{
         font-size: 12px;
     }
 
-    .novapessoa {
+    .novoitem {
         padding: 75px 25px;
     }
 
-    .novapessoa  .title{
+    .novoitem  .title{
         font-size: 20px;
     }
 }
