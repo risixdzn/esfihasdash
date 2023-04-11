@@ -47,6 +47,7 @@
 
 .user_card h2{
     color: var(--gray);
+    white-space: nowrap;
 }
 
 
