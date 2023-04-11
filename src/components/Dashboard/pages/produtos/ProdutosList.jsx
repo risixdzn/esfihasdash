@@ -1,13 +1,45 @@
-import React from 'react'
-import Welcome from '../components/Welcome/welcome'
+import React from "react";
+import Welcome from "../components/Welcome/welcome";
 
-const ProdutosList = () => {
-  return (
-    <div>
-        <Welcome action="cadastrou" data="produto(s)." create='Novo produto' type='produtos'/>
-        <h1 style={{fontSize: 50, fontWeight: 600, color: "white"}}>Produtos</h1>
-    </div>
-  )
-}
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import DisplayProdutos from "./DisplayProdutos/DisplayProdutos";
+import ModalProdutos from "./modals/ModalProdutos.jsx";
 
-export default ProdutosList
+import { useState } from "react";
+
+import { useModal } from "../../../../context/ModalContext";
+
+const PessoasList = () => {
+    const { showModal, setShowModal } = useModal(false);
+    const { selectedModal, setSelectedModal } = useModal("");
+    const [ selectedProduto, setSelectedProduto] = useState("");
+    const [ selectedPFP, setSelectedPFP ] = useState("");
+    
+    return (
+        <div style={showModal ? { Y: "hidden" } : { Y: "scroll" }}>
+            <ModalProdutos
+                show={showModal}
+                setShowModal={setShowModal}
+                selectedProduto={selectedProduto}
+                selectedModal={selectedModal}
+                selectedPFP={selectedPFP}
+            />
+            <Welcome
+                action="cadastrou"
+                data="produto(s)."
+                create="Novo produto"
+                type="produtos"
+            />
+            <DisplayProdutos
+                setShowModal={setShowModal}
+                setSelectedProduto={setSelectedProduto}
+                setSelectedModal={setSelectedModal}
+                setSelectedPFP={setSelectedPFP}
+            />
+            <ToastContainer theme="colored" />
+        </div>
+    );
+};
+
+export default PessoasList;

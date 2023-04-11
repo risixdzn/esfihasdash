@@ -37,15 +37,16 @@ export const AuthContextProvider = ({ children }) => {
         nome: user.displayName,
     });
     //alert("pessoascriado"); 
-    await setDoc(doc(db, "users", user.uid, "produtos", "placeholder"),{
-        info: null,
+    await setDoc(doc(db, "users", user.uid, "produtos", "Carne"),{
+        nome: "Calabresa",
+        foto: "https://www.receiteria.com.br/wp-content/uploads/receitas-de-esfiha-de-carne-1.jpg"
     });
     //alert("produtoscriado"); 
     await setDoc(doc(db, "users", user.uid, "pedidos", "placeholder"),{
         info: null,
     });    
-    //alert("pedidoscriado");      
-  }            
+    //alert("pedidoscriado");         
+  }  
 
   const register = async (registerEmail, registerPassword, displayName) =>{
     try{

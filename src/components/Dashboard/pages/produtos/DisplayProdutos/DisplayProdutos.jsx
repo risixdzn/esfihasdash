@@ -8,58 +8,58 @@ import { Link } from "react-router-dom";
 
 import '../../css/displaycpn.css'
 
-function DisplayPessoas({setShowModal, setSelectedPessoa,  setSelectedModal, setSelectedPFP}) {
+function DisplayProdutos({setShowModal, setSelectedProduto,  setSelectedModal, setSelectedPFP}) {
     const [loading, setIsloading] = useState(true);
-    const [showPessoas, setShowPessoas] = useState([]);    
+    const [showProdutos, setShowProdutos] = useState([]);    
     
     const { user } = UserAuth();
 
     const handleDelete = (key) => {
         setSelectedModal("delete");
-        setSelectedPessoa(key);  
+        setSelectedProduto(key);  
         console.log(key);        
         setShowModal(true);        
     };
 
     const handleEdit = (key, foto) => {
         setSelectedModal("edit");
-        setSelectedPessoa(key);  
+        setSelectedProduto(key);  
         setSelectedPFP(foto);
         console.log(key);
         console.log(foto);        
-        setShowModal(true);        
+        setShowModal(true);  
     };
 
     useEffect(() => {
-        const getPessoasFromFirebase = async () => {
+        const getProdutosFromFirebase = async () => {
             setIsloading(true);
-            const pessoasCollection = collection(db, "users", user.uid, "pessoas");
-            const pessoasSnapshot = await getDocs(pessoasCollection);
-            const pessoasList = pessoasSnapshot.docs.map(doc => ({ ...doc.data(), key: doc.id }));   
-            setShowPessoas(prevState => [...prevState, ...pessoasList]);        
-            setShowPessoas(pessoasList); // Limpar o estado antes de adicionar as pessoas novamente
+            const produtosCollection = collection(db, "users", user.uid, "produtos");
+            const produtosSnapshot = await getDocs(produtosCollection);
+            const produtosList = produtosSnapshot.docs.map(doc => ({ ...doc.data(), key: doc.id }));   
+            setShowProdutos(prevState => [...prevState, ...produtosList]);        
+            setShowProdutos(produtosList); // Limpar o estado antes de adicionar as produtos novamente
             setIsloading(false);                
         };
 
-        getPessoasFromFirebase();
+        getProdutosFromFirebase();
         // if (!hasLoaded.current) {
         //     hasLoaded.current = true;
-        //     getPessoasFromFirebase();
+        //     getProdutosFromFirebase();
         // }
-    }, [user.uid, setShowPessoas]);
+    }, [user.uid, setShowProdutos]);
         
     //FILTRO DE PESSOAS
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
 
     useEffect(() => {
-        //constante resultados filtra as showpessoas para as que incluem o termo da barra de pesquisa (parando case sensitive )
-        const results = showPessoas.filter(pessoa =>
-            pessoa.nome.toLowerCase().includes(searchTerm.toLowerCase())
+        //constante resultados filtra as showprodutos para as que incluem o termo da barra de pesquisa (parando case sensitive )
+        const results = showProdutos.filter(produto =>
+            produto.nome.toLowerCase().includes(searchTerm.toLowerCase())
         );
         //seta os resultados para o valor filtrado
         setSearchResults(results);
-    }, [showPessoas, searchTerm, user.uid]); //roda o código toda vez que as pessoas forem alteradas, ou o termo for alterado, ou haja uma alteração no usuario   
+    }, [showProdutos, searchTerm, user.uid]); //roda o código toda vez que as produtos forem alteradas, ou o termo for alterado, ou haja uma alteração no usuario   
     
     if (loading){
         return (
@@ -71,7 +71,7 @@ function DisplayPessoas({setShowModal, setSelectedPessoa,  setSelectedModal, set
 
     return (
         <div className="itemcontainer">
-          <h1 className="title">Pessoas <Link className="adduser" to="/pessoas/new"><FontAwesomeIcon className="addusericon" icon={faUserPlus}/></Link></h1>
+          <h1 className="title">Produtos <Link className="adduser" to="/produtos/new"><FontAwesomeIcon className="addusericon" icon={faUserPlus}/></Link></h1>
           <div className="searchinput">
             <div className="searchBar">
                 <input type="text" placeholder="Pesquisar" maxlength="20" value={searchTerm} className="pesquisainput" 
@@ -86,29 +86,29 @@ function DisplayPessoas({setShowModal, setSelectedPessoa,  setSelectedModal, set
           <div className="itemgrid">
             {/* se o resultado da pesquisa for difernete de 0 */}
             {searchResults.length !== 0 ? (
-                // mapeie cada pessoa para um div
-                searchResults.map(pessoa => (
-                    <div className="item" key={pessoa.nome} id={pessoa.nome}>
+                // mapeie cada produto para um div
+                searchResults.map(produto => (
+                    <div className="item" key={produto.nome} id={produto.nome}>
                     <div className="picwrapper">
                         <div className="pic">
-                            <img src={pessoa.foto !== "" ? pessoa.foto : "../assets/img/user.png"} alt="pic" />
+                            <img src={produto.foto !== "" ? produto.foto : "../assets/img/user.png"} alt="pic" />
                         </div>
                     </div>
                     <div className="info">
-                        <h1 className="name" id={pessoa.nome} key={pessoa.nome}>{pessoa.nome}</h1>
+                        <h1 className="name" id={produto.nome} key={produto.nome}>{produto.nome}</h1>
                         <button>
-                            <FontAwesomeIcon icon={faTrashCan} className="delbtn" key={pessoa.nome} onClick={() => handleDelete(pessoa.nome)} />
+                            <FontAwesomeIcon icon={faTrashCan} className="delbtn" key={produto.nome} onClick={() => handleDelete(produto.nome)} />
                         </button>
                         <button>
-                            <FontAwesomeIcon icon={faPenToSquare} className="editbtn" key={pessoa.nome} onClick={() => handleEdit(pessoa.nome, pessoa.foto)} />
+                            <FontAwesomeIcon icon={faPenToSquare} className="editbtn" key={produto.nome} onClick={() => handleEdit(produto.nome, produto.foto)} />
                         </button>
                     </div>
                 </div>
               ))
-              //se nao, "nenhuma pessoa encontrada"
+              //se nao, "nenhuma produto encontrada"
             ) : (
-                <div className="pessoasgrid" style={{flexDirection:"column"}}>
-                    <h1 className="termnotfound">Nenhuma pessoa de nome "{searchTerm}" encontrada.</h1>
+                <div className="itemgrid" style={{flexDirection:"column"}}>
+                    <h1 className="termnotfound">Nenhuma produto de nome "{searchTerm}" encontrada.</h1>
                     <h2 className="trysearching">Tente procurar por outro termo.</h2>
                 </div>              
             )}
@@ -117,4 +117,4 @@ function DisplayPessoas({setShowModal, setSelectedPessoa,  setSelectedModal, set
       );
 }
 
-export default DisplayPessoas;
+export default DisplayProdutos;
