@@ -15,11 +15,7 @@ function ProdutosCount({ user }) {
       const produtosRef = collection(db, "users", user.uid, "produtos");
       const snapshot = await getCountFromServer(produtosRef);
       const countedSnapshot = snapshot.data().count;
-      if(countedSnapshot === 0){
-        setProdutos(countedSnapshot);
-      } else{
-        setProdutos(countedSnapshot - 1)
-      }  
+      setProdutos(countedSnapshot);
       setLoading(false);
     }
     fetchProdutos();    

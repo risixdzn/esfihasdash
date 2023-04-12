@@ -22,7 +22,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const navigate = useNavigate(); 
 
-  async function criarDb(user) {
+  async function criarDb(user) {    
     //alert(user.uid);    
     //alert(user.displayName);
     await setDoc(doc(db, "users", user.uid), {
@@ -37,15 +37,28 @@ export const AuthContextProvider = ({ children }) => {
         nome: user.displayName,
     });
     //alert("pessoascriado"); 
-    await setDoc(doc(db, "users", user.uid, "produtos", "Carne"),{
+    await setDoc(doc(db, "users", user.uid, "produtos", "Calabresa"),{
         nome: "Calabresa",
-        foto: "https://www.receiteria.com.br/wp-content/uploads/receitas-de-esfiha-de-carne-1.jpg"
+        foto: "https://www.webfx.com/wp-content/uploads/2021/10/generic-image-placeholder.png"
+    });
+    await setDoc(doc(db, "users", user.uid, "produtos", "Carne"),{
+      nome: "Carne",
+      foto: "https://www.webfx.com/wp-content/uploads/2021/10/generic-image-placeholder.png"
+    });
+    await setDoc(doc(db, "users", user.uid, "produtos", "Queijo"),{
+      nome: "Queijo",
+      foto: "https://www.webfx.com/wp-content/uploads/2021/10/generic-image-placeholder.png"
+    });
+    await setDoc(doc(db, "users", user.uid, "produtos", "Frango"),{
+      nome: "Frango",
+      foto: "https://www.webfx.com/wp-content/uploads/2021/10/generic-image-placeholder.png"
     });
     //alert("produtoscriado"); 
     await setDoc(doc(db, "users", user.uid, "pedidos", "placeholder"),{
         info: null,
     });    
-    //alert("pedidoscriado");         
+    //alert("pedidoscriado"); 
+    window.location.reload();
   }  
 
   const register = async (registerEmail, registerPassword, displayName) =>{

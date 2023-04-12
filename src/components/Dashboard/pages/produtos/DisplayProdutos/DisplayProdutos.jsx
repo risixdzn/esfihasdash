@@ -79,9 +79,9 @@ function DisplayProdutos({setShowModal, setSelectedProduto,  setSelectedModal, s
                     setSearchTerm(event.target.value)} 
                 />
                 <label className='control-label' htmlFor="text"><FontAwesomeIcon icon={faMagnifyingGlass}/></label>
-            </div>
-            
-          </div>          
+            </div>            
+          </div>  
+          <p className="produtosinfo">*Os produtos abaixo são produtos padrão. É possivel editar, deletar ou criar novos através da interface.</p>        
           
           <div className="itemgrid">
             {/* se o resultado da pesquisa for difernete de 0 */}
@@ -91,7 +91,7 @@ function DisplayProdutos({setShowModal, setSelectedProduto,  setSelectedModal, s
                     <div className="item" key={produto.nome} id={produto.nome}>
                     <div className="picwrapper">
                         <div className="pic">
-                            <img src={produto.foto !== "" ? produto.foto : "../assets/img/user.png"} alt="pic" />
+                            <img src={produto.foto !== "" ? produto.foto : "../assets/img/esfihaicon.png"} alt="pic" />
                         </div>
                     </div>
                     <div className="info">

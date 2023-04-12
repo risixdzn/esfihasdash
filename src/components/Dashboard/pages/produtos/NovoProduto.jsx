@@ -27,7 +27,6 @@ function NovoProduto() {
     
     //criaproduto
     await setDoc(doc(db, "users", user.uid, "produtos", produtoName),{
-      pedidos: 0,
       foto: produtoPic,   
       nome: produtoName,   
     });  
