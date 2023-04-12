@@ -216,6 +216,12 @@ input:focus + .control-label {
     text-align: center;
 }
 
+.produtosinfo{
+    color: var(--input-text);
+    text-align: center;
+    margin-top: 15px;
+}
+
 @media only screen and (max-width: 1000px) {
     .itemcontainer {
         padding: 15px;

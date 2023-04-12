@@ -9,6 +9,7 @@ import { useState } from "react";
 import { motion } from 'framer-motion';
 
 import { UserAuth } from '../../context/AuthContext';
+import { ToastContainer } from 'react-toastify';
 
 function Registrar() {
 
@@ -87,6 +88,7 @@ function Registrar() {
           <h1>Registre-se<br></br>na plataforma.</h1>
         </motion.div>
       </div>
+      <ToastContainer theme="colored" limit="2"/>
     </div>
   );
 }
