@@ -6,12 +6,10 @@
 </p>
 <div align="center">
 
-## **Deployment**
+### **Deployment**
 
 [![deployment](https://img.shields.io/badge/EsfihasDash-000?style=for-the-badge&logo=vercel&logoColor=white)](https://esfihasdash.vercel.app/)
 </div>
-
-<hr>
 
 ## 🚀 **Stack**
 
