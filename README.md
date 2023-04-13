@@ -1,17 +1,18 @@
-<p align='center'>
-    <a href="https://esfihasdash.vercel.app">
-        <img src='https://esfihasdash.vercel.app/assets/svg/esfihasdash-logo.svg' width="450px">
-    </a>
-    <br></br>
-    <img src ="https://i.ibb.co/31CF94L/imagem-2023-02-14-212157911-min.png"/>
-    <div align='center'>
-        <img src ="https://img.shields.io/badge/React-2289e3?style=for-the-badge&logo=react&logoColor=white"/>
-        <img src ="https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black"/>
-        <img src ="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white"/>
-        <img src='https://img.shields.io/badge/Framer-black?style=for-the-badge&logo=framer&logoColor=blue'/>
-        <h4>Avaliable in: <a href='https://esfihasdash.vercel.app'>esfihasdash.vercel.app<a></h3>
-            <h1>WIP</h1>
-    </div>
+<a href="https://esfihasdash.vercel.app">
+    <img src ="./public/assets/img/readmeimg.png"/>
+</a>    
+<div align='center'>
+    <img src ="https://img.shields.io/badge/React-2289e3?style=for-the-badge&logo=react&logoColor=white"/>
+    <img src ="https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black"/>
+    <img src='https://img.shields.io/badge/Framer-black?style=for-the-badge&logo=framer&logoColor=blue'/>     
+    <p><b>BR</b>: "EsfihasDash" é um sistema de gerenciamento de clientes, pedidos e produtos, baseado em uma aplicação CRUD. / <b>EN</b>: "EsfihasDash", a CRUD based application that can manage clients, orders and products as a webapp.</p>           
+    <h3><b><a href='https://esfihasdash.vercel.app'>>>Avaliable here<<<a></b></h3>
+</div>
+<div>
+
+
+    
+    
 
 
 
