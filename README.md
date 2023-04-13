@@ -9,12 +9,3 @@
     <h3><b><a href='https://esfihasdash.vercel.app'>>>Avaliable here<<<a></b></h3>
 </div>
 <div>
-
-
-    
-    
-
-
-
-
-
