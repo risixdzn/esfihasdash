@@ -39,19 +39,19 @@ export const AuthContextProvider = ({ children }) => {
     //alert("pessoascriado"); 
     await setDoc(doc(db, "users", user.uid, "produtos", "Calabresa"),{
         nome: "Calabresa",
-        foto: "https://www.webfx.com/wp-content/uploads/2021/10/generic-image-placeholder.png"
+        foto: "https://raw.githubusercontent.com/risixdzn/esfihasdash/test/public/assets/img/esfihas/calabresa.png"
     });
     await setDoc(doc(db, "users", user.uid, "produtos", "Carne"),{
       nome: "Carne",
-      foto: "https://www.webfx.com/wp-content/uploads/2021/10/generic-image-placeholder.png"
+      foto: "https://raw.githubusercontent.com/risixdzn/esfihasdash/test/public/assets/img/esfihas/carne.png"
     });
     await setDoc(doc(db, "users", user.uid, "produtos", "Queijo"),{
       nome: "Queijo",
-      foto: "https://www.webfx.com/wp-content/uploads/2021/10/generic-image-placeholder.png"
+      foto: "https://raw.githubusercontent.com/risixdzn/esfihasdash/test/public/assets/img/esfihas/queijo.png"
     });
     await setDoc(doc(db, "users", user.uid, "produtos", "Frango"),{
       nome: "Frango",
-      foto: "https://www.webfx.com/wp-content/uploads/2021/10/generic-image-placeholder.png"
+      foto: "https://raw.githubusercontent.com/risixdzn/esfihasdash/test/public/assets/img/esfihas/frango.png"
     });
     //alert("produtoscriado"); 
     await setDoc(doc(db, "users", user.uid, "pedidos", "placeholder"),{

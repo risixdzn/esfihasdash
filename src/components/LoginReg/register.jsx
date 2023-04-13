@@ -23,11 +23,13 @@ function Registrar() {
   const handleRegister = async (e) => {    
     setIsLoading(true);
     try {      
-      await register(registerEmail, registerPassword, displayName); 
+      await register(registerEmail, registerPassword, displayName);       
     } catch (error) {
       console.log(error.message);
       setIsLoading(false);
-    }        
+    } finally{
+      setIsLoading(false);
+    }       
   };  
   
   return (
