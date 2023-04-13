@@ -10,9 +10,6 @@
 
 [![deployment](https://img.shields.io/badge/EsfihasDash-000?style=for-the-badge&logo=vercel&logoColor=white)](https://esfihasdash.vercel.app/)
 </div>
-<<<<<<< Updated upstream
-<div>
-=======
 
 <hr>
 
@@ -89,4 +86,3 @@ Start the server
 ```
 
 
->>>>>>> Stashed changes
