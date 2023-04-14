@@ -33,7 +33,7 @@ const Sidebar = ({children}) => {
       icon: <FontAwesomeIcon icon={faShoppingBag} />,
     },
     {
-      path: "/pedidos",
+      path: "/pedidos/list",
       name: "Pedidos",
       icon: <FontAwesomeIcon icon={faList} />,
     },    
