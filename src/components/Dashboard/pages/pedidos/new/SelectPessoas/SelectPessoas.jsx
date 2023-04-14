@@ -5,27 +5,63 @@ import { UserAuth } from '../../../../../../context/AuthContext'
 import { useState, useEffect } from 'react'
 import { faMagnifyingGlass, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { usePedido } from '../../../../../../context/PedidoContext'
+import { useNavigate } from 'react-router-dom'
 
 function SelectPessoas() {
   const { user } = UserAuth();  
   const { showPessoas , isLoading } = useGetPessoas(user);
 
-//FILTRO DE PESSOAS
-const [searchTerm, setSearchTerm] = useState("");
-const [searchResults, setSearchResults] = useState([]);
+  //FILTRO DE PESSOAS
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
 
-useEffect(() => {
-    //constante resultados filtra as showpessoas para as que incluem o termo da barra de pesquisa (parando case sensitive )
-    const results = showPessoas.filter(pessoa =>
-        pessoa.nome.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    //seta os resultados para o valor filtrado
-    setSearchResults(results);
-}, [showPessoas, searchTerm, user.uid]); //roda o código toda vez que as pessoas forem alteradas, ou o termo for alterado, ou haja uma alteração no usuario   
+  useEffect(() => {
+      //constante resultados filtra as showpessoas para as que incluem o termo da barra de pesquisa (parando case sensitive )
+      const results = showPessoas.filter(pessoa =>
+          pessoa.nome.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      //seta os resultados para o valor filtrado
+      setSearchResults(results);
+  }, [showPessoas, searchTerm, user.uid]); //roda o código toda vez que as pessoas forem alteradas, ou o termo for alterado, ou haja uma alteração no usuario     
+
+  const { pedido, updatePedido } = usePedido();
+
+  const handleCheckboxChange = (event) => {    
+    const nomePessoa = event.target.dataset.nome;
+
+    if (event.target.checked) {      
+      // Adiciona o cliente ao array
+      const novoCliente = {
+        [nomePessoa]: {
+          nome: nomePessoa,
+          itens: {},
+        },
+      };
+      updatePedido({ clientes: [...pedido.clientes, novoCliente] });
+    } else {
+      // Remove o cliente do array
+      const novoArrayClientes = pedido.clientes.filter(
+        (cliente) => !cliente[nomePessoa]
+      );
+      updatePedido({ clientes: novoArrayClientes });
+    }
+  };
+
+  useEffect(() => {
+    console.log("Pedido atualizado:", pedido);
+  }, [pedido]);
+
+  const navigate = useNavigate();
+
+  const handleVoltar = () => {
+    updatePedido({ clientes: [] });
+    navigate("/pedidos/list")
+  }
 
   return (
       <>
-        <button className='voltarbtn'><FontAwesomeIcon icon={faArrowLeft}/> Voltar</button>
+        <button className='voltarbtn' onClick={(handleVoltar)}><FontAwesomeIcon icon={faArrowLeft}/> Voltar</button>
           <h1 className="title">Quem irá pedir?</h1>
           <div className="searchinput" style={{marginTop:"15px"}}>
             <div className="searchBar">
@@ -53,7 +89,7 @@ useEffect(() => {
                           </div>
                           <div className="pessoaname">{pessoa.nome}</div>
                       </div>
-                      <input type="checkbox" name="a" id="a" />
+                      <input type="checkbox" data-nome={pessoa.nome} name={pessoa.nome} id={pessoa.nome} key={pessoa.nome} onChange={handleCheckboxChange}/>
                     </div>
                   ))       
                 ) 
@@ -63,10 +99,11 @@ useEffect(() => {
                     <h1 className="termnotfound">Nenhuma pessoa de nome "{searchTerm}" encontrada.</h1>
                     <h2 className="trysearching">Tente procurar por outro termo.</h2>
                   </div>            
-                )}                      
+                )}                
               </div>
             )
-          }          
+          }  
+          <button className='continuarbtn'>Continuar</button>        
       </>
   );
 }
