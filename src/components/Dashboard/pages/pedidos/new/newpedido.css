@@ -1,9 +1,15 @@
 .newpedidocontainer{
     width: 100%;
-    height: 100vh;
+    height: 97vh;
     background-color: var(--dark);
     display: flex;
     flex-direction: column;
     border-radius: 15px;
     padding: 25px 40px 25px 40px;
+}
+
+@media only screen and (max-width: 1000px){
+    .newpedidocontainer{
+        padding: 20px;
+    }
 }

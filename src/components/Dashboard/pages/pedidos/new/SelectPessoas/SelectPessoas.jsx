@@ -99,10 +99,11 @@ function SelectPessoas() {
                     <h1 className="termnotfound">Nenhuma pessoa de nome "{searchTerm}" encontrada.</h1>
                     <h2 className="trysearching">Tente procurar por outro termo.</h2>
                   </div>            
-                )}                      
+                )}                
               </div>
             )
-          }          
+          }  
+          <button className='continuarbtn'>Continuar</button>        
       </>
   );
 }
