@@ -10,8 +10,7 @@
     gap: 10px;
     margin-top: 25px;
     width: 100%;    
-    height: auto;
-    max-height: 70%;
+    height:70%;
     overflow: scroll;
     background-color: var(--dark);
     background: var(--dark);
