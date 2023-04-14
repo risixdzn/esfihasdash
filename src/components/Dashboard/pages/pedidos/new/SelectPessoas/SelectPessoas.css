@@ -125,10 +125,10 @@
 @media only screen and (max-width: 1000px) {
     .title{
         font-size: 25px
-    }
+    }    
 
     .pessoa{
-        min-height: 60px;
+        min-height: 50px;
         padding: 0 15px;
     }
 
@@ -138,6 +138,6 @@
     }
     .pessoainfo .pessoaname{
         font-weight: 400;
-        font-size: 16px;
+        font-size: 14px;
     }
 }
