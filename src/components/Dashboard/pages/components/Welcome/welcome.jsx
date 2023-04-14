@@ -21,6 +21,7 @@ export const Welcome = (props) => {
   let linkComponent = "";
 
   if (type === "pedidos") {
+    linkComponent = "/pedidos/new";
     countComponent = <PedidosCount user={user} />;    
   } else if (type === "pessoas") {
     countComponent = <PessoasCount user={user} />;

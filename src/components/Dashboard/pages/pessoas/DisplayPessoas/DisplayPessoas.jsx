@@ -79,8 +79,7 @@ function DisplayPessoas({setShowModal, setSelectedPessoa,  setSelectedModal, set
                     setSearchTerm(event.target.value)} 
                 />
                 <label className='control-label' htmlFor="text"><FontAwesomeIcon icon={faMagnifyingGlass}/></label>
-            </div>
-            
+            </div>            
           </div>          
           
           <div className="itemgrid">
