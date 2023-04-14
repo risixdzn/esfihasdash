@@ -33,12 +33,10 @@ function SelectPessoas() {
     if (event.target.checked) {      
       // Adiciona o cliente ao array
       const novoCliente = {
-        [nomePessoa]: {
-          nome: nomePessoa,
-          itens: {},
-        },
+        nome: nomePessoa,
+        itens: {},
       };
-      updatePedido({ clientes: [...pedido.clientes, novoCliente] });
+      updatePedido({ clientes: {...pedido.clientes, [nomePessoa]: novoCliente} });
     } else {
       // Remove o cliente do array
       const novoArrayClientes = pedido.clientes.filter(
@@ -58,6 +56,8 @@ function SelectPessoas() {
     updatePedido({ clientes: [] });
     navigate("/pedidos/list")
   }
+
+  
 
   return (
       <>
