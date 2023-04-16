@@ -7,6 +7,7 @@ import { faMagnifyingGlass, faArrowLeft } from '@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { usePedido } from '../../../../../../context/PedidoContext'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function SelectPessoas() {
   const { user } = UserAuth();  
@@ -29,11 +30,13 @@ function SelectPessoas() {
 
   const handleCheckboxChange = (event) => {    
     const nomePessoa = event.target.dataset.nome;
+    const fotoPessoa = event.target.dataset.foto;
 
     if (event.target.checked) {      
       // Adiciona o cliente ao array
       const novoCliente = {
         nome: nomePessoa,
+        foto: fotoPessoa,
         itens: {},
       };
       updatePedido({ clientes: {...pedido.clientes, [nomePessoa]: novoCliente} });
@@ -56,8 +59,18 @@ function SelectPessoas() {
     updatePedido({ clientes: [] });
     navigate("/pedidos/list")
   }
-
   
+  const { setPedidoStage } = usePedido();
+  const [ errorDisplay, setErrorDisplay ] = useState(false);
+
+  const handleContinuar = ()=>{   
+    setErrorDisplay(false);
+    if( Object.keys(pedido.clientes).length !== 0) {
+      setPedidoStage(2);
+    } else{
+      setErrorDisplay(true);
+    }    
+  }  
 
   return (
       <>
@@ -72,6 +85,9 @@ function SelectPessoas() {
                 <label className='control-label' htmlFor="text"><FontAwesomeIcon icon={faMagnifyingGlass}/></label>
             </div>            
           </div>
+          <div className='error' style={errorDisplay ? {display:"flex"} : {display:"none"}}>
+            <span>Selecione ao menos uma pessoa para continuar.</span>
+          </div>          
           { isLoading ? (
             <div className='notfoundcontainer'>
               <img className="loader" src="../assets/gif/rippleloader.svg" alt="loading" />
@@ -89,21 +105,34 @@ function SelectPessoas() {
                           </div>
                           <div className="pessoaname">{pessoa.nome}</div>
                       </div>
-                      <input type="checkbox" data-nome={pessoa.nome} name={pessoa.nome} id={pessoa.nome} key={pessoa.nome} onChange={handleCheckboxChange}/>
+                      <input type="checkbox" data-nome={pessoa.nome} data-foto={pessoa.foto} name={pessoa.nome} id={pessoa.nome} key={pessoa.nome} onChange={handleCheckboxChange}/>
                     </div>
                   ))       
-                ) 
-                : 
-                (
+                  ) 
+                  :
+                  (
                   <div className='notfoundcontainer'>
-                    <h1 className="termnotfound">Nenhuma pessoa de nome "{searchTerm}" encontrada.</h1>
-                    <h2 className="trysearching">Tente procurar por outro termo.</h2>
-                  </div>            
-                )}                
+                    {showPessoas.length !== 0 ? (
+                        <>
+                            <h1 className="termnotfound">Nenhuma pessoa de nome "{searchTerm}" encontrada.</h1>
+                            <h2 className="trysearching">Tente procurar por outro termo.</h2>
+                        </>
+                    )
+                    :
+                    (
+                        <>
+                            <h1 className="termnotfound">Você não possui pessoas cadastradas.</h1>
+                            <h2 className="trysearching">Clique no botão abaixo para cadastrar uma nova pessoa.</h2>
+                            <Link to={"/pessoas/new"} className='novapessoabtn'>Nova pessoa</Link>                            
+                        </>                        
+                    )}
+                  </div>          
+                  )
+                }                
               </div>
             )
           }  
-          <button className='continuarbtn'>Continuar</button>        
+          <button className='continuarbtn' onClick={handleContinuar}>Continuar</button>        
       </>
   );
 }

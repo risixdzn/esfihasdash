@@ -121,6 +121,43 @@
     box-shadow: 0 0 0 ;
 }
 
+.error{
+    color: #fff;    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 450px;
+    border-radius: 5px;
+    padding: 7px;    
+    text-align: center;
+    background-color: rgb(253, 57, 57);
+    margin-top: 25px;
+}
+
+.novapessoabtn{
+    background-color: var(--primary);
+    padding: 10px 20px;
+    width: 100%;
+    max-width: 170px;
+    border-radius: 5px;
+    color: #Fff;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.1s ease-in-out;
+    margin-top: 15px;
+}
+
+.novapessoabtn:hover{
+    box-shadow: 0 0 0.75em var(--primary)
+}
+
+.novapessoabtn:active{
+    scale: 0.95;
+    filter: brightness(0.8);
+    box-shadow: 0 0 0 ;
+}
 
 @media only screen and (max-width: 1000px) {
     .title{
@@ -138,6 +175,9 @@
     }
     .pessoainfo .pessoaname{
         font-weight: 400;
+        font-size: 14px;
+    }
+    .error{
         font-size: 14px;
     }
 }

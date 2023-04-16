@@ -206,7 +206,6 @@ input:focus + .control-label {
     color: var(--gray);
     font-size: 20px;
     text-align: center;
-    max-width: 400px;
     overflow: hidden;
 }
 

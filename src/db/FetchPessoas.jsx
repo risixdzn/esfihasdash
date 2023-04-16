@@ -15,11 +15,7 @@ function PessoasCount({ user }) {
       const pessoasRef = collection(db, "users", user.uid, "pessoas");
       const snapshot = await getCountFromServer(pessoasRef);
       const countedSnapshot = snapshot.data().count;
-      if(countedSnapshot === 0){
-        setPessoas(countedSnapshot + 1);
-      } else{
-        setPessoas(countedSnapshot)
-      }  
+      setPessoas(countedSnapshot);
       setLoading(false)
     }
     fetchPessoas();        
