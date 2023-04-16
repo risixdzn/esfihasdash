@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { db } from "../../../../../firebase-config";
 import { UserAuth } from "../../../../../context/AuthContext";
-import { getDocs, collection } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faUserPlus, faPenToSquare, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import useGetProdutos from "../../../../../db/hooks/useGetProdutos";
 
 import '../../css/displaycpn.css'
 
 function DisplayProdutos({setShowModal, setSelectedProduto,  setSelectedModal, setSelectedPFP}) {
-    const [loading, setIsloading] = useState(true);
-    const [showProdutos, setShowProdutos] = useState([]);    
-    
     const { user } = UserAuth();
+    const { showProdutos , isLoading } = useGetProdutos(user);
 
     const handleDelete = (key) => {
         setSelectedModal("delete");
@@ -29,25 +26,7 @@ function DisplayProdutos({setShowModal, setSelectedProduto,  setSelectedModal, s
         console.log(foto);        
         setShowModal(true);  
     };
-
-    useEffect(() => {
-        const getProdutosFromFirebase = async () => {
-            setIsloading(true);
-            const produtosCollection = collection(db, "users", user.uid, "produtos");
-            const produtosSnapshot = await getDocs(produtosCollection);
-            const produtosList = produtosSnapshot.docs.map(doc => ({ ...doc.data(), key: doc.id }));   
-            setShowProdutos(prevState => [...prevState, ...produtosList]);        
-            setShowProdutos(produtosList); // Limpar o estado antes de adicionar as produtos novamente
-            setIsloading(false);                
-        };
-
-        getProdutosFromFirebase();
-        // if (!hasLoaded.current) {
-        //     hasLoaded.current = true;
-        //     getProdutosFromFirebase();
-        // }
-    }, [user.uid, setShowProdutos]);
-        
+  
     //FILTRO DE PESSOAS
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
@@ -61,7 +40,7 @@ function DisplayProdutos({setShowModal, setSelectedProduto,  setSelectedModal, s
         setSearchResults(results);
     }, [showProdutos, searchTerm, user.uid]); //roda o código toda vez que as produtos forem alteradas, ou o termo for alterado, ou haja uma alteração no usuario   
     
-    if (loading){
+    if (isLoading){
         return (
             <div className="itemcontainer" style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
                 <img className="loader" src="../assets/gif/rippleloader.svg" alt="loading" />
