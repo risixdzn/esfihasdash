@@ -1,0 +1,105 @@
+.pessoacontainer{
+    width: 100%;
+    min-height: 88px;
+    background-color: var(--highlight);
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    border: 2px solid var(--highlight);
+}
+
+.infocontainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.produtoinfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.produtoinfo .pessoapfp{
+    width: 30px;
+    height: 30px;
+    background-color: #3b3b3b;        
+    border-radius: 50%;
+    animation: shine-lines 1s infinite linear;
+    background-image: linear-gradient(90deg, #242424 0px, #5c5c5c 40px, #242424 80px);
+    background-size: 600px;
+    object-fit: cover;
+}
+
+@keyframes shine-lines {
+    0% {
+      background-position: -100px;
+    }
+    40%, 100% {
+      background-position: 140px;
+    }
+}
+
+.pessoapfp img{
+    border-radius: 50%;
+    width: 100%;        
+    height: 100%;
+    overflow: hidden;
+}
+.produtoinfo .pessoaname{
+    color: var(--gray);
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.produtoscontainer{
+    width: 100%;
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 25px;
+}
+
+.produto{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: slateblue;
+    padding: 17.5px 40px;   
+    border-radius: 5px;
+}
+
+@media only screen and (max-width: 1000px){
+    .title{
+        font-size: 25px
+    }    
+    .pessoacontainer{
+        min-height: 50px;
+        padding: 0 15px;
+    }
+
+    .infocontainer{
+        margin-top: 10px;
+    }
+
+    .produtoinfo .pessoapfp{
+        width: 23px;
+        height: 23px;
+    }
+    .produtoinfo .pessoaname{
+        font-weight: 400;
+        font-size: 14px;
+    }
+}

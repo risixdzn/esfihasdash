@@ -4,6 +4,7 @@ import './newpedido.css'
 import { usePedido } from '../../../../../context/PedidoContext'
 
 import SelectPessoas from './SelectPessoas/SelectPessoas';
+import SelectProdutos from './SelectProdutos/SelectProdutos';
 
 function NewPedido() {
   const { pedidoStage } = usePedido();
@@ -17,7 +18,9 @@ function NewPedido() {
       )           
     case 2:
       return (
-        <span>A</span>
+        <div className='newpedidocontainer'>
+          <SelectProdutos/>
+        </div>        
       )
     default:
       break;

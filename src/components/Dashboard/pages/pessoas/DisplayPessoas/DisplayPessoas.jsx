@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { db } from "../../../../../firebase-config";
 import { UserAuth } from "../../../../../context/AuthContext";
-import { getDocs, collection } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faUserPlus, faPenToSquare, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
+import useGetPessoas from "../../../../../db/hooks/useGetPessoas";
+
 import '../../css/displaycpn.css'
 
-function DisplayPessoas({setShowModal, setSelectedPessoa,  setSelectedModal, setSelectedPFP}) {
-    const [loading, setIsloading] = useState(true);
-    const [showPessoas, setShowPessoas] = useState([]);    
-    
+function DisplayPessoas({setShowModal, setSelectedPessoa,  setSelectedModal, setSelectedPFP}) {    
     const { user } = UserAuth();
+    const { showPessoas , isLoading } = useGetPessoas(user);
 
     const handleDelete = (key) => {
         setSelectedModal("delete");
@@ -29,25 +27,7 @@ function DisplayPessoas({setShowModal, setSelectedPessoa,  setSelectedModal, set
         console.log(foto);        
         setShowModal(true);        
     };
-
-    useEffect(() => {
-        const getPessoasFromFirebase = async () => {
-            setIsloading(true);
-            const pessoasCollection = collection(db, "users", user.uid, "pessoas");
-            const pessoasSnapshot = await getDocs(pessoasCollection);
-            const pessoasList = pessoasSnapshot.docs.map(doc => ({ ...doc.data(), key: doc.id }));   
-            setShowPessoas(prevState => [...prevState, ...pessoasList]);        
-            setShowPessoas(pessoasList); // Limpar o estado antes de adicionar as pessoas novamente
-            setIsloading(false);                
-        };
-
-        getPessoasFromFirebase();
-        // if (!hasLoaded.current) {
-        //     hasLoaded.current = true;
-        //     getPessoasFromFirebase();
-        // }
-    }, [user.uid, setShowPessoas]);
-        
+    
     //FILTRO DE PESSOAS
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
@@ -61,7 +41,7 @@ function DisplayPessoas({setShowModal, setSelectedPessoa,  setSelectedModal, set
         setSearchResults(results);
     }, [showPessoas, searchTerm, user.uid]); //roda o código toda vez que as pessoas forem alteradas, ou o termo for alterado, ou haja uma alteração no usuario   
     
-    if (loading){
+    if (isLoading){
         return (
             <div className="itemcontainer" style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
                 <img className="loader" src="../assets/gif/rippleloader.svg" alt="loading" />
@@ -106,9 +86,20 @@ function DisplayPessoas({setShowModal, setSelectedPessoa,  setSelectedModal, set
               ))
               //se nao, "nenhuma pessoa encontrada"
             ) : (
-                <div className="pessoasgrid" style={{flexDirection:"column"}}>
-                    <h1 className="termnotfound">Nenhuma pessoa de nome "{searchTerm}" encontrada.</h1>
-                    <h2 className="trysearching">Tente procurar por outro termo.</h2>
+                <div className="pessoasgrid" style={{flexDirection:"column", textAlign:"center", justifyContent:"center"}}>
+                    {showPessoas.length !== 0 ? (
+                        <>
+                            <h1 className="termnotfound">Nenhuma pessoa de nome "{searchTerm}" encontrada.</h1>
+                            <h2 className="trysearching">Tente procurar por outro termo.</h2>
+                        </>
+                    )
+                    :
+                    (
+                        <>
+                            <h1 className="termnotfound">Você não possui pessoas cadastradas.</h1>
+                            <h2 className="trysearching">Cadastre uma nova pessoa clicando em "Nova pessoa" no topo da página.</h2>
+                        </>                        
+                    )}
                 </div>              
             )}
           </div>
