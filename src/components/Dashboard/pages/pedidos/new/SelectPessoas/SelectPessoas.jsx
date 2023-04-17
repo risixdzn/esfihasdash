@@ -37,7 +37,12 @@ function SelectPessoas() {
       const novoCliente = {
         nome: nomePessoa,
         foto: fotoPessoa,
-        itens: {},
+        itens: [
+          // {
+          //   nomeproduto:"calabresa",
+          //   fotoproduto:"sabao",
+          // }
+        ],
       };
       updatePedido({ clientes: {...pedido.clientes, [nomePessoa]: novoCliente} });
     } else {
