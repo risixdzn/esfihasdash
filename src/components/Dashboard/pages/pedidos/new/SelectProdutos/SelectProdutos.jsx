@@ -24,6 +24,20 @@ function SelectProdutos() {
         container.classList.toggle('closed');
     }
 
+    function addProduto(event){
+        const clienteNome= event.target.dataset.selcliente;
+        updatePedido({ 
+            clientes: {
+              [clienteNome]: {
+                itens: {
+                  ...pedido.clientes[clienteNome].itens,
+                  "teste": "testeproduto"
+                }
+              }
+            }
+        });
+    }
+
     if( isLoading ){
         <div className="itemcontainer" style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
             <img className="loader" src="../assets/gif/rippleloader.svg" alt="loading" />
@@ -56,21 +70,33 @@ function SelectProdutos() {
                                         <button className='opencontainer' onClick={toggleContainer}><FontAwesomeIcon icon={faChevronDown}/></button>
                                     </div>
                                     <div className="produtoscontainer">  
-                                        <div className="produto" data-clientenome={cliente.nome}>
-                                            <div className="produtoinfo">
-                                                <div className="produtopfp">
-                                                    <img src={cliente.foto !== "" ? cliente.foto : "../assets/img/user.png"} alt="pic" />                      
+                                        {pedido.clientes[clienteKey].itens.length !== 0 ? (
+                                            pedido.clientes[clienteKey].itens.map((item) =>{
+                                                return(
+                                                    <div className="produto">
+                                                        <h1>{item.nomeproduto}</h1>
+                                                    </div>                                                       
+                                                )                                                    
+                                            })
+                                            ):(<></>)
+                                        }                                        
+                                        <div className="addproduto" data-clientenome={cliente.nome}>
+                                            <div className="addprodutoinfo">
+                                                <div className="produtoinfo">
+                                                    <div className="produtopfp">
+                                                        {/* <img src={cliente.foto !== "" ? cliente.foto : "../assets/img/user.png"} alt="pic" />                       */}
+                                                    </div>
+                                                    <select className='selectproduto'>
+                                                        <option disabled selected>Produto</option>
+                                                        {showProdutos.map((produto)=>(
+                                                            <option>{produto.nome}</option>
+                                                        ))}
+                                                    </select>
                                                 </div>
-                                                <select className='selectproduto'>
-                                                    <option disabled selected>Produto</option>
-                                                    {showProdutos.map((produto)=>(
-                                                        <option>{produto.nome}</option>
-                                                    ))}
-                                                </select>
-                                            </div>
-                                            <input type="number" placeholder='1' min="1"></input>
-                                        </div>                                                                                                        
-                                        <button className='newproduto'>Adicionar produto</button>
+                                                <input type="number" placeholder='1' min="1"></input>  
+                                            </div>                                            
+                                            <button className='newproduto' onClick={addProduto} data-selcliente={cliente.nome}>Adicionar</button>
+                                        </div>                                                                                  
                                     </div>
                                 </div>
                             )    

@@ -9,7 +9,7 @@
     flex-direction: column;
     gap: 10px;
     margin-top: 25px;
-    width: 100%;    
+    width: calc(100% + 12px);
     height:70%;
     overflow: scroll;
     background-color: var(--dark);

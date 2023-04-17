@@ -30,6 +30,28 @@
     transform: rotate(0deg);
 }
 
+.produto{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--dark);
+    padding: 17.5px 40px;   
+    border-radius: 5px;
+    gap: 5px;
+}
+
+.addproduto{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: var(--dark);
+    padding: 17.5px 40px;   
+    border-radius: 5px;
+    gap: 5px;
+    flex-direction: column;
+}
 .infocontainer{
     width: 100%;
     display: flex;
@@ -46,6 +68,15 @@
     justify-content: center;
     flex-direction: row;
     gap: 15px;
+}
+
+.addprodutoinfo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between  ;
+    flex-direction: row;
+    gap: 15px;
+    width: 100%;
 }
 
 .produtoinfo .produtopfp{
@@ -90,18 +121,10 @@
     flex-direction: column;
 }
 
-.produto{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    background-color: var(--dark);
-    padding: 17.5px 40px;   
-    border-radius: 5px;
-    gap: 5px;
-}
 
-.produto input[type="number"]{
+
+.produto input[type="number"],
+.addproduto input[type="number"]{
     background-color: var(--highlight);    
     text-align: center;
     width: 50px;
@@ -110,7 +133,8 @@
     color: #fff;
 }
 
-.produto input[type="number"]::placeholder{    
+.produto input[type="number"]::placeholder,
+.addproduto input[type="number"]::placeholder{    
     color: var(--input-text);
 }
 
@@ -162,18 +186,22 @@ input::-webkit-inner-spin-button {
     }    
     .pessoacontainer{
         padding: 0 15px;
+        overflow: hidden;
     }    
 
-    .produtoinfo .produtopfp{
+    .produtoinfo .produtopfp,
+    .addprodutoinfo .produtopfp{
         display: none;
     }
 
-    .produtoinfo .pessoaname{
+    .produtoinfo .pessoaname,
+    .addprodutoinfo .produtopfp{
         font-weight: 400;
         font-size: 14px;
     }
 
-    .produto{
+    .produto,
+    .addproduto{
         padding: 15px;
     }
 
@@ -181,7 +209,8 @@ input::-webkit-inner-spin-button {
         padding: 15px 0 15px 0;
     }
 
-    .produto input[type="number"]{
+    .produto input[type="number"],
+    .addproduto input[type="number"]{
         font-size: 14px;
         padding: 5px;
         width: 30px;
