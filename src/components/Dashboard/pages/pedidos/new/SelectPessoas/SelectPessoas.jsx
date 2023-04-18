@@ -53,11 +53,7 @@ function SelectPessoas() {
       updatePedido({ clientes: novoArrayClientes });
     }
   };
-
-  useEffect(() => {
-    console.log("Pedido atualizado:", pedido);
-  }, [pedido]);
-
+  
   const navigate = useNavigate();
 
   const handleVoltar = () => {

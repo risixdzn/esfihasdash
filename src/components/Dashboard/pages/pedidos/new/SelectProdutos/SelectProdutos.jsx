@@ -25,17 +25,14 @@ function SelectProdutos() {
     }
 
     function addProduto(event){
-        const clienteNome= event.target.dataset.selcliente;
-        updatePedido({ 
-            clientes: {
-              [clienteNome]: {
-                itens: {
-                  ...pedido.clientes[clienteNome].itens,
-                  "teste": "testeproduto"
-                }
-              }
-            }
-        });
+        const clienteNome = event.target.dataset.selcliente;
+        const novoItem = {
+            nomeproduto: "testeproduto",
+            quantidade: 5,
+        };
+        const novoPedido = {...pedido};
+        novoPedido.clientes[clienteNome].itens.push(novoItem);
+        updatePedido(novoPedido);
     }
 
     if( isLoading ){
@@ -70,16 +67,17 @@ function SelectProdutos() {
                                         <button className='opencontainer' onClick={toggleContainer}><FontAwesomeIcon icon={faChevronDown}/></button>
                                     </div>
                                     <div className="produtoscontainer">  
-                                        {pedido.clientes[clienteKey].itens.length !== 0 ? (
-                                            pedido.clientes[clienteKey].itens.map((item) =>{
-                                                return(
-                                                    <div className="produto">
-                                                        <h1>{item.nomeproduto}</h1>
-                                                    </div>                                                       
-                                                )                                                    
-                                            })
-                                            ):(<></>)
-                                        }                                        
+                                    {pedido.clientes[clienteKey].itens && Array.isArray(pedido.clientes[clienteKey].itens) && pedido.clientes[clienteKey].itens.length !== 0 ? (
+                                        pedido.clientes[clienteKey].itens.map((item) => {
+                                            return (
+                                                <div className="produto">
+                                                    <h1>{item.nomeproduto}</h1>
+                                                </div>                                                       
+                                            )                                                    
+                                        })
+                                    ) : (
+                                        <></>
+                                    )}                                                                   
                                         <div className="addproduto" data-clientenome={cliente.nome}>
                                             <div className="addprodutoinfo">
                                                 <div className="produtoinfo">

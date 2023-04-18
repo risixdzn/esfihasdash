@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback} from "react";
+import { createContext, useContext, useState, useCallback, useEffect} from "react";
 
 export const PedidoContext = createContext();
 
@@ -16,6 +16,10 @@ export const PedidoContextProvider = ({children})=>{
             ...newPedido,
         }));
     }, []);
+
+    useEffect(()=>{
+        console.log("Pedido atualizado:", pedido)
+    },[pedido]);
 
     return (
         <PedidoContext.Provider value={{ pedido, updatePedido, pedidoStage, setPedidoStage }}>
