@@ -88,6 +88,11 @@
     background-image: linear-gradient(90deg, #242424 0px, #5c5c5c 40px, #242424 80px);
     background-size: 600px;
     object-fit: cover;
+    display: flex;
+}
+
+.produtoinfo .produtonome{
+    color: #Fff;
 }
 
 @keyframes shine-lines {
@@ -110,6 +115,24 @@
     font-weight: 500;
     font-size: 17px;
 }
+
+.produto .actions{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.produto .actions .delbtn{
+    font-size: 20px;
+    color: #eb2f2f;
+    transition: .1s ease-in-out;
+}
+
+.produto .actions .delbtn:hover{ 
+    scale: 1.1;
+}
+
 
 .produtoscontainer{
     width: 100%;
@@ -197,6 +220,11 @@ input::-webkit-inner-spin-button {
     .produtoinfo .pessoaname,
     .addprodutoinfo .produtopfp{
         font-weight: 400;
+        font-size: 14px;
+    }
+
+    .produtoinfo .produtonome{
+        color: #Fff;
         font-size: 14px;
     }
 
