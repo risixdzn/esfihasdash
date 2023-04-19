@@ -22,17 +22,35 @@ function SelectProdutos() {
     function toggleContainer(event) {
         const container = event.target.closest('.pessoacontainer');
         container.classList.toggle('closed');
+    }  
+
+    const [produtoSelecionado, setProdutoSelecionado] = useState('');
+    const [quantidadeSelecionada, setQuantidadeSelecionada] = useState(1);
+
+    function handleProdutoChange(event) {
+        setProdutoSelecionado(event.target.value);
     }
 
+    function handleQuantidadeChange(event) {
+        setQuantidadeSelecionada(event.target.value);
+    }
+    
     function addProduto(event){
         const clienteNome = event.target.dataset.selcliente;
-        const novoItem = {
-            nomeproduto: "testeproduto",
-            quantidade: 5,
+        // Crie um novo objeto para adicionar no array
+        const novoItem = { 
+            nomeproduto: produtoSelecionado, 
+            quantidade: quantidadeSelecionada 
         };
-        const novoPedido = {...pedido};
-        novoPedido.clientes[clienteNome].itens.push(novoItem);
-        updatePedido(novoPedido);
+        // Crie um novo objeto para atualizar o estado
+        const novoPedido = { ...pedido };
+        const cliente = novoPedido.clientes[clienteNome];
+
+        // Adicione o novo objeto no objeto do cliente, utilizando a notação de colchetes
+        cliente.itens = { ...cliente.itens, [produtoSelecionado]: novoItem };
+
+        // Atualize o estado do pedido
+        updatePedido(novoPedido);         
     }
 
     if( isLoading ){
@@ -67,34 +85,33 @@ function SelectProdutos() {
                                         <button className='opencontainer' onClick={toggleContainer}><FontAwesomeIcon icon={faChevronDown}/></button>
                                     </div>
                                     <div className="produtoscontainer">  
-                                    {pedido.clientes[clienteKey].itens && Array.isArray(pedido.clientes[clienteKey].itens) && pedido.clientes[clienteKey].itens.length !== 0 ? (
-                                        pedido.clientes[clienteKey].itens.map((item) => {
+                                    {Object.keys(pedido.clientes[clienteKey].itens).length !== 0 ? (
+                                        Object.keys(pedido.clientes[clienteKey].itens).map((item)=>{
                                             return (
                                                 <div className="produto">
-                                                    <h1>{item.nomeproduto}</h1>
+                                                    <h1>{pedido.clientes[clienteKey].itens[item].nomeproduto}</h1>
                                                 </div>                                                       
-                                            )                                                    
+                                            )    
                                         })
                                     ) : (
                                         <></>
-                                    )}                                                                   
+                                    )}                                                                        
                                         <div className="addproduto" data-clientenome={cliente.nome}>
                                             <div className="addprodutoinfo">
                                                 <div className="produtoinfo">
                                                     <div className="produtopfp">
                                                         {/* <img src={cliente.foto !== "" ? cliente.foto : "../assets/img/user.png"} alt="pic" />                       */}
                                                     </div>
-                                                    <select className='selectproduto'>
-                                                        <option disabled selected>Produto</option>
+                                                    <select className='selectproduto' defaultValue={'DEFAULT'} onChange={handleProdutoChange}>
                                                         {showProdutos.map((produto)=>(
                                                             <option>{produto.nome}</option>
                                                         ))}
                                                     </select>
                                                 </div>
-                                                <input type="number" placeholder='1' min="1"></input>  
+                                                <input type="number" placeholder='1' min="1" value={quantidadeSelecionada} onChange={handleQuantidadeChange}></input>  
                                             </div>                                            
-                                            <button className='newproduto' onClick={addProduto} data-selcliente={cliente.nome}>Adicionar</button>
-                                        </div>                                                                                  
+                                            <button className='newproduto' onClick={addProduto} type='submit' data-selcliente={cliente.nome}>Adicionar</button>
+                                        </div>                                                                                                                          
                                     </div>
                                 </div>
                             )    
