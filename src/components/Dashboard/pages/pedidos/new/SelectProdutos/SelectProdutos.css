@@ -7,9 +7,19 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 0 40px;
-    border: 2px solid var(--highlight);
+    padding: 0 25px;
     transition: .2s ease-in-out;
+    border: 2px solid var(--primary);
+    position: relative;
+}
+
+.clickablecontainer{
+    position: absolute;
+    display: flex;
+    width: calc(100% - 50px);
+    align-items: flex-end;
+    flex-direction: column;
+    padding: 25px;
 }
 
 .opencontainer{
@@ -20,6 +30,10 @@
 }
 .opencontainer:hover{
     scale: 1.1;
+}
+
+.pessoacontainer.closed{
+    border: 2px solid var(--highlight);
 }
 
 .closed > .produtoscontainer {
@@ -47,7 +61,7 @@
     justify-content: space-between;
     width: 100%;
     background-color: var(--dark);
-    padding: 17.5px 40px;   
+    padding: 17.5px 25px;   
     border-radius: 5px;
     gap: 5px;
     flex-direction: column;
@@ -88,6 +102,11 @@
     background-image: linear-gradient(90deg, #242424 0px, #5c5c5c 40px, #242424 80px);
     background-size: 600px;
     object-fit: cover;
+    display: flex;
+}
+
+.produtoinfo .produtonome{
+    color: #Fff;
 }
 
 @keyframes shine-lines {
@@ -110,6 +129,24 @@
     font-weight: 500;
     font-size: 17px;
 }
+
+.produto .actions{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.produto .actions .delbtn{
+    font-size: 20px;
+    color: #eb2f2f;
+    transition: .1s ease-in-out;
+}
+
+.produto .actions .delbtn:hover{ 
+    scale: 1.1;
+}
+
 
 .produtoscontainer{
     width: 100%;
@@ -185,9 +222,14 @@ input::-webkit-inner-spin-button {
         font-size: 25px
     }    
     .pessoacontainer{
-        padding: 0 15px;
-        overflow: hidden;
+        padding: 0 10px;
+        overflow: visible;
     }    
+
+    .clickablecontainer{
+        width: calc(100% - 15px);
+        padding: 13px 0;
+    }
 
     .produtoinfo .produtopfp,
     .addprodutoinfo .produtopfp{
@@ -197,6 +239,11 @@ input::-webkit-inner-spin-button {
     .produtoinfo .pessoaname,
     .addprodutoinfo .produtopfp{
         font-weight: 400;
+        font-size: 14px;
+    }
+
+    .produtoinfo .produtonome{
+        color: #Fff;
         font-size: 14px;
     }
 
