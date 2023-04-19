@@ -8,9 +8,12 @@ import { UserAuth } from '../../../../../../context/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
+import HandleProdutoChange from './functions/HandleProdutoChange';
+import HandleQuantidadeChange from './functions/HandleQuantidadeChange';
+import useAddProduto from './functions/AddProduto';
+
 function SelectProdutos() {
-    const { setPedidoStage , pedido , updatePedido } = usePedido();
-    
+    const { setPedidoStage , pedido , updatePedido } = usePedido();    
     const{ user } = UserAuth();
     const { showProdutos , isLoading } = useGetProdutos(user);
 
@@ -28,56 +31,17 @@ function SelectProdutos() {
     const [imgProdutoSelecionado , setImgProdutoSelecionado ] = useState('')
     const [quantidadeSelecionada, setQuantidadeSelecionada] = useState(1);
 
-    function handleProdutoChange(event) {        
-        const selectProduto = event.target.value        
-        setProdutoSelecionado(selectProduto);
-        // encontrar o objeto com o nome igual a selectProduto
-        const produto = showProdutos.find(p => p.nome === selectProduto);        
-        // atualizar o estado de imgProdutoSelecionado com a foto do produto
-        if (produto) {
-            setImgProdutoSelecionado(produto.foto);
-        } else {
-            setImgProdutoSelecionado('');
-        }
+    function produtoChange(event) {
+        HandleProdutoChange(event, showProdutos, setProdutoSelecionado, setImgProdutoSelecionado);
     }
 
-    function handleQuantidadeChange(event) {
-        setQuantidadeSelecionada(event.target.value);
+    function quantidadeChange(event) {
+        HandleQuantidadeChange(event.target.value, setQuantidadeSelecionada);
     }
     
     const [errorDisplay, setErrorDisplay] = useState(false);
-
-    function addProduto(event) {
-        const clienteNome = event.target.dataset.selcliente;
-        // Crie um novo objeto para adicionar no array
-        const novoItem = {
-            nomeproduto: produtoSelecionado,
-            quantidade: quantidadeSelecionada,
-            foto: imgProdutoSelecionado,
-        };
-
-        if (novoItem.nomeproduto && novoItem.nomeproduto.trim() !== "") {
-            // o valor do input não está vazio
-            setErrorDisplay(false);
-            console.log(novoItem.nomeproduto);
-
-            // Crie um novo objeto para atualizar o estado
-            const novoPedido = { ...pedido };
-            const cliente = novoPedido.clientes[clienteNome];
-
-            // Adicione o novo objeto no objeto do cliente, utilizando a notação de colchetes
-            cliente.itens = {
-                ...cliente.itens,
-                [produtoSelecionado]: novoItem,
-            };
-
-            console.log(novoPedido); // Verifique o valor de novoPedido
-            updatePedido(novoPedido);
-        } else {
-            // o valor do input está vazio
-            setErrorDisplay(true);
-            console.log("Valor do input vazio");
-        }
+    function AdicionarProduto(event) {
+        useAddProduto(event, produtoSelecionado, quantidadeSelecionada, imgProdutoSelecionado, setErrorDisplay, pedido, updatePedido)
     }
 
     if( isLoading ){
@@ -112,7 +76,9 @@ function SelectProdutos() {
                                             </div>
                                             <div className="pessoaname">{cliente.nome}</div>
                                         </div>
-                                        <button className='opencontainer' onClick={toggleContainer}><FontAwesomeIcon icon={faChevronDown}/></button>
+                                        <button className='clickablecontainer' onClick={toggleContainer}>
+                                            <div className='opencontainer'><FontAwesomeIcon icon={faChevronDown}/></div>
+                                        </button>                                        
                                     </div>
                                     <div className="produtoscontainer">  
                                     {Object.keys(pedido.clientes[clienteKey].itens).length !== 0 ? (
@@ -143,16 +109,16 @@ function SelectProdutos() {
                                                     <div className="produtopfp">
                                                         {/* foto aqui com base no selecionado do in´pu*/}
                                                     </div>
-                                                    <select className='selectproduto' defaultValue="DEFAULT" onChange={handleProdutoChange}>
+                                                    <select className='selectproduto' defaultValue="DEFAULT" onChange={produtoChange}>
                                                         <option value="DEFAULT" disabled>Produtos</option>
                                                         {showProdutos.map((produto)=>(
                                                             <option value={produto.valor}>{produto.nome}</option>
                                                         ))}
                                                     </select>
                                                 </div>
-                                                <input type="number" placeholder='1' min="1" value={quantidadeSelecionada} onChange={handleQuantidadeChange}></input>  
+                                                <input type="number" placeholder='1' min="1" value={quantidadeSelecionada} onChange={quantidadeChange}></input>  
                                             </div>                                            
-                                            <button className='newproduto' onClick={addProduto} data-selcliente={cliente.nome}>Adicionar</button>
+                                            <button className='newproduto' onClick={AdicionarProduto} data-selcliente={cliente.nome}>Adicionar</button>
                                         </div>                                                                                                                          
                                     </div>
                                 </div>
