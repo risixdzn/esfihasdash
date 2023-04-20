@@ -1,3 +1,16 @@
+.pedidocontainer{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 25px;
+    width: calc(100% + 12px);
+    height: 80%;
+    overflow: scroll;
+    background-color: var(--dark);
+    background: var(--dark);
+}
+
+
 .pessoacontainer{
     width: 100%;
     height: AUTO;
@@ -198,17 +211,18 @@ input::-webkit-inner-spin-button {
     align-items: center;
     justify-content: center;
     width: 100%;
-    background-color: var(--primary);
+    background-color: #ffffff15;
     padding: 20px 40px;   
     border-radius: 5px;
     color: #fff;
     font-weight: 600;
     margin-top: 10px;
     transition: .05s ease-in-out;
+    border: 1px solid #333333;
 }
 
 .newproduto:hoveR{
-    box-shadow: 0 0 0.5em var(--primary);
+    box-shadow: 0 0 0.5em #3b3b3b;
 }
 
 .newproduto:active{

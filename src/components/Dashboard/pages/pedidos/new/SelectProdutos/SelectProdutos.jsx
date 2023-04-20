@@ -70,7 +70,7 @@ function SelectProdutos() {
                 )
                 :
                 (
-                  <div className="pessoascontainer">
+                  <div className="pedidocontainer" style={errorDisplay?{height:"70%"}:{height:"77.5%"}}>
                     { Object.keys(pedido.clientes).length !== 0 ? (
                         Object.keys(pedido.clientes).map((clienteKey) => {
                             const cliente = pedido.clientes[clienteKey];
@@ -139,6 +139,7 @@ function SelectProdutos() {
                   </div>
                 )
               } 
+              <button className='continuarbtn'>Finalizar</button>   
             </>
         )
     }
