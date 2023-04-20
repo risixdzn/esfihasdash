@@ -22,7 +22,7 @@
     justify-content: space-between;
     padding: 0 25px;
     transition: .2s ease-in-out;
-    border: 2px solid var(--primary);
+    border: 2px solid #464646;
     position: relative;
 }
 
@@ -173,8 +173,6 @@
     margin-bottom: 25px;
     flex-direction: column;
 }
-
-
 
 .produto input[type="number"],
 .addproduto input[type="number"]{
