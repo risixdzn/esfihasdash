@@ -1,5 +1,6 @@
 function HandleQuantidadeChange(event, setQuantidadeSelecionada) {
-    setQuantidadeSelecionada(event.target.value);
+    const valor = event.target.value;
+    setQuantidadeSelecionada(valor);
 }
 
 export default HandleQuantidadeChange
