@@ -25,6 +25,10 @@
 
 [![auth](https://img.shields.io/badge/firebase/auth-ff8c00?style=for-the-badge&logo=firebase&logoColor=white)](https://react.dev)
 
+**Onboarding**
+
+[![introjs](https://img.shields.io/badge/Introjs-2864ec?style=for-the-badge&logo=robotframework&logoColor=white)](https://react.dev)
+
 ## 🌌 **Features**
 
 - Authentication
