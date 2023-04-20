@@ -138,9 +138,12 @@
 }
 
 .produto .actions .delbtn{
-    font-size: 20px;
+    width: 20px;    
     color: #eb2f2f;
     transition: .1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .produto .actions .delbtn:hover{ 
@@ -179,6 +182,15 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+
+.produto input[type="number"]:disabled{
+    cursor: not-allowed;
+    background-color: #111111;
+    border: 1px solid var(--lighter2);
+    color: var(--lighter2);
+    font-weight: 6  00;
 }
 
 .newproduto{
@@ -271,5 +283,10 @@ input::-webkit-inner-spin-button {
     .selectproduto{        
         padding: 5px 20px;
         font-size: 14px;
+    }
+
+    .produto .actions .delbtn{
+         width: 17px;
+        
     }
 }

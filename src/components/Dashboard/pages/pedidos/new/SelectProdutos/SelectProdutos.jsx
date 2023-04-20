@@ -6,11 +6,12 @@ import useGetProdutos from '../../../../../../db/hooks/useGetProdutos';
 import { UserAuth } from '../../../../../../context/AuthContext';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 import HandleProdutoChange from './functions/HandleProdutoChange';
 import HandleQuantidadeChange from './functions/HandleQuantidadeChange';
 import useAddProduto from './functions/AddProduto';
+import useDelProduto from './functions/DelProduto';
 
 function SelectProdutos() {
     const { setPedidoStage , pedido , updatePedido } = usePedido();    
@@ -31,17 +32,23 @@ function SelectProdutos() {
     const [imgProdutoSelecionado , setImgProdutoSelecionado ] = useState('')
     const [quantidadeSelecionada, setQuantidadeSelecionada] = useState(1);
 
-    function produtoChange(event) {
+    function ProdutoChange(event) {
         HandleProdutoChange(event, showProdutos, setProdutoSelecionado, setImgProdutoSelecionado);
     }
 
-    function quantidadeChange(event) {
-        HandleQuantidadeChange(event.target.value, setQuantidadeSelecionada);
+    function QuantidadeChange(event) {
+        HandleQuantidadeChange(event, setQuantidadeSelecionada);
     }
     
     const [errorDisplay, setErrorDisplay] = useState(false);
+    const [errorText, setErrorText] = useState('')
+
     function AdicionarProduto(event) {
-        useAddProduto(event, produtoSelecionado, quantidadeSelecionada, imgProdutoSelecionado, setErrorDisplay, pedido, updatePedido)
+        useAddProduto(event, produtoSelecionado, quantidadeSelecionada, imgProdutoSelecionado, setErrorDisplay, setErrorText, pedido, updatePedido);
+    }
+
+    function DeletarProduto(event){
+        useDelProduto(event, pedido, updatePedido)
     }
 
     if( isLoading ){
@@ -54,7 +61,7 @@ function SelectProdutos() {
                 <button className='voltarbtn' onClick={(handleVoltar)}><FontAwesomeIcon icon={faArrowLeft}/> Voltar</button>
                 <h1 className="title">Selecione os produtos:</h1>
                 <div className='error' style={errorDisplay ? {display:"flex"} : {display:"none"}}>
-                    <span>Selecione um produto antes de tentar adicioná-lo.</span>
+                    <span>{errorText}</span>
                 </div> 
                 { isLoading ? (
                     <div className='notfoundcontainer'>
@@ -92,8 +99,8 @@ function SelectProdutos() {
                                                         <h1 className='produtonome'>{pedido.clientes[clienteKey].itens[item].nomeproduto}</h1>
                                                     </div>
                                                     <div className="actions">
-                                                        <button className='delbtn'>
-                                                            <FontAwesomeIcon icon={faTrashCan}/>
+                                                        <button className='delbtn' onClick={DeletarProduto} data-clientenome={cliente.nome} data-produtonome={pedido.clientes[clienteKey].itens[item].nomeproduto}>
+                                                            <img fill='#eb2f2f' src='../assets/svg/trashcan.svg' alt='' onClick={DeletarProduto} data-clientenome={cliente.nome} data-produtonome={pedido.clientes[clienteKey].itens[item].nomeproduto}></img>
                                                         </button>
                                                         <input type="number" disabled value={pedido.clientes[clienteKey].itens[item].quantidade}></input>       
                                                     </div>                                                                                                
@@ -107,16 +114,16 @@ function SelectProdutos() {
                                             <div className="addprodutoinfo">
                                                 <div className="produtoinfo">
                                                     <div className="produtopfp">
-                                                        {/* foto aqui com base no selecionado do in´pu*/}
+                                                        <img src="../assets/img/esfihaicon.png" alt=''></img>
                                                     </div>
-                                                    <select className='selectproduto' defaultValue="DEFAULT" onChange={produtoChange}>
+                                                    <select className='selectproduto' defaultValue="DEFAULT" onChange={ProdutoChange}>
                                                         <option value="DEFAULT" disabled>Produtos</option>
                                                         {showProdutos.map((produto)=>(
                                                             <option value={produto.valor}>{produto.nome}</option>
                                                         ))}
                                                     </select>
                                                 </div>
-                                                <input type="number" placeholder='1' min="1" value={quantidadeSelecionada} onChange={quantidadeChange}></input>  
+                                                <input type="number" placeholder='1' value={quantidadeSelecionada} onChange={QuantidadeChange}></input>  
                                             </div>                                            
                                             <button className='newproduto' onClick={AdicionarProduto} data-selcliente={cliente.nome}>Adicionar</button>
                                         </div>                                                                                                                          
