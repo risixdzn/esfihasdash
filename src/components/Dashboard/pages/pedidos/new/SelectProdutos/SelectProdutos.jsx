@@ -45,6 +45,7 @@ function SelectProdutos() {
 
     function AdicionarProduto(event) {
         useAddProduto(event, produtoSelecionado, quantidadeSelecionada, imgProdutoSelecionado, setErrorDisplay, setErrorText, pedido, updatePedido, event.target.value);
+        
     }
 
     function DeletarProduto(event){

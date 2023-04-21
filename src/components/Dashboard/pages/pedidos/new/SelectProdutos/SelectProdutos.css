@@ -235,6 +235,8 @@ input::-webkit-inner-spin-button {
     padding: 5px 25px;
     border-radius: 5px;
     color: #fff;
+    border: none;
+    outline: none;
 }
 
 .placeholderselect{
