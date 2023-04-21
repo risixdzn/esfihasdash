@@ -146,7 +146,7 @@ function SelectProdutos() {
             </>
         )
     }
-   
+    }  
 }
 
 export default SelectProdutos
