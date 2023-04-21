@@ -13,10 +13,14 @@ import HandleQuantidadeChange from './functions/HandleQuantidadeChange';
 import useAddProduto from './functions/AddProduto';
 import useDelProduto from './functions/DelProduto';
 
+import Select from 'react-select';
+
 function SelectProdutos() {
     const { setPedidoStage , pedido , updatePedido } = usePedido();    
     const{ user } = UserAuth();
     const { showProdutos , isLoading } = useGetProdutos(user);
+
+    const produtosList = showProdutos.map((objeto) => ({ value: objeto.nome , label: objeto.nome }));    
 
     const handleVoltar = () =>{
         updatePedido({ clientes: [] });
@@ -49,7 +53,6 @@ function SelectProdutos() {
 
     function DeletarProduto(event){
         useDelProduto(event, pedido, updatePedido)
-    }    
 
     if( isLoading ){
         <div className="itemcontainer" style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
@@ -121,7 +124,7 @@ function SelectProdutos() {
                                                         {showProdutos.map((produto)=>(
                                                             <option value={produto.valor}>{produto.nome}</option>
                                                         ))}
-                                                    </select>                                                  
+                                                    </select> 
                                                 </div>
                                                 <input type="number" placeholder='1' value={quantidadeSelecionada} onChange={QuantidadeChange}></input>  
                                             </div>                                            
@@ -143,7 +146,7 @@ function SelectProdutos() {
             </>
         )
     }
-   
+    }  
 }
 
 export default SelectProdutos
