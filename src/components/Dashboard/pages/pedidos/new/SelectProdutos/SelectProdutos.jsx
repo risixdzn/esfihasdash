@@ -53,49 +53,6 @@ function SelectProdutos() {
 
     function DeletarProduto(event){
         useDelProduto(event, pedido, updatePedido)
-    }
-    
-    const customStyles = {
-        control: (provided, state) => ({
-            ...provided,
-            backgroundColor: "#181818",
-            borderColor: state.isFocused ? "#F46A28" : "#3b3b3b",
-            boxShadow: state.isFocused ? "#F46A28" : "#3b3b3b",        
-            fontSize: "16px",    
-            "&:hover": {
-                borderColor: "#F46A28"
-            }             ,
-            "@media only screen and (max-width: 1200px)": {
-                ...provided["@media only screen and (max-width: 1200px)"],                
-                fontSize: "14px"
-            }, 
-        }),
-        option: (provided, state) => ({
-          ...provided,
-          backgroundColor: state.isSelected ? "#F46A28" : "#262626",
-          color: state.isSelected ? "#fff" : "#C0C0C0",
-          "&:hover": {
-                borderColor: "#F46A28"
-            }  ,
-            "&:active": {
-                backgroundColor: "#F46A28",
-                color: "#fff",
-            }   ,
-            "@media only screen and (max-width: 1200px)": {
-                ...provided["@media only screen and (max-width: 1200px)"],                
-                fontSize: "14px"
-            }, 
-        }),            
-        menu: (provided) =>({
-            ...provided,
-            backgroundColor:"#262626",
-            background:"#262626",
-        }),
-        singleValue: (provided) =>({
-            ...provided,
-            color: "#fff",
-        })
-      }
 
     if( isLoading ){
         <div className="itemcontainer" style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
@@ -162,8 +119,12 @@ function SelectProdutos() {
                                                     <div className="produtopfp">
                                                         <img src="../assets/img/esfihaicon.png" alt=''></img>
                                                     </div>
-                                                    <Select options={produtosList} placeholder={"Produto"} isSearchable={true} onChange={ProdutoChange} 
-                                                        styles={customStyles}/>                                                    
+                                                    <select className='selectproduto' defaultValue="DEFAULT" onChange={ProdutoChange}>
+                                                        <option value="DEFAULT" disabled>Produtos</option>
+                                                        {showProdutos.map((produto)=>(
+                                                            <option value={produto.valor}>{produto.nome}</option>
+                                                        ))}
+                                                    </select> 
                                                 </div>
                                                 <input type="number" placeholder='1' value={quantidadeSelecionada} onChange={QuantidadeChange}></input>  
                                             </div>                                            
