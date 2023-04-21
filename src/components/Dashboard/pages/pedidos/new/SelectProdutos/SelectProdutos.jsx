@@ -44,12 +44,12 @@ function SelectProdutos() {
     const [errorText, setErrorText] = useState('')
 
     function AdicionarProduto(event) {
-        useAddProduto(event, produtoSelecionado, quantidadeSelecionada, imgProdutoSelecionado, setErrorDisplay, setErrorText, pedido, updatePedido);
+        useAddProduto(event, produtoSelecionado, quantidadeSelecionada, imgProdutoSelecionado, setErrorDisplay, setErrorText, pedido, updatePedido, event.target.value);
     }
 
     function DeletarProduto(event){
         useDelProduto(event, pedido, updatePedido)
-    }
+    }    
 
     if( isLoading ){
         <div className="itemcontainer" style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
@@ -121,7 +121,7 @@ function SelectProdutos() {
                                                         {showProdutos.map((produto)=>(
                                                             <option value={produto.valor}>{produto.nome}</option>
                                                         ))}
-                                                    </select>
+                                                    </select>                                                  
                                                 </div>
                                                 <input type="number" placeholder='1' value={quantidadeSelecionada} onChange={QuantidadeChange}></input>  
                                             </div>                                            
