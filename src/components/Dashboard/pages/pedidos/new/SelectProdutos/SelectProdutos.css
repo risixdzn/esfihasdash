@@ -10,7 +10,6 @@
     background: var(--dark);
 }
 
-
 .pessoacontainer{
     width: 100%;
     height: AUTO;
@@ -63,7 +62,7 @@
     justify-content: space-between;
     width: 100%;
     background-color: var(--dark);
-    padding: 17.5px 40px;   
+    padding: 17.5px 25px;   
     border-radius: 5px;
     gap: 5px;
 }
@@ -179,9 +178,10 @@
     background-color: var(--highlight);    
     text-align: center;
     width: 50px;
-    padding: 10px;
+    padding: 9px;
     border-radius: 5px;
     color: #fff;
+    border: 1px solid var(--lighter2);
 }
 
 .produto input[type="number"]::placeholder,
@@ -283,7 +283,7 @@ input::-webkit-inner-spin-button {
     .produto input[type="number"],
     .addproduto input[type="number"]{
         font-size: 14px;
-        padding: 5px;
+        padding: 8px 5px;
         width: 30px;
     }
 
