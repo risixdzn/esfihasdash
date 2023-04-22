@@ -8,15 +8,16 @@ import { UserAuth } from '../../../../../../context/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
-import HandleProdutoChange from './functions/HandleProdutoChange';
 import HandleQuantidadeChange from './functions/HandleQuantidadeChange';
 import useAddProduto from './functions/AddProduto';
-import useDelProduto from './functions/DelProduto';
+
+import Produtos from './components/Produtos';
+import SelectProduto from './components/AddProduto/content/SelectProduto';
 
 function SelectProdutos() {
     const { setPedidoStage , pedido , updatePedido } = usePedido();    
     const{ user } = UserAuth();
-    const { showProdutos , isLoading } = useGetProdutos(user);
+    const { isLoading } = useGetProdutos(user);
 
     const handleVoltar = () =>{
         updatePedido({ clientes: [] });
@@ -32,10 +33,6 @@ function SelectProdutos() {
     const [imgProdutoSelecionado , setImgProdutoSelecionado ] = useState('')
     const [quantidadeSelecionada, setQuantidadeSelecionada] = useState(1);
 
-    function ProdutoChange(event) {
-        HandleProdutoChange(event, showProdutos, setProdutoSelecionado, setImgProdutoSelecionado);
-    }
-
     function QuantidadeChange(event) {
         HandleQuantidadeChange(event, setQuantidadeSelecionada);
     }
@@ -44,13 +41,10 @@ function SelectProdutos() {
     const [errorText, setErrorText] = useState('')
 
     function AdicionarProduto(event) {
-        useAddProduto(event, produtoSelecionado, quantidadeSelecionada, imgProdutoSelecionado, setErrorDisplay, setErrorText, pedido, updatePedido, event.target.value);
-        
+        useAddProduto(event, produtoSelecionado, quantidadeSelecionada, imgProdutoSelecionado, setErrorDisplay, setErrorText, pedido, updatePedido, event.target.value);        
     }
 
-    function DeletarProduto(event){
-        useDelProduto(event, pedido, updatePedido)
-    }
+    
 
     if( isLoading ){
         <div className="itemcontainer" style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
@@ -89,40 +83,16 @@ function SelectProdutos() {
                                         </button>                                        
                                     </div>
                                     <div className="produtoscontainer">  
-                                    {Object.keys(pedido.clientes[clienteKey].itens).length !== 0 ? (
-                                        Object.keys(pedido.clientes[clienteKey].itens).map((item)=>{
-                                            return (
-                                                <div className="produto">
-                                                    <div className="produtoinfo">
-                                                        <div className="produtopfp">
-                                                            <img src={pedido.clientes[clienteKey].itens[item].foto !== "" ? pedido.clientes[clienteKey].itens[item].foto : "../assets/img/esfihaicon.png"} alt=""/>
-                                                        </div>
-                                                        <h1 className='produtonome'>{pedido.clientes[clienteKey].itens[item].nomeproduto}</h1>
-                                                    </div>
-                                                    <div className="actions">
-                                                        <button className='delbtn' onClick={DeletarProduto} data-clientenome={cliente.nome} data-produtonome={pedido.clientes[clienteKey].itens[item].nomeproduto}>
-                                                            <img fill='#eb2f2f' src='../assets/svg/trashcan.svg' alt='' onClick={DeletarProduto} data-clientenome={cliente.nome} data-produtonome={pedido.clientes[clienteKey].itens[item].nomeproduto}></img>
-                                                        </button>
-                                                        <input type="number" disabled value={pedido.clientes[clienteKey].itens[item].quantidade}></input>       
-                                                    </div>                                                                                                
-                                                </div>                                                       
-                                            )    
-                                        })
-                                    ) : (
-                                        <></>
-                                    )}                                                                        
+                                        {Object.keys(pedido.clientes[clienteKey].itens).length !== 0 ? ( //se tiver mais de um item, renderize os produtos
+                                            <Produtos cliente={cliente} clienteKey={clienteKey}/>
+                                        ) : (<></>)}                                                             
                                         <div className="addproduto" data-clientenome={cliente.nome}>
                                             <div className="addprodutoinfo">
                                                 <div className="produtoinfo">
                                                     <div className="produtopfp">
                                                         <img src="../assets/img/esfihaicon.png" alt=''></img>
                                                     </div>
-                                                    <select className='selectproduto' defaultValue="DEFAULT" onChange={ProdutoChange}>
-                                                        <option value="DEFAULT" disabled>Produtos</option>
-                                                        {showProdutos.map((produto)=>(
-                                                            <option value={produto.valor}>{produto.nome}</option>
-                                                        ))}
-                                                    </select> 
+                                                    <SelectProduto setProdutoSelecionado={setProdutoSelecionado} setImgProdutoSelecionado={setImgProdutoSelecionado}/>
                                                 </div>
                                                 <input type="number" placeholder='1' value={quantidadeSelecionada} onChange={QuantidadeChange}></input>  
                                             </div>                                            
