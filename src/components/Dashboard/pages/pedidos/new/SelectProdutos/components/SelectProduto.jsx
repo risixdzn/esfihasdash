@@ -1,7 +1,7 @@
 import React from 'react'
-import useGetProdutos from '../../../../../../../../../db/hooks/useGetProdutos'
-import { UserAuth } from '../../../../../../../../../context/AuthContext';
-import HandleProdutoChange from '../../../functions/HandleProdutoChange';
+import useGetProdutos from '../../../../../../../db/hooks/useGetProdutos'
+import { UserAuth } from '../../../../../../../context/AuthContext';
+import HandleProdutoChange from '../functions/HandleProdutoChange';
 
 function SelectProduto(props) {
     const { user } = UserAuth();

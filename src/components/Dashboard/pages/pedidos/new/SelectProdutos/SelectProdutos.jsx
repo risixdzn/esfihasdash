@@ -12,7 +12,7 @@ import HandleQuantidadeChange from './functions/HandleQuantidadeChange';
 import useAddProduto from './functions/AddProduto';
 
 import Produtos from './components/Produtos';
-import SelectProduto from './components/AddProduto/content/SelectProduto';
+import SelectProduto from './components/SelectProduto';
 
 function SelectProdutos() {
     const { setPedidoStage , pedido , updatePedido } = usePedido();    
